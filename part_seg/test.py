@@ -8,14 +8,15 @@ import os
 import scipy.misc
 import sys
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+ROOT_DIR = os.path.dirname(BASE_DIR)
+DATA_DIR = '/volume/USERSTORE/jude_ra/master_thesis/pointnet2/data/'
 sys.path.append(BASE_DIR)
-sys.path.append(os.path.join(BASE_DIR, 'models'))
-sys.path.append(os.path.join(BASE_DIR, 'utils'))
+sys.path.append(os.path.join(ROOT_DIR, 'models'))
+sys.path.append(os.path.join(ROOT_DIR, 'utils'))
 import provider
 import show3d_balls
 sys.path.append(os.path.join(ROOT_DIR, 'data_prep'))
 import part_dataset
-
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--gpu', type=int, default=0, help='GPU to use [default: GPU 0]')
@@ -31,7 +32,7 @@ GPU_INDEX = FLAGS.gpu
 NUM_POINT = FLAGS.num_point
 MODEL = importlib.import_module(FLAGS.model) # import network module
 NUM_CLASSES = 4
-DATA_PATH = os.path.join(ROOT_DIR, 'data', 'shapenetcore_partanno_segmentation_benchmark_v0_normal')
+DATA_PATH = os.path.join(DATA_DIR, 'shapenetcore_partanno_segmentation_benchmark_v0')
 TEST_DATASET = part_dataset.PartDataset(root=DATA_PATH, npoints=NUM_POINT, classification=False, class_choice=FLAGS.category, split='test')
 
 def get_model(batch_size, num_point):

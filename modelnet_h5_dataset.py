@@ -15,14 +15,13 @@ import provider
 
 
 # Download dataset for point cloud classification
-DATA_DIR = os.path.join(ROOT_DIR, 'data')
+DATA_DIR = os.path.join('/volume/USERSTORE/jude_ra/master_thesis/pointnet2', 'data')
 if not os.path.exists(DATA_DIR):
     os.mkdir(DATA_DIR)
 if not os.path.exists(os.path.join(DATA_DIR, 'modelnet40_ply_hdf5_2048')):
     www = 'https://shapenet.cs.stanford.edu/media/modelnet40_ply_hdf5_2048.zip'
-    zipfile = os.path.basename(www)
-    os.system('wget %s; unzip %s' % (www, zipfile))
-    os.system('mv %s %s' % (zipfile[:-4], DATA_DIR))
+    zipfile = os.path.join(DATA_DIR, os.path.basename(www))
+    os.system('wget %s -P %s; unzip %s -d %s' % (www, DATA_DIR, zipfile, DATA_DIR))
     os.system('rm %s' % (zipfile))
 
 
@@ -119,8 +118,8 @@ class ModelNetH5Dataset(object):
 
 if __name__=='__main__':
     d = ModelNetH5Dataset('data/modelnet40_ply_hdf5_2048/train_files.txt')
-    print(d.shuffle)
-    print(d.has_next_batch())
+    print((d.shuffle))
+    print((d.has_next_batch()))
     ps_batch, cls_batch = d.next_batch(True)
-    print(ps_batch.shape)
-    print(cls_batch.shape)
+    print((ps_batch.shape))
+    print((cls_batch.shape))
