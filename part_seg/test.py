@@ -41,7 +41,7 @@ def get_model(batch_size, num_point):
             pointclouds_pl, labels_pl = MODEL.placeholder_inputs(batch_size, num_point)
             is_training_pl = tf.placeholder(tf.bool, shape=())
             pred, end_points = MODEL.get_model(pointclouds_pl, is_training_pl)
-            loss = MODEL.get_loss(pred, labels_pl, end_points)
+            loss = MODEL.get_loss(pred, labels_pl)
             saver = tf.train.Saver()
         # Create a session
         config = tf.ConfigProto()
@@ -60,7 +60,7 @@ def get_model(batch_size, num_point):
 def inference(sess, ops, pc, batch_size):
     ''' pc: BxNx3 array, return BxN pred '''
     assert pc.shape[0]%batch_size == 0
-    num_batches = pc.shape[0]/batch_size
+    num_batches = int(pc.shape[0]/batch_size)
     logits = np.zeros((pc.shape[0], pc.shape[1], NUM_CLASSES))
     for i in range(num_batches):
         feed_dict = {ops['pointclouds_pl']: pc[i*batch_size:(i+1)*batch_size,...],

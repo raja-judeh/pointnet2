@@ -10,11 +10,11 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(BASE_DIR)
 
 # Draw point cloud
-from eulerangles import euler2mat
+#from eulerangles import euler2mat
 
 # Point cloud IO
 import numpy as np
-from plyfile import PlyData, PlyElement
+#from plyfile import PlyData, PlyElement
 
  
 # ----------------------------------------
@@ -31,9 +31,9 @@ def point_cloud_label_to_surface_voxel_label(point_cloud, label, res=0.0484):
         uvlabel = [np.argmax(np.bincount(label[vidx==uv].astype(np.uint32))) for uv in uvidx]
     else:
         assert(label.ndim==2)
-	uvlabel = np.zeros(len(uvidx),label.shape[1])
-	for i in range(label.shape[1]):
-	    uvlabel[:,i] = np.array([np.argmax(np.bincount(label[vidx==uv,i].astype(np.uint32))) for uv in uvidx])
+    uvlabel = np.zeros(len(uvidx),label.shape[1])
+    for i in range(label.shape[1]):
+        uvlabel[:,i] = np.array([np.argmax(np.bincount(label[vidx==uv,i].astype(np.uint32))) for uv in uvidx])
     return uvidx, uvlabel, nvox
 
 def point_cloud_label_to_surface_voxel_label_fast(point_cloud, label, res=0.0484):
@@ -47,7 +47,7 @@ def point_cloud_label_to_surface_voxel_label_fast(point_cloud, label, res=0.0484
         uvlabel = label[vpidx]
     else:
         assert(label.ndim==2)
-	uvlabel = label[vpidx,:]
+    uvlabel = label[vpidx,:]
     return uvidx, uvlabel, nvox
 
 def point_cloud_to_volume_batch(point_clouds, vsize=12, radius=1.0, flatten=True):

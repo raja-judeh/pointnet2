@@ -1,5 +1,30 @@
 Namespace(batch_size=32, gpu=0, log_dir='log_eval', model='pointnet2_part_seg', model_path='log/model.ckpt', num_point=2048)
-pid: 9996
-2019-07-09 15:35:38.155586
+pid: 14772
+2019-07-09 17:17:10.142027
 ---- EPOCH 000 EVALUATION ----
 000/090
+020/090
+040/090
+060/090
+080/090
+eval mean loss: 0.263153
+eval accuracy: 0.939603
+eval avg class acc: 0.864982
+eval mIoU of Airplane:	 0.823604
+eval mIoU of Bag:	 0.766009
+eval mIoU of Cap:	 0.847261
+eval mIoU of Car:	 0.785136
+eval mIoU of Chair:	 0.908233
+eval mIoU of Earphone:	 0.689055
+eval mIoU of Guitar:	 0.911960
+eval mIoU of Knife:	 0.851797
+eval mIoU of Lamp:	 0.829026
+eval mIoU of Laptop:	 0.956625
+eval mIoU of Motorbike:	 0.713437
+eval mIoU of Mug:	 0.951463
+eval mIoU of Pistol:	 0.807712
+eval mIoU of Rocket:	 0.543117
+eval mIoU of Skateboard:	 0.748963
+eval mIoU of Table:	 0.812589
+eval mean mIoU: 0.809124
+eval mean mIoU (all shapes): 0.845694
