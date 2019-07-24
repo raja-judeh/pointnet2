@@ -13,6 +13,7 @@ ROOT_DIR = os.path.dirname(BASE_DIR)
 sys.path.append(BASE_DIR) # model
 sys.path.append(ROOT_DIR) # provider
 sys.path.append(os.path.join(ROOT_DIR, 'utils'))
+sys.path.append(os.path.join(ROOT_DIR, 'models'))
 import provider
 import tf_util
 import pc_util
@@ -46,7 +47,7 @@ DECAY_STEP = FLAGS.decay_step
 DECAY_RATE = FLAGS.decay_rate
 
 MODEL = importlib.import_module(FLAGS.model) # import network module
-MODEL_FILE = os.path.join(BASE_DIR, FLAGS.model+'.py')
+MODEL_FILE = os.path.join(ROOT_DIR, 'models', FLAGS.model+'.py')
 LOG_DIR = FLAGS.log_dir
 if not os.path.exists(LOG_DIR): os.mkdir(LOG_DIR)
 os.system('cp %s %s' % (MODEL_FILE, LOG_DIR)) # bkp of model def
@@ -64,11 +65,11 @@ HOSTNAME = socket.gethostname()
 NUM_CLASSES = 21
 
 # Shapenet official train/test split
-DATA_PATH = os.path.join(ROOT_DIR,'data','scannet_data_pointnet2')
+DATA_DIR = '/volume/USERSTORE/jude_ra/master_thesis/pointnet2/data/'
+DATA_PATH = os.path.join(DATA_DIR,'scannet_data_pointnet2')
 TRAIN_DATASET = scannet_dataset.ScannetDataset(root=DATA_PATH, npoints=NUM_POINT, split='train')
 TEST_DATASET = scannet_dataset.ScannetDataset(root=DATA_PATH, npoints=NUM_POINT, split='test')
 TEST_DATASET_WHOLE_SCENE = scannet_dataset.ScannetDatasetWholeScene(root=DATA_PATH, npoints=NUM_POINT, split='test')
-
 
 def log_string(out_str):
     LOG_FOUT.write(out_str+'\n')
@@ -100,7 +101,7 @@ def train():
         with tf.device('/gpu:'+str(GPU_INDEX)):
             pointclouds_pl, labels_pl, smpws_pl = MODEL.placeholder_inputs(BATCH_SIZE, NUM_POINT)
             is_training_pl = tf.placeholder(tf.bool, shape=())
-            print is_training_pl
+            print(is_training_pl)
             
             # Note the global_step=batch parameter to minimize. 
             # That tells the optimizer to helpfully increment the 'batch' parameter for you every time it trains.
@@ -108,7 +109,7 @@ def train():
             bn_decay = get_bn_decay(batch)
             tf.summary.scalar('bn_decay', bn_decay)
 
-            print "--- Get model and loss"
+            print("--- Get model and loss")
             # Get model and loss 
             pred, end_points = MODEL.get_model(pointclouds_pl, is_training_pl, NUM_CLASSES, bn_decay=bn_decay)
             loss = MODEL.get_loss(pred, labels_pl, smpws_pl)
@@ -118,7 +119,7 @@ def train():
             accuracy = tf.reduce_sum(tf.cast(correct, tf.float32)) / float(BATCH_SIZE*NUM_POINT)
             tf.summary.scalar('accuracy', accuracy)
 
-            print "--- Get training operator"
+            print("--- Get training operator")
             # Get training operator
             learning_rate = get_learning_rate(batch)
             tf.summary.scalar('learning_rate', learning_rate)
@@ -165,9 +166,9 @@ def train():
             sys.stdout.flush()
 
             train_one_epoch(sess, ops, train_writer)
-	    if epoch%5==0:
-            	acc = eval_one_epoch(sess, ops, test_writer)
-		acc = eval_whole_scene_one_epoch(sess, ops, test_writer)
+            if epoch%5==0:
+                acc = eval_one_epoch(sess, ops, test_writer)
+                acc = eval_whole_scene_one_epoch(sess, ops, test_writer)
             if acc > best_acc:
                 best_acc = acc
                 save_path = saver.save(sess, os.path.join(LOG_DIR, "best_model_epoch_%03d.ckpt"%(epoch)))
@@ -187,13 +188,13 @@ def get_batch_wdp(dataset, idxs, start_idx, end_idx):
         ps,seg,smpw = dataset[idxs[i+start_idx]]
         batch_data[i,...] = ps
         batch_label[i,:] = seg
-	batch_smpw[i,:] = smpw
+        batch_smpw[i,:] = smpw
 
-	dropout_ratio = np.random.random()*0.875 # 0-0.875
+        dropout_ratio = np.random.random()*0.875 # 0-0.875
         drop_idx = np.where(np.random.random((ps.shape[0]))<=dropout_ratio)[0]
-	batch_data[i,drop_idx,:] = batch_data[i,0,:]
-	batch_label[i,drop_idx] = batch_label[i,0]
-	batch_smpw[i,drop_idx] *= 0
+        batch_data[i,drop_idx,:] = batch_data[i,0,:]
+        batch_label[i,drop_idx] = batch_label[i,0]
+        batch_smpw[i,drop_idx] *= 0
     return batch_data, batch_label, batch_smpw
 
 def get_batch(dataset, idxs, start_idx, end_idx):
@@ -205,7 +206,7 @@ def get_batch(dataset, idxs, start_idx, end_idx):
         ps,seg,smpw = dataset[idxs[i+start_idx]]
         batch_data[i,...] = ps
         batch_label[i,:] = seg
-	batch_smpw[i,:] = smpw
+        batch_smpw[i,:] = smpw
     return batch_data, batch_label, batch_smpw
 
 def train_one_epoch(sess, ops, train_writer):
@@ -215,7 +216,7 @@ def train_one_epoch(sess, ops, train_writer):
     # Shuffle train samples
     train_idxs = np.arange(0, len(TRAIN_DATASET))
     np.random.shuffle(train_idxs)
-    num_batches = len(TRAIN_DATASET)/BATCH_SIZE
+    num_batches = int(len(TRAIN_DATASET)/BATCH_SIZE)
     
     log_string(str(datetime.now()))
 
@@ -227,7 +228,7 @@ def train_one_epoch(sess, ops, train_writer):
         end_idx = (batch_idx+1) * BATCH_SIZE
         batch_data, batch_label, batch_smpw = get_batch_wdp(TRAIN_DATASET, train_idxs, start_idx, end_idx)
         # Augment batched point clouds by rotation
-	aug_data = provider.rotate_point_cloud_z(batch_data)
+        aug_data = provider.rotate_point_cloud_z(batch_data)
         feed_dict = {ops['pointclouds_pl']: aug_data,
                      ops['labels_pl']: batch_label,
 		     ops['smpws_pl']:batch_smpw,
@@ -254,7 +255,7 @@ def eval_one_epoch(sess, ops, test_writer):
     global EPOCH_CNT
     is_training = False
     test_idxs = np.arange(0, len(TEST_DATASET))
-    num_batches = len(TEST_DATASET)/BATCH_SIZE
+    num_batches = int(len(TEST_DATASET)/BATCH_SIZE)
 
     total_correct = 0
     total_seen = 0
@@ -277,7 +278,7 @@ def eval_one_epoch(sess, ops, test_writer):
         end_idx = (batch_idx+1) * BATCH_SIZE
         batch_data, batch_label, batch_smpw = get_batch(TEST_DATASET, test_idxs, start_idx, end_idx)
 
-	aug_data = provider.rotate_point_cloud_z(batch_data)
+        aug_data = provider.rotate_point_cloud_z(batch_data)
 
         feed_dict = {ops['pointclouds_pl']: aug_data,
                      ops['labels_pl']: batch_label,
@@ -291,19 +292,19 @@ def eval_one_epoch(sess, ops, test_writer):
         total_correct += correct
         total_seen += np.sum((batch_label>0) & (batch_smpw>0))
         loss_sum += loss_val
-	tmp,_ = np.histogram(batch_label,range(22))
-	labelweights += tmp
+        tmp,_ = np.histogram(batch_label,list(range(22)))
+        labelweights += tmp
         for l in range(NUM_CLASSES):
             total_seen_class[l] += np.sum((batch_label==l) & (batch_smpw>0))
             total_correct_class[l] += np.sum((pred_val==l) & (batch_label==l) & (batch_smpw>0))
 
-	for b in xrange(batch_label.shape[0]):
-	    _, uvlabel, _ = pc_util.point_cloud_label_to_surface_voxel_label_fast(aug_data[b,batch_smpw[b,:]>0,:], np.concatenate((np.expand_dims(batch_label[b,batch_smpw[b,:]>0],1),np.expand_dims(pred_val[b,batch_smpw[b,:]>0],1)),axis=1), res=0.02)
-	    total_correct_vox += np.sum((uvlabel[:,0]==uvlabel[:,1])&(uvlabel[:,0]>0))
+        for b in range(batch_label.shape[0]):
+            _, uvlabel, _ = pc_util.point_cloud_label_to_surface_voxel_label_fast(aug_data[b,batch_smpw[b,:]>0,:], np.concatenate((np.expand_dims(batch_label[b,batch_smpw[b,:]>0],1),np.expand_dims(pred_val[b,batch_smpw[b,:]>0],1)),axis=1), res=0.02)
+            total_correct_vox += np.sum((uvlabel[:,0]==uvlabel[:,1])&(uvlabel[:,0]>0))
             total_seen_vox += np.sum(uvlabel[:,0]>0)
-	    tmp,_ = np.histogram(uvlabel[:,0],range(22))
-	    labelweights_vox += tmp
-	    for l in range(NUM_CLASSES):
+            tmp,_ = np.histogram(uvlabel[:,0],list(range(22)))
+            labelweights_vox += tmp
+            for l in range(NUM_CLASSES):
                 total_seen_class_vox[l] += np.sum(uvlabel[:,0]==l)
                 total_correct_class_vox[l] += np.sum((uvlabel[:,0]==l) & (uvlabel[:,1]==l))
 
@@ -317,7 +318,7 @@ def eval_one_epoch(sess, ops, test_writer):
     log_string('eval point calibrated average acc: %f' % (np.average(np.array(total_correct_class[1:])/(np.array(total_seen_class[1:],dtype=np.float)+1e-6),weights=caliweights)))
     per_class_str = 'vox based --------'
     for l in range(1,NUM_CLASSES):
-	per_class_str += 'class %d weight: %f, acc: %f; ' % (l,labelweights_vox[l-1],total_correct_class[l]/float(total_seen_class[l]))
+        per_class_str += 'class %d weight: %f, acc: %f; ' % (l,labelweights_vox[l-1],total_correct_class[l]/float(total_seen_class[l]))
     log_string(per_class_str)
     EPOCH_CNT += 1
     return total_correct/float(total_seen)
@@ -328,7 +329,7 @@ def eval_whole_scene_one_epoch(sess, ops, test_writer):
     global EPOCH_CNT
     is_training = False
     test_idxs = np.arange(0, len(TEST_DATASET_WHOLE_SCENE))
-    num_batches = len(TEST_DATASET_WHOLE_SCENE)
+    num_batches = int(len(TEST_DATASET_WHOLE_SCENE))
 
     total_correct = 0
     total_seen = 0
@@ -352,59 +353,59 @@ def eval_whole_scene_one_epoch(sess, ops, test_writer):
     extra_batch_label = np.zeros((0,NUM_POINT))
     extra_batch_smpw = np.zeros((0,NUM_POINT))
     for batch_idx in range(num_batches):
-	if not is_continue_batch:
+        if not is_continue_batch:
             batch_data, batch_label, batch_smpw = TEST_DATASET_WHOLE_SCENE[batch_idx]
-	    batch_data = np.concatenate((batch_data,extra_batch_data),axis=0)
-	    batch_label = np.concatenate((batch_label,extra_batch_label),axis=0)
-	    batch_smpw = np.concatenate((batch_smpw,extra_batch_smpw),axis=0)
-	else:
-	    batch_data_tmp, batch_label_tmp, batch_smpw_tmp = TEST_DATASET_WHOLE_SCENE[batch_idx]
-	    batch_data = np.concatenate((batch_data,batch_data_tmp),axis=0)
-	    batch_label = np.concatenate((batch_label,batch_label_tmp),axis=0)
-	    batch_smpw = np.concatenate((batch_smpw,batch_smpw_tmp),axis=0)
-	if batch_data.shape[0]<BATCH_SIZE:
-	    is_continue_batch = True
-	    continue
-	elif batch_data.shape[0]==BATCH_SIZE:
-	    is_continue_batch = False
-	    extra_batch_data = np.zeros((0,NUM_POINT,3))
-    	    extra_batch_label = np.zeros((0,NUM_POINT))
-    	    extra_batch_smpw = np.zeros((0,NUM_POINT))
-	else:
-	    is_continue_batch = False
-	    extra_batch_data = batch_data[BATCH_SIZE:,:,:]
-    	    extra_batch_label = batch_label[BATCH_SIZE:,:]
-    	    extra_batch_smpw = batch_smpw[BATCH_SIZE:,:]
-	    batch_data = batch_data[:BATCH_SIZE,:,:]
-    	    batch_label = batch_label[:BATCH_SIZE,:]
-    	    batch_smpw = batch_smpw[:BATCH_SIZE,:]
+            batch_data = np.concatenate((batch_data,extra_batch_data),axis=0)
+            batch_label = np.concatenate((batch_label,extra_batch_label),axis=0)
+            batch_smpw = np.concatenate((batch_smpw,extra_batch_smpw),axis=0)
+        else:
+            batch_data_tmp, batch_label_tmp, batch_smpw_tmp = TEST_DATASET_WHOLE_SCENE[batch_idx]
+            batch_data = np.concatenate((batch_data,batch_data_tmp),axis=0)
+            batch_label = np.concatenate((batch_label,batch_label_tmp),axis=0)
+            batch_smpw = np.concatenate((batch_smpw,batch_smpw_tmp),axis=0)
+        if batch_data.shape[0]<BATCH_SIZE:
+            is_continue_batch = True
+            continue
+        elif batch_data.shape[0]==BATCH_SIZE:
+            is_continue_batch = False
+            extra_batch_data = np.zeros((0,NUM_POINT,3))
+            extra_batch_label = np.zeros((0,NUM_POINT))
+            extra_batch_smpw = np.zeros((0,NUM_POINT))
+        else:
+            is_continue_batch = False
+            extra_batch_data = batch_data[BATCH_SIZE:,:,:]
+            extra_batch_label = batch_label[BATCH_SIZE:,:]
+            extra_batch_smpw = batch_smpw[BATCH_SIZE:,:]
+            batch_data = batch_data[:BATCH_SIZE,:,:]
+            batch_label = batch_label[:BATCH_SIZE,:]
+            batch_smpw = batch_smpw[:BATCH_SIZE,:]
 
-	aug_data = batch_data
+        aug_data = batch_data
         feed_dict = {ops['pointclouds_pl']: aug_data,
                      ops['labels_pl']: batch_label,
 	  	     ops['smpws_pl']: batch_smpw,
                      ops['is_training_pl']: is_training}
         summary, step, loss_val, pred_val = sess.run([ops['merged'], ops['step'],
             ops['loss'], ops['pred']], feed_dict=feed_dict)
-	test_writer.add_summary(summary, step)
+        test_writer.add_summary(summary, step)
         pred_val = np.argmax(pred_val, 2) # BxN
         correct = np.sum((pred_val == batch_label) & (batch_label>0) & (batch_smpw>0)) # evaluate only on 20 categories but not unknown
         total_correct += correct
         total_seen += np.sum((batch_label>0) & (batch_smpw>0))
         loss_sum += loss_val
-	tmp,_ = np.histogram(batch_label,range(22))
-	labelweights += tmp
+        tmp,_ = np.histogram(batch_label,list(range(22)))
+        labelweights += tmp
         for l in range(NUM_CLASSES):
             total_seen_class[l] += np.sum((batch_label==l) & (batch_smpw>0))
             total_correct_class[l] += np.sum((pred_val==l) & (batch_label==l) & (batch_smpw>0))
 
-	for b in xrange(batch_label.shape[0]):
-	    _, uvlabel, _ = pc_util.point_cloud_label_to_surface_voxel_label_fast(aug_data[b,batch_smpw[b,:]>0,:], np.concatenate((np.expand_dims(batch_label[b,batch_smpw[b,:]>0],1),np.expand_dims(pred_val[b,batch_smpw[b,:]>0],1)),axis=1), res=0.02)
-	    total_correct_vox += np.sum((uvlabel[:,0]==uvlabel[:,1])&(uvlabel[:,0]>0))
+        for b in range(batch_label.shape[0]):
+            _, uvlabel, _ = pc_util.point_cloud_label_to_surface_voxel_label_fast(aug_data[b,batch_smpw[b,:]>0,:], np.concatenate((np.expand_dims(batch_label[b,batch_smpw[b,:]>0],1),np.expand_dims(pred_val[b,batch_smpw[b,:]>0],1)),axis=1), res=0.02)
+            total_correct_vox += np.sum((uvlabel[:,0]==uvlabel[:,1])&(uvlabel[:,0]>0))
             total_seen_vox += np.sum(uvlabel[:,0]>0)
-	    tmp,_ = np.histogram(uvlabel[:,0],range(22))
-	    labelweights_vox += tmp
-	    for l in range(NUM_CLASSES):
+            tmp,_ = np.histogram(uvlabel[:,0],list(range(22)))
+            labelweights_vox += tmp
+            for l in range(NUM_CLASSES):
                 total_seen_class_vox[l] += np.sum(uvlabel[:,0]==l)
                 total_correct_class_vox[l] += np.sum((uvlabel[:,0]==l) & (uvlabel[:,1]==l))
 
@@ -421,7 +422,7 @@ def eval_whole_scene_one_epoch(sess, ops, test_writer):
 
     per_class_str = 'vox based --------'
     for l in range(1,NUM_CLASSES):
-	per_class_str += 'class %d weight: %f, acc: %f; ' % (l,labelweights_vox[l-1],total_correct_class_vox[l]/float(total_seen_class_vox[l]))
+        per_class_str += 'class %d weight: %f, acc: %f; ' % (l,labelweights_vox[l-1],total_correct_class_vox[l]/float(total_seen_class_vox[l]))
     log_string(per_class_str)
     EPOCH_CNT += 1
     return caliacc
@@ -430,4 +431,4 @@ def eval_whole_scene_one_epoch(sess, ops, test_writer):
 if __name__ == "__main__":
     log_string('pid: %s'%(str(os.getpid())))
     train()
-    LOG_FOUT.close()
+LOG_FOUT.close()

@@ -1,0 +1,5395 @@
+Namespace(batch_size=16, decay_rate=0.7, decay_step=200000, gpu=0, learning_rate=0.001, log_dir='log', max_epoch=201, model='pointnet2_sem_seg', momentum=0.9, num_point=8192, optimizer='adam')
+pid: 973
+**** EPOCH 000 ****
+2019-07-10 17:58:08.777338
+ -- 010 / 075 --
+mean loss: 9.626056
+accuracy: 0.189947
+ -- 020 / 075 --
+mean loss: 8.202537
+accuracy: 0.319582
+ -- 030 / 075 --
+mean loss: 7.993770
+accuracy: 0.322280
+ -- 040 / 075 --
+mean loss: 7.701945
+accuracy: 0.353306
+ -- 050 / 075 --
+mean loss: 6.859332
+accuracy: 0.398789
+ -- 060 / 075 --
+mean loss: 7.308015
+accuracy: 0.386495
+ -- 070 / 075 --
+mean loss: 6.915730
+accuracy: 0.398381
+2019-07-10 17:59:16.365760
+---- EPOCH 000 EVALUATION ----
+eval mean loss: 1.569505
+eval point accuracy vox: 0.647328
+eval point avg class acc vox: 0.118900
+eval point accuracy: 0.650525
+eval point avg class acc: 0.119023
+eval point calibrated average acc: 0.733762
+vox based --------class 1 weight: 0.389451, acc: 0.942879; class 2 weight: 0.257344, acc: 0.976192; class 3 weight: 0.062666, acc: 0.460166; class 4 weight: 0.036564, acc: 0.000000; class 5 weight: 0.018623, acc: 0.000000; class 6 weight: 0.013817, acc: 0.000000; class 7 weight: 0.024498, acc: 0.000000; class 8 weight: 0.027348, acc: 0.001228; class 9 weight: 0.003558, acc: 0.000000; class 10 weight: 0.006239, acc: 0.000000; class 11 weight: 0.007320, acc: 0.000000; class 12 weight: 0.017260, acc: 0.000000; class 13 weight: 0.007234, acc: 0.000000; class 14 weight: 0.031338, acc: 0.000000; class 15 weight: 0.010285, acc: 0.000000; class 16 weight: 0.003384, acc: 0.000000; class 17 weight: 0.005252, acc: 0.000000; class 18 weight: 0.002038, acc: 0.000000; class 19 weight: 0.039721, acc: 0.000000; class 20 weight: 0.036059, acc: 0.000000; 
+2019-07-10 17:59:29.673026
+---- EPOCH 001 EVALUATION WHOLE SCENE----
+eval whole scene mean loss: 1.282593
+eval whole scene point accuracy vox: 0.696366
+eval whole scene point avg class acc vox: 0.119046
+eval whole scene point accuracy: 0.708363
+eval whole scene point avg class acc: 0.119095
+eval whole scene point calibrated average acc vox: 0.733999
+vox based --------class 1 weight: 0.393188, acc: 0.939008; class 2 weight: 0.306398, acc: 0.981113; class 3 weight: 0.057672, acc: 0.459878; class 4 weight: 0.035824, acc: 0.000000; class 5 weight: 0.017106, acc: 0.000000; class 6 weight: 0.022533, acc: 0.000000; class 7 weight: 0.018432, acc: 0.000005; class 8 weight: 0.028917, acc: 0.000895; class 9 weight: 0.003297, acc: 0.000000; class 10 weight: 0.002147, acc: 0.000000; class 11 weight: 0.002470, acc: 0.000000; class 12 weight: 0.008307, acc: 0.000000; class 13 weight: 0.007112, acc: 0.000000; class 14 weight: 0.022429, acc: 0.000000; class 15 weight: 0.005524, acc: 0.000000; class 16 weight: 0.000883, acc: 0.000000; class 17 weight: 0.003686, acc: 0.000000; class 18 weight: 0.001774, acc: 0.000000; class 19 weight: 0.026615, acc: 0.000000; class 20 weight: 0.035686, acc: 0.000015; 
+Model saved in file: log/best_model_epoch_000.ckpt
+Model saved in file: log/model.ckpt
+**** EPOCH 001 ****
+2019-07-10 18:04:02.579933
+ -- 010 / 075 --
+mean loss: 7.397426
+accuracy: 0.370793
+ -- 020 / 075 --
+mean loss: 6.746773
+accuracy: 0.396072
+ -- 030 / 075 --
+mean loss: 7.153888
+accuracy: 0.391843
+ -- 040 / 075 --
+mean loss: 6.302584
+accuracy: 0.465327
+ -- 050 / 075 --
+mean loss: 6.926986
+accuracy: 0.396954
+ -- 060 / 075 --
+mean loss: 7.016844
+accuracy: 0.392648
+ -- 070 / 075 --
+mean loss: 6.681985
+accuracy: 0.414388
+**** EPOCH 002 ****
+2019-07-10 18:04:55.389354
+ -- 010 / 075 --
+mean loss: 6.314265
+accuracy: 0.492336
+ -- 020 / 075 --
+mean loss: 6.488218
+accuracy: 0.439817
+ -- 030 / 075 --
+mean loss: 6.626609
+accuracy: 0.438973
+ -- 040 / 075 --
+mean loss: 6.014228
+accuracy: 0.464925
+ -- 050 / 075 --
+mean loss: 5.972293
+accuracy: 0.445824
+ -- 060 / 075 --
+mean loss: 6.650254
+accuracy: 0.452390
+ -- 070 / 075 --
+mean loss: 6.771447
+accuracy: 0.453817
+**** EPOCH 003 ****
+2019-07-10 18:05:48.071735
+ -- 010 / 075 --
+mean loss: 6.301198
+accuracy: 0.463004
+ -- 020 / 075 --
+mean loss: 6.235875
+accuracy: 0.452451
+ -- 030 / 075 --
+mean loss: 6.316069
+accuracy: 0.494637
+ -- 040 / 075 --
+mean loss: 6.403416
+accuracy: 0.444525
+ -- 050 / 075 --
+mean loss: 6.619778
+accuracy: 0.448740
+ -- 060 / 075 --
+mean loss: 6.009210
+accuracy: 0.474976
+ -- 070 / 075 --
+mean loss: 5.964762
+accuracy: 0.446574
+**** EPOCH 004 ****
+2019-07-10 18:06:40.381020
+ -- 010 / 075 --
+mean loss: 6.259231
+accuracy: 0.465246
+ -- 020 / 075 --
+mean loss: 6.222109
+accuracy: 0.457157
+ -- 030 / 075 --
+mean loss: 6.556312
+accuracy: 0.473741
+ -- 040 / 075 --
+mean loss: 6.285074
+accuracy: 0.457561
+ -- 050 / 075 --
+mean loss: 6.003906
+accuracy: 0.513181
+ -- 060 / 075 --
+mean loss: 6.221601
+accuracy: 0.471777
+ -- 070 / 075 --
+mean loss: 6.370648
+accuracy: 0.479086
+**** EPOCH 005 ****
+2019-07-10 18:07:32.615833
+ -- 010 / 075 --
+mean loss: 6.364013
+accuracy: 0.461359
+ -- 020 / 075 --
+mean loss: 6.246593
+accuracy: 0.450990
+ -- 030 / 075 --
+mean loss: 5.640904
+accuracy: 0.508327
+ -- 040 / 075 --
+mean loss: 5.899124
+accuracy: 0.509459
+ -- 050 / 075 --
+mean loss: 5.949955
+accuracy: 0.493936
+ -- 060 / 075 --
+mean loss: 6.105453
+accuracy: 0.485593
+ -- 070 / 075 --
+mean loss: 6.053590
+accuracy: 0.497949
+2019-07-10 18:08:24.978454
+---- EPOCH 002 EVALUATION ----
+eval mean loss: 1.390709
+eval point accuracy vox: 0.653834
+eval point avg class acc vox: 0.144494
+eval point accuracy: 0.654243
+eval point avg class acc: 0.146451
+eval point calibrated average acc: 0.711559
+vox based --------class 1 weight: 0.401714, acc: 0.955288; class 2 weight: 0.259265, acc: 0.846395; class 3 weight: 0.057662, acc: 0.613551; class 4 weight: 0.028308, acc: 0.230085; class 5 weight: 0.016011, acc: 0.000000; class 6 weight: 0.021939, acc: 0.023248; class 7 weight: 0.018433, acc: 0.000000; class 8 weight: 0.026992, acc: 0.205453; class 9 weight: 0.006381, acc: 0.000000; class 10 weight: 0.003911, acc: 0.000000; class 11 weight: 0.006785, acc: 0.000000; class 12 weight: 0.013610, acc: 0.054998; class 13 weight: 0.008548, acc: 0.000000; class 14 weight: 0.029811, acc: 0.000000; class 15 weight: 0.008183, acc: 0.000000; class 16 weight: 0.002692, acc: 0.000000; class 17 weight: 0.005088, acc: 0.000000; class 18 weight: 0.001144, acc: 0.000000; class 19 weight: 0.040741, acc: 0.000000; class 20 weight: 0.042781, acc: 0.000000; 
+2019-07-10 18:08:37.281097
+---- EPOCH 003 EVALUATION WHOLE SCENE----
+eval whole scene mean loss: 1.221618
+eval whole scene point accuracy vox: 0.680691
+eval whole scene point avg class acc vox: 0.157441
+eval whole scene point accuracy: 0.673468
+eval whole scene point avg class acc: 0.155878
+eval whole scene point calibrated average acc vox: 0.703869
+vox based --------class 1 weight: 0.393020, acc: 0.962880; class 2 weight: 0.306506, acc: 0.803648; class 3 weight: 0.057722, acc: 0.628913; class 4 weight: 0.035845, acc: 0.348432; class 5 weight: 0.017105, acc: 0.000000; class 6 weight: 0.022574, acc: 0.021127; class 7 weight: 0.018136, acc: 0.000000; class 8 weight: 0.029004, acc: 0.168533; class 9 weight: 0.003296, acc: 0.000000; class 10 weight: 0.002139, acc: 0.000000; class 11 weight: 0.002478, acc: 0.000000; class 12 weight: 0.008273, acc: 0.215286; class 13 weight: 0.007138, acc: 0.000000; class 14 weight: 0.022440, acc: 0.000000; class 15 weight: 0.005540, acc: 0.000000; class 16 weight: 0.000876, acc: 0.000000; class 17 weight: 0.003705, acc: 0.000000; class 18 weight: 0.001776, acc: 0.000000; class 19 weight: 0.026685, acc: 0.000000; class 20 weight: 0.035742, acc: 0.000000; 
+**** EPOCH 006 ****
+2019-07-10 18:13:11.170820
+ -- 010 / 075 --
+mean loss: 6.547251
+accuracy: 0.461929
+ -- 020 / 075 --
+mean loss: 5.605474
+accuracy: 0.528587
+ -- 030 / 075 --
+mean loss: 5.780094
+accuracy: 0.511861
+ -- 040 / 075 --
+mean loss: 5.946240
+accuracy: 0.481367
+ -- 050 / 075 --
+mean loss: 5.459976
+accuracy: 0.483531
+ -- 060 / 075 --
+mean loss: 5.382804
+accuracy: 0.476292
+ -- 070 / 075 --
+mean loss: 5.581676
+accuracy: 0.485870
+**** EPOCH 007 ****
+2019-07-10 18:14:03.806620
+ -- 010 / 075 --
+mean loss: 5.810615
+accuracy: 0.487648
+ -- 020 / 075 --
+mean loss: 6.164521
+accuracy: 0.500377
+ -- 030 / 075 --
+mean loss: 5.522663
+accuracy: 0.510430
+ -- 040 / 075 --
+mean loss: 4.780718
+accuracy: 0.535188
+ -- 050 / 075 --
+mean loss: 5.787367
+accuracy: 0.521014
+ -- 060 / 075 --
+mean loss: 6.285743
+accuracy: 0.486054
+ -- 070 / 075 --
+mean loss: 5.983738
+accuracy: 0.532606
+**** EPOCH 008 ****
+2019-07-10 18:14:56.702993
+ -- 010 / 075 --
+mean loss: 5.797989
+accuracy: 0.522450
+ -- 020 / 075 --
+mean loss: 5.385533
+accuracy: 0.560249
+ -- 030 / 075 --
+mean loss: 5.846324
+accuracy: 0.506459
+ -- 040 / 075 --
+mean loss: 5.589240
+accuracy: 0.488456
+ -- 050 / 075 --
+mean loss: 6.004856
+accuracy: 0.514977
+ -- 060 / 075 --
+mean loss: 5.651894
+accuracy: 0.537230
+ -- 070 / 075 --
+mean loss: 6.013748
+accuracy: 0.517793
+**** EPOCH 009 ****
+2019-07-10 18:15:49.186770
+ -- 010 / 075 --
+mean loss: 5.145099
+accuracy: 0.563860
+ -- 020 / 075 --
+mean loss: 5.677805
+accuracy: 0.549259
+ -- 030 / 075 --
+mean loss: 5.610661
+accuracy: 0.506368
+ -- 040 / 075 --
+mean loss: 5.686860
+accuracy: 0.521871
+ -- 050 / 075 --
+mean loss: 6.153525
+accuracy: 0.517684
+ -- 060 / 075 --
+mean loss: 6.111039
+accuracy: 0.491573
+ -- 070 / 075 --
+mean loss: 5.640874
+accuracy: 0.544019
+**** EPOCH 010 ****
+2019-07-10 18:16:41.677235
+ -- 010 / 075 --
+mean loss: 6.236303
+accuracy: 0.499728
+ -- 020 / 075 --
+mean loss: 5.408403
+accuracy: 0.507394
+ -- 030 / 075 --
+mean loss: 5.315300
+accuracy: 0.515321
+ -- 040 / 075 --
+mean loss: 5.550926
+accuracy: 0.499194
+ -- 050 / 075 --
+mean loss: 5.309803
+accuracy: 0.515141
+ -- 060 / 075 --
+mean loss: 5.381727
+accuracy: 0.512615
+ -- 070 / 075 --
+mean loss: 4.881282
+accuracy: 0.536108
+2019-07-10 18:17:34.977239
+---- EPOCH 004 EVALUATION ----
+eval mean loss: 1.153309
+eval point accuracy vox: 0.718452
+eval point avg class acc vox: 0.274166
+eval point accuracy: 0.721042
+eval point avg class acc: 0.273581
+eval point calibrated average acc: 0.776091
+vox based --------class 1 weight: 0.428528, acc: 0.902703; class 2 weight: 0.235645, acc: 0.956242; class 3 weight: 0.055243, acc: 0.740156; class 4 weight: 0.025348, acc: 0.321904; class 5 weight: 0.015345, acc: 0.002144; class 6 weight: 0.023032, acc: 0.414537; class 7 weight: 0.041770, acc: 0.108100; class 8 weight: 0.024194, acc: 0.771176; class 9 weight: 0.005441, acc: 0.000000; class 10 weight: 0.006990, acc: 0.015136; class 11 weight: 0.006849, acc: 0.000000; class 12 weight: 0.012719, acc: 0.713565; class 13 weight: 0.007615, acc: 0.182935; class 14 weight: 0.023359, acc: 0.000000; class 15 weight: 0.007255, acc: 0.000000; class 16 weight: 0.001127, acc: 0.000000; class 17 weight: 0.002548, acc: 0.000000; class 18 weight: 0.003221, acc: 0.000000; class 19 weight: 0.035726, acc: 0.341885; class 20 weight: 0.038044, acc: 0.001128; 
+2019-07-10 18:17:47.604566
+---- EPOCH 005 EVALUATION WHOLE SCENE----
+eval whole scene mean loss: 1.017229
+eval whole scene point accuracy vox: 0.738193
+eval whole scene point avg class acc vox: 0.255422
+eval whole scene point accuracy: 0.743180
+eval whole scene point avg class acc: 0.252685
+eval whole scene point calibrated average acc vox: 0.763338
+vox based --------class 1 weight: 0.393100, acc: 0.899139; class 2 weight: 0.306512, acc: 0.945065; class 3 weight: 0.057646, acc: 0.689930; class 4 weight: 0.035761, acc: 0.346011; class 5 weight: 0.017056, acc: 0.006626; class 6 weight: 0.022504, acc: 0.398195; class 7 weight: 0.018365, acc: 0.066741; class 8 weight: 0.028988, acc: 0.614614; class 9 weight: 0.003301, acc: 0.002034; class 10 weight: 0.002153, acc: 0.030501; class 11 weight: 0.002489, acc: 0.000000; class 12 weight: 0.008289, acc: 0.634052; class 13 weight: 0.007107, acc: 0.164978; class 14 weight: 0.022422, acc: 0.000079; class 15 weight: 0.005545, acc: 0.000000; class 16 weight: 0.000878, acc: 0.000000; class 17 weight: 0.003698, acc: 0.000000; class 18 weight: 0.001761, acc: 0.000000; class 19 weight: 0.026705, acc: 0.309133; class 20 weight: 0.035722, acc: 0.001346; 
+Model saved in file: log/best_model_epoch_010.ckpt
+Model saved in file: log/model.ckpt
+**** EPOCH 011 ****
+2019-07-10 18:22:22.643800
+ -- 010 / 075 --
+mean loss: 5.395927
+accuracy: 0.545185
+ -- 020 / 075 --
+mean loss: 5.229289
+accuracy: 0.527659
+ -- 030 / 075 --
+mean loss: 6.095156
+accuracy: 0.511310
+ -- 040 / 075 --
+mean loss: 5.788474
+accuracy: 0.525435
+ -- 050 / 075 --
+mean loss: 5.916309
+accuracy: 0.544217
+ -- 060 / 075 --
+mean loss: 5.294449
+accuracy: 0.550268
+ -- 070 / 075 --
+mean loss: 5.585542
+accuracy: 0.519961
+**** EPOCH 012 ****
+2019-07-10 18:23:15.579262
+ -- 010 / 075 --
+mean loss: 5.614012
+accuracy: 0.532382
+ -- 020 / 075 --
+mean loss: 5.495607
+accuracy: 0.532135
+ -- 030 / 075 --
+mean loss: 5.380087
+accuracy: 0.555044
+ -- 040 / 075 --
+mean loss: 5.691624
+accuracy: 0.518529
+ -- 050 / 075 --
+mean loss: 5.459600
+accuracy: 0.517783
+ -- 060 / 075 --
+mean loss: 5.039730
+accuracy: 0.586681
+ -- 070 / 075 --
+mean loss: 5.112765
+accuracy: 0.544299
+**** EPOCH 013 ****
+2019-07-10 18:24:07.980605
+ -- 010 / 075 --
+mean loss: 5.516075
+accuracy: 0.526223
+ -- 020 / 075 --
+mean loss: 5.395861
+accuracy: 0.544754
+ -- 030 / 075 --
+mean loss: 4.911153
+accuracy: 0.544756
+ -- 040 / 075 --
+mean loss: 5.451688
+accuracy: 0.536030
+ -- 050 / 075 --
+mean loss: 5.776450
+accuracy: 0.534510
+ -- 060 / 075 --
+mean loss: 5.113741
+accuracy: 0.582136
+ -- 070 / 075 --
+mean loss: 5.305237
+accuracy: 0.567225
+**** EPOCH 014 ****
+2019-07-10 18:25:00.606075
+ -- 010 / 075 --
+mean loss: 4.987849
+accuracy: 0.545759
+ -- 020 / 075 --
+mean loss: 5.215097
+accuracy: 0.504921
+ -- 030 / 075 --
+mean loss: 5.114179
+accuracy: 0.556693
+ -- 040 / 075 --
+mean loss: 5.269101
+accuracy: 0.534744
+ -- 050 / 075 --
+mean loss: 4.822781
+accuracy: 0.553881
+ -- 060 / 075 --
+mean loss: 4.890456
+accuracy: 0.556133
+ -- 070 / 075 --
+mean loss: 5.671002
+accuracy: 0.511049
+**** EPOCH 015 ****
+2019-07-10 18:25:53.622058
+ -- 010 / 075 --
+mean loss: 4.860767
+accuracy: 0.559840
+ -- 020 / 075 --
+mean loss: 4.425601
+accuracy: 0.567439
+ -- 030 / 075 --
+mean loss: 4.942214
+accuracy: 0.526096
+ -- 040 / 075 --
+mean loss: 5.667800
+accuracy: 0.550970
+ -- 050 / 075 --
+mean loss: 5.183642
+accuracy: 0.542403
+ -- 060 / 075 --
+mean loss: 5.398411
+accuracy: 0.519343
+ -- 070 / 075 --
+mean loss: 5.505080
+accuracy: 0.511309
+2019-07-10 18:26:46.719699
+---- EPOCH 006 EVALUATION ----
+eval mean loss: 1.225793
+eval point accuracy vox: 0.681350
+eval point avg class acc vox: 0.296179
+eval point accuracy: 0.685000
+eval point avg class acc: 0.298924
+eval point calibrated average acc: 0.754958
+vox based --------class 1 weight: 0.416832, acc: 0.836292; class 2 weight: 0.231215, acc: 0.954077; class 3 weight: 0.054379, acc: 0.737811; class 4 weight: 0.023404, acc: 0.643989; class 5 weight: 0.020148, acc: 0.076261; class 6 weight: 0.021571, acc: 0.375593; class 7 weight: 0.021848, acc: 0.000000; class 8 weight: 0.033649, acc: 0.530658; class 9 weight: 0.005091, acc: 0.008921; class 10 weight: 0.003886, acc: 0.441191; class 11 weight: 0.005761, acc: 0.090993; class 12 weight: 0.017133, acc: 0.588591; class 13 weight: 0.010447, acc: 0.308818; class 14 weight: 0.032960, acc: 0.000000; class 15 weight: 0.012190, acc: 0.000000; class 16 weight: 0.001730, acc: 0.000000; class 17 weight: 0.009743, acc: 0.000000; class 18 weight: 0.002072, acc: 0.000000; class 19 weight: 0.039093, acc: 0.336818; class 20 weight: 0.036849, acc: 0.048477; 
+2019-07-10 18:26:59.425930
+---- EPOCH 007 EVALUATION WHOLE SCENE----
+eval whole scene mean loss: 1.021991
+eval whole scene point accuracy vox: 0.724354
+eval whole scene point avg class acc vox: 0.308835
+eval whole scene point accuracy: 0.726040
+eval whole scene point avg class acc: 0.303312
+eval whole scene point calibrated average acc vox: 0.748416
+vox based --------class 1 weight: 0.393363, acc: 0.831292; class 2 weight: 0.306368, acc: 0.936779; class 3 weight: 0.057640, acc: 0.669687; class 4 weight: 0.035871, acc: 0.681526; class 5 weight: 0.017047, acc: 0.117169; class 6 weight: 0.022476, acc: 0.450294; class 7 weight: 0.018400, acc: 0.000211; class 8 weight: 0.028933, acc: 0.617700; class 9 weight: 0.003300, acc: 0.000321; class 10 weight: 0.002146, acc: 0.541255; class 11 weight: 0.002472, acc: 0.045167; class 12 weight: 0.008281, acc: 0.628560; class 13 weight: 0.007146, acc: 0.350890; class 14 weight: 0.022415, acc: 0.000000; class 15 weight: 0.005506, acc: 0.000000; class 16 weight: 0.000874, acc: 0.000000; class 17 weight: 0.003721, acc: 0.000000; class 18 weight: 0.001767, acc: 0.000000; class 19 weight: 0.026656, acc: 0.286230; class 20 weight: 0.035618, acc: 0.019611; 
+**** EPOCH 016 ****
+2019-07-10 18:31:33.688001
+ -- 010 / 075 --
+mean loss: 5.064096
+accuracy: 0.542809
+ -- 020 / 075 --
+mean loss: 4.893791
+accuracy: 0.544341
+ -- 030 / 075 --
+mean loss: 4.655038
+accuracy: 0.579569
+ -- 040 / 075 --
+mean loss: 4.949218
+accuracy: 0.563647
+ -- 050 / 075 --
+mean loss: 5.011705
+accuracy: 0.540096
+ -- 060 / 075 --
+mean loss: 5.515460
+accuracy: 0.556900
+ -- 070 / 075 --
+mean loss: 5.195621
+accuracy: 0.547647
+**** EPOCH 017 ****
+2019-07-10 18:32:26.731227
+ -- 010 / 075 --
+mean loss: 4.982940
+accuracy: 0.563741
+ -- 020 / 075 --
+mean loss: 4.673406
+accuracy: 0.572616
+ -- 030 / 075 --
+mean loss: 4.835234
+accuracy: 0.552418
+ -- 040 / 075 --
+mean loss: 5.123254
+accuracy: 0.534795
+ -- 050 / 075 --
+mean loss: 4.940178
+accuracy: 0.553407
+ -- 060 / 075 --
+mean loss: 4.823895
+accuracy: 0.562316
+ -- 070 / 075 --
+mean loss: 5.065076
+accuracy: 0.522369
+**** EPOCH 018 ****
+2019-07-10 18:33:19.811349
+ -- 010 / 075 --
+mean loss: 4.800919
+accuracy: 0.489799
+ -- 020 / 075 --
+mean loss: 4.442201
+accuracy: 0.559210
+ -- 030 / 075 --
+mean loss: 4.863977
+accuracy: 0.546479
+ -- 040 / 075 --
+mean loss: 5.265024
+accuracy: 0.544747
+ -- 050 / 075 --
+mean loss: 4.745671
+accuracy: 0.593147
+ -- 060 / 075 --
+mean loss: 4.599130
+accuracy: 0.548190
+ -- 070 / 075 --
+mean loss: 5.302923
+accuracy: 0.554700
+**** EPOCH 019 ****
+2019-07-10 18:34:12.971268
+ -- 010 / 075 --
+mean loss: 4.616063
+accuracy: 0.547345
+ -- 020 / 075 --
+mean loss: 4.279883
+accuracy: 0.564686
+ -- 030 / 075 --
+mean loss: 4.844664
+accuracy: 0.578004
+ -- 040 / 075 --
+mean loss: 4.475734
+accuracy: 0.579372
+ -- 050 / 075 --
+mean loss: 4.736748
+accuracy: 0.622810
+ -- 060 / 075 --
+mean loss: 4.648400
+accuracy: 0.616032
+ -- 070 / 075 --
+mean loss: 4.858840
+accuracy: 0.526519
+**** EPOCH 020 ****
+2019-07-10 18:35:05.721299
+ -- 010 / 075 --
+mean loss: 4.857540
+accuracy: 0.559114
+ -- 020 / 075 --
+mean loss: 4.340494
+accuracy: 0.624168
+ -- 030 / 075 --
+mean loss: 4.597029
+accuracy: 0.584319
+ -- 040 / 075 --
+mean loss: 4.977907
+accuracy: 0.568820
+ -- 050 / 075 --
+mean loss: 5.174634
+accuracy: 0.559554
+ -- 060 / 075 --
+mean loss: 4.409939
+accuracy: 0.568114
+ -- 070 / 075 --
+mean loss: 4.315308
+accuracy: 0.580877
+2019-07-10 18:35:58.306798
+---- EPOCH 008 EVALUATION ----
+eval mean loss: 1.023917
+eval point accuracy vox: 0.759568
+eval point avg class acc vox: 0.352446
+eval point accuracy: 0.759983
+eval point avg class acc: 0.352628
+eval point calibrated average acc: 0.799211
+vox based --------class 1 weight: 0.415278, acc: 0.913109; class 2 weight: 0.245534, acc: 0.966333; class 3 weight: 0.067946, acc: 0.807435; class 4 weight: 0.032337, acc: 0.555338; class 5 weight: 0.022549, acc: 0.322469; class 6 weight: 0.018593, acc: 0.424472; class 7 weight: 0.024548, acc: 0.421036; class 8 weight: 0.031221, acc: 0.461998; class 9 weight: 0.005027, acc: 0.000000; class 10 weight: 0.005372, acc: 0.590494; class 11 weight: 0.006571, acc: 0.396209; class 12 weight: 0.018815, acc: 0.515335; class 13 weight: 0.011805, acc: 0.291439; class 14 weight: 0.014500, acc: 0.000000; class 15 weight: 0.009551, acc: 0.000000; class 16 weight: 0.004769, acc: 0.005936; class 17 weight: 0.006264, acc: 0.000000; class 18 weight: 0.002310, acc: 0.000000; class 19 weight: 0.028522, acc: 0.356017; class 20 weight: 0.028487, acc: 0.024936; 
+2019-07-10 18:36:10.592792
+---- EPOCH 009 EVALUATION WHOLE SCENE----
+eval whole scene mean loss: 0.881030
+eval whole scene point accuracy vox: 0.774164
+eval whole scene point avg class acc vox: 0.332443
+eval whole scene point accuracy: 0.779393
+eval whole scene point avg class acc: 0.327877
+eval whole scene point calibrated average acc vox: 0.797745
+vox based --------class 1 weight: 0.393074, acc: 0.907019; class 2 weight: 0.306399, acc: 0.974385; class 3 weight: 0.057728, acc: 0.785992; class 4 weight: 0.035863, acc: 0.583356; class 5 weight: 0.017086, acc: 0.301364; class 6 weight: 0.022537, acc: 0.437983; class 7 weight: 0.018400, acc: 0.399693; class 8 weight: 0.028914, acc: 0.473754; class 9 weight: 0.003286, acc: 0.000780; class 10 weight: 0.002141, acc: 0.456598; class 11 weight: 0.002475, acc: 0.196044; class 12 weight: 0.008296, acc: 0.548145; class 13 weight: 0.007133, acc: 0.186545; class 14 weight: 0.022400, acc: 0.000004; class 15 weight: 0.005511, acc: 0.000000; class 16 weight: 0.000878, acc: 0.049889; class 17 weight: 0.003714, acc: 0.000000; class 18 weight: 0.001766, acc: 0.000000; class 19 weight: 0.026701, acc: 0.340567; class 20 weight: 0.035700, acc: 0.006734; 
+Model saved in file: log/best_model_epoch_020.ckpt
+Model saved in file: log/model.ckpt
+**** EPOCH 021 ****
+2019-07-10 18:40:43.241425
+ -- 010 / 075 --
+mean loss: 4.852613
+accuracy: 0.561916
+ -- 020 / 075 --
+mean loss: 4.549589
+accuracy: 0.616385
+ -- 030 / 075 --
+mean loss: 4.963461
+accuracy: 0.580563
+ -- 040 / 075 --
+mean loss: 5.215954
+accuracy: 0.527622
+ -- 050 / 075 --
+mean loss: 4.924092
+accuracy: 0.580421
+ -- 060 / 075 --
+mean loss: 4.858846
+accuracy: 0.572827
+ -- 070 / 075 --
+mean loss: 5.033724
+accuracy: 0.534570
+**** EPOCH 022 ****
+2019-07-10 18:41:35.750808
+ -- 010 / 075 --
+mean loss: 4.899497
+accuracy: 0.550545
+ -- 020 / 075 --
+mean loss: 4.516406
+accuracy: 0.542010
+ -- 030 / 075 --
+mean loss: 4.566427
+accuracy: 0.628909
+ -- 040 / 075 --
+mean loss: 4.781397
+accuracy: 0.585371
+ -- 050 / 075 --
+mean loss: 4.758441
+accuracy: 0.540481
+ -- 060 / 075 --
+mean loss: 4.474986
+accuracy: 0.596965
+ -- 070 / 075 --
+mean loss: 4.582180
+accuracy: 0.576325
+**** EPOCH 023 ****
+2019-07-10 18:42:28.224670
+ -- 010 / 075 --
+mean loss: 4.440715
+accuracy: 0.599182
+ -- 020 / 075 --
+mean loss: 4.659769
+accuracy: 0.602855
+ -- 030 / 075 --
+mean loss: 4.687086
+accuracy: 0.605341
+ -- 040 / 075 --
+mean loss: 4.917171
+accuracy: 0.586530
+ -- 050 / 075 --
+mean loss: 4.995168
+accuracy: 0.604189
+ -- 060 / 075 --
+mean loss: 4.648685
+accuracy: 0.597878
+ -- 070 / 075 --
+mean loss: 4.607821
+accuracy: 0.583672
+**** EPOCH 024 ****
+2019-07-10 18:43:20.886488
+ -- 010 / 075 --
+mean loss: 4.746147
+accuracy: 0.587650
+ -- 020 / 075 --
+mean loss: 5.417767
+accuracy: 0.547189
+ -- 030 / 075 --
+mean loss: 4.931520
+accuracy: 0.570160
+ -- 040 / 075 --
+mean loss: 4.927616
+accuracy: 0.560381
+ -- 050 / 075 --
+mean loss: 4.500146
+accuracy: 0.599100
+ -- 060 / 075 --
+mean loss: 4.517177
+accuracy: 0.581423
+ -- 070 / 075 --
+mean loss: 4.432146
+accuracy: 0.585686
+**** EPOCH 025 ****
+2019-07-10 18:44:13.790010
+ -- 010 / 075 --
+mean loss: 4.664348
+accuracy: 0.578221
+ -- 020 / 075 --
+mean loss: 4.227111
+accuracy: 0.604237
+ -- 030 / 075 --
+mean loss: 4.172545
+accuracy: 0.599356
+ -- 040 / 075 --
+mean loss: 4.657304
+accuracy: 0.614626
+ -- 050 / 075 --
+mean loss: 4.906572
+accuracy: 0.590396
+ -- 060 / 075 --
+mean loss: 4.821028
+accuracy: 0.580517
+ -- 070 / 075 --
+mean loss: 4.707998
+accuracy: 0.581747
+2019-07-10 18:45:06.652142
+---- EPOCH 010 EVALUATION ----
+eval mean loss: 0.995989
+eval point accuracy vox: 0.756093
+eval point avg class acc vox: 0.410266
+eval point accuracy: 0.756654
+eval point avg class acc: 0.412034
+eval point calibrated average acc: 0.803468
+vox based --------class 1 weight: 0.400141, acc: 0.895325; class 2 weight: 0.262801, acc: 0.968234; class 3 weight: 0.065396, acc: 0.666452; class 4 weight: 0.032173, acc: 0.507397; class 5 weight: 0.016361, acc: 0.225989; class 6 weight: 0.021999, acc: 0.622044; class 7 weight: 0.008464, acc: 0.813853; class 8 weight: 0.032123, acc: 0.779196; class 9 weight: 0.003389, acc: 0.043455; class 10 weight: 0.005010, acc: 0.763585; class 11 weight: 0.007119, acc: 0.531791; class 12 weight: 0.015564, acc: 0.602563; class 13 weight: 0.009889, acc: 0.304736; class 14 weight: 0.028399, acc: 0.000000; class 15 weight: 0.011315, acc: 0.000000; class 16 weight: 0.003379, acc: 0.161755; class 17 weight: 0.006419, acc: 0.000000; class 18 weight: 0.001238, acc: 0.000000; class 19 weight: 0.038427, acc: 0.316906; class 20 weight: 0.030396, acc: 0.037403; 
+2019-07-10 18:45:19.061563
+---- EPOCH 011 EVALUATION WHOLE SCENE----
+eval whole scene mean loss: 0.882535
+eval whole scene point accuracy vox: 0.784160
+eval whole scene point avg class acc vox: 0.383012
+eval whole scene point accuracy: 0.787124
+eval whole scene point avg class acc: 0.375905
+eval whole scene point calibrated average acc vox: 0.807867
+vox based --------class 1 weight: 0.393205, acc: 0.904650; class 2 weight: 0.306454, acc: 0.983542; class 3 weight: 0.057737, acc: 0.700362; class 4 weight: 0.035791, acc: 0.570022; class 5 weight: 0.017075, acc: 0.232900; class 6 weight: 0.022547, acc: 0.576913; class 7 weight: 0.018232, acc: 0.672959; class 8 weight: 0.028917, acc: 0.732821; class 9 weight: 0.003288, acc: 0.073150; class 10 weight: 0.002150, acc: 0.781669; class 11 weight: 0.002458, acc: 0.361558; class 12 weight: 0.008322, acc: 0.378910; class 13 weight: 0.007132, acc: 0.329691; class 14 weight: 0.022407, acc: 0.000564; class 15 weight: 0.005517, acc: 0.000000; class 16 weight: 0.000882, acc: 0.094623; class 17 weight: 0.003676, acc: 0.000000; class 18 weight: 0.001763, acc: 0.000000; class 19 weight: 0.026719, acc: 0.239396; class 20 weight: 0.035727, acc: 0.026513; 
+Model saved in file: log/best_model_epoch_025.ckpt
+**** EPOCH 026 ****
+2019-07-10 18:49:52.077008
+ -- 010 / 075 --
+mean loss: 4.977650
+accuracy: 0.558195
+ -- 020 / 075 --
+mean loss: 4.717570
+accuracy: 0.563290
+ -- 030 / 075 --
+mean loss: 4.291689
+accuracy: 0.571936
+ -- 040 / 075 --
+mean loss: 4.271951
+accuracy: 0.589017
+ -- 050 / 075 --
+mean loss: 4.639799
+accuracy: 0.580086
+ -- 060 / 075 --
+mean loss: 4.617449
+accuracy: 0.589953
+ -- 070 / 075 --
+mean loss: 4.551906
+accuracy: 0.578596
+**** EPOCH 027 ****
+2019-07-10 18:50:44.337077
+ -- 010 / 075 --
+mean loss: 4.788767
+accuracy: 0.569971
+ -- 020 / 075 --
+mean loss: 4.276188
+accuracy: 0.590840
+ -- 030 / 075 --
+mean loss: 4.193054
+accuracy: 0.590903
+ -- 040 / 075 --
+mean loss: 4.296448
+accuracy: 0.595347
+ -- 050 / 075 --
+mean loss: 4.393489
+accuracy: 0.599068
+ -- 060 / 075 --
+mean loss: 4.412486
+accuracy: 0.612884
+ -- 070 / 075 --
+mean loss: 4.244677
+accuracy: 0.627541
+**** EPOCH 028 ****
+2019-07-10 18:51:37.230854
+ -- 010 / 075 --
+mean loss: 4.722280
+accuracy: 0.589542
+ -- 020 / 075 --
+mean loss: 5.139042
+accuracy: 0.583664
+ -- 030 / 075 --
+mean loss: 4.656120
+accuracy: 0.586032
+ -- 040 / 075 --
+mean loss: 5.164457
+accuracy: 0.572105
+ -- 050 / 075 --
+mean loss: 4.540897
+accuracy: 0.587030
+ -- 060 / 075 --
+mean loss: 4.285423
+accuracy: 0.575743
+ -- 070 / 075 --
+mean loss: 4.521318
+accuracy: 0.601413
+**** EPOCH 029 ****
+2019-07-10 18:52:30.366551
+ -- 010 / 075 --
+mean loss: 4.447974
+accuracy: 0.589088
+ -- 020 / 075 --
+mean loss: 4.860467
+accuracy: 0.586414
+ -- 030 / 075 --
+mean loss: 4.503408
+accuracy: 0.624924
+ -- 040 / 075 --
+mean loss: 4.981340
+accuracy: 0.569036
+ -- 050 / 075 --
+mean loss: 4.968226
+accuracy: 0.592271
+ -- 060 / 075 --
+mean loss: 4.534934
+accuracy: 0.578242
+ -- 070 / 075 --
+mean loss: 4.484681
+accuracy: 0.593375
+**** EPOCH 030 ****
+2019-07-10 18:53:23.354432
+ -- 010 / 075 --
+mean loss: 4.084727
+accuracy: 0.624309
+ -- 020 / 075 --
+mean loss: 4.218211
+accuracy: 0.584862
+ -- 030 / 075 --
+mean loss: 5.060335
+accuracy: 0.603414
+ -- 040 / 075 --
+mean loss: 4.769719
+accuracy: 0.570674
+ -- 050 / 075 --
+mean loss: 4.362742
+accuracy: 0.612661
+ -- 060 / 075 --
+mean loss: 4.510361
+accuracy: 0.587565
+ -- 070 / 075 --
+mean loss: 4.499152
+accuracy: 0.588750
+2019-07-10 18:54:16.210776
+---- EPOCH 012 EVALUATION ----
+eval mean loss: 0.998943
+eval point accuracy vox: 0.749822
+eval point avg class acc vox: 0.459109
+eval point accuracy: 0.752578
+eval point avg class acc: 0.457150
+eval point calibrated average acc: 0.802167
+vox based --------class 1 weight: 0.395143, acc: 0.883023; class 2 weight: 0.260653, acc: 0.961084; class 3 weight: 0.060513, acc: 0.677075; class 4 weight: 0.040104, acc: 0.531254; class 5 weight: 0.013853, acc: 0.334239; class 6 weight: 0.028806, acc: 0.684413; class 7 weight: 0.015746, acc: 0.540011; class 8 weight: 0.019685, acc: 0.848851; class 9 weight: 0.004719, acc: 0.020158; class 10 weight: 0.005908, acc: 0.873151; class 11 weight: 0.010597, acc: 0.588341; class 12 weight: 0.012407, acc: 0.642093; class 13 weight: 0.006049, acc: 0.518589; class 14 weight: 0.033879, acc: 0.056308; class 15 weight: 0.009827, acc: 0.000000; class 16 weight: 0.002930, acc: 0.578419; class 17 weight: 0.003766, acc: 0.000000; class 18 weight: 0.002384, acc: 0.000000; class 19 weight: 0.030279, acc: 0.388720; class 20 weight: 0.042751, acc: 0.017270; 
+2019-07-10 18:54:28.647129
+---- EPOCH 013 EVALUATION WHOLE SCENE----
+eval whole scene mean loss: 0.870380
+eval whole scene point accuracy vox: 0.780979
+eval whole scene point avg class acc vox: 0.420917
+eval whole scene point accuracy: 0.781760
+eval whole scene point avg class acc: 0.412331
+eval whole scene point calibrated average acc vox: 0.802458
+vox based --------class 1 weight: 0.393181, acc: 0.877277; class 2 weight: 0.306456, acc: 0.966566; class 3 weight: 0.057762, acc: 0.706523; class 4 weight: 0.035810, acc: 0.563360; class 5 weight: 0.017064, acc: 0.366246; class 6 weight: 0.022487, acc: 0.534631; class 7 weight: 0.018403, acc: 0.735201; class 8 weight: 0.028892, acc: 0.890791; class 9 weight: 0.003309, acc: 0.101442; class 10 weight: 0.002154, acc: 0.495302; class 11 weight: 0.002473, acc: 0.554897; class 12 weight: 0.008283, acc: 0.670486; class 13 weight: 0.007134, acc: 0.427681; class 14 weight: 0.022410, acc: 0.078267; class 15 weight: 0.005525, acc: 0.000000; class 16 weight: 0.000889, acc: 0.153823; class 17 weight: 0.003678, acc: 0.000000; class 18 weight: 0.001757, acc: 0.000000; class 19 weight: 0.026679, acc: 0.278532; class 20 weight: 0.035655, acc: 0.017312; 
+Model saved in file: log/model.ckpt
+**** EPOCH 031 ****
+2019-07-10 18:59:03.551814
+ -- 010 / 075 --
+mean loss: 4.093705
+accuracy: 0.599738
+ -- 020 / 075 --
+mean loss: 4.081173
+accuracy: 0.605540
+ -- 030 / 075 --
+mean loss: 4.219857
+accuracy: 0.635493
+ -- 040 / 075 --
+mean loss: 4.536855
+accuracy: 0.592693
+ -- 050 / 075 --
+mean loss: 4.302249
+accuracy: 0.618874
+ -- 060 / 075 --
+mean loss: 4.621176
+accuracy: 0.591470
+ -- 070 / 075 --
+mean loss: 4.336440
+accuracy: 0.628822
+**** EPOCH 032 ****
+2019-07-10 18:59:56.246903
+ -- 010 / 075 --
+mean loss: 4.727199
+accuracy: 0.636086
+ -- 020 / 075 --
+mean loss: 3.826737
+accuracy: 0.633871
+ -- 030 / 075 --
+mean loss: 4.253194
+accuracy: 0.642765
+ -- 040 / 075 --
+mean loss: 4.240536
+accuracy: 0.619231
+ -- 050 / 075 --
+mean loss: 3.915017
+accuracy: 0.630856
+ -- 060 / 075 --
+mean loss: 4.897356
+accuracy: 0.596169
+ -- 070 / 075 --
+mean loss: 5.091405
+accuracy: 0.551970
+**** EPOCH 033 ****
+2019-07-10 19:00:48.880721
+ -- 010 / 075 --
+mean loss: 4.165799
+accuracy: 0.616345
+ -- 020 / 075 --
+mean loss: 4.471960
+accuracy: 0.591814
+ -- 030 / 075 --
+mean loss: 4.604921
+accuracy: 0.614194
+ -- 040 / 075 --
+mean loss: 4.345968
+accuracy: 0.615965
+ -- 050 / 075 --
+mean loss: 4.442866
+accuracy: 0.599479
+ -- 060 / 075 --
+mean loss: 4.685312
+accuracy: 0.612840
+ -- 070 / 075 --
+mean loss: 4.569629
+accuracy: 0.601053
+**** EPOCH 034 ****
+2019-07-10 19:01:41.191362
+ -- 010 / 075 --
+mean loss: 4.558182
+accuracy: 0.588914
+ -- 020 / 075 --
+mean loss: 4.377838
+accuracy: 0.591371
+ -- 030 / 075 --
+mean loss: 4.484720
+accuracy: 0.586727
+ -- 040 / 075 --
+mean loss: 3.978474
+accuracy: 0.621738
+ -- 050 / 075 --
+mean loss: 3.920228
+accuracy: 0.630412
+ -- 060 / 075 --
+mean loss: 4.334455
+accuracy: 0.586409
+ -- 070 / 075 --
+mean loss: 3.974693
+accuracy: 0.586675
+**** EPOCH 035 ****
+2019-07-10 19:02:33.540541
+ -- 010 / 075 --
+mean loss: 4.288383
+accuracy: 0.600647
+ -- 020 / 075 --
+mean loss: 4.024750
+accuracy: 0.611483
+ -- 030 / 075 --
+mean loss: 4.183425
+accuracy: 0.575352
+ -- 040 / 075 --
+mean loss: 4.100007
+accuracy: 0.578503
+ -- 050 / 075 --
+mean loss: 4.375243
+accuracy: 0.578989
+ -- 060 / 075 --
+mean loss: 4.202775
+accuracy: 0.593314
+ -- 070 / 075 --
+mean loss: 4.310057
+accuracy: 0.610912
+2019-07-10 19:03:25.859912
+---- EPOCH 014 EVALUATION ----
+eval mean loss: 1.066090
+eval point accuracy vox: 0.714728
+eval point avg class acc vox: 0.423408
+eval point accuracy: 0.717933
+eval point avg class acc: 0.425509
+eval point calibrated average acc: 0.776700
+vox based --------class 1 weight: 0.419884, acc: 0.837588; class 2 weight: 0.237450, acc: 0.958880; class 3 weight: 0.054026, acc: 0.755999; class 4 weight: 0.034071, acc: 0.472834; class 5 weight: 0.015215, acc: 0.532901; class 6 weight: 0.015161, acc: 0.586510; class 7 weight: 0.019366, acc: 0.494573; class 8 weight: 0.030024, acc: 0.583670; class 9 weight: 0.005204, acc: 0.389570; class 10 weight: 0.007074, acc: 0.744328; class 11 weight: 0.004436, acc: 0.910931; class 12 weight: 0.016115, acc: 0.406863; class 13 weight: 0.007108, acc: 0.232585; class 14 weight: 0.039723, acc: 0.000188; class 15 weight: 0.010330, acc: 0.000000; class 16 weight: 0.002408, acc: 0.144325; class 17 weight: 0.006839, acc: 0.000000; class 18 weight: 0.002002, acc: 0.000000; class 19 weight: 0.032203, acc: 0.387796; class 20 weight: 0.041358, acc: 0.070630; 
+2019-07-10 19:03:38.323071
+---- EPOCH 015 EVALUATION WHOLE SCENE----
+eval whole scene mean loss: 0.911982
+eval whole scene point accuracy vox: 0.759658
+eval whole scene point avg class acc vox: 0.414984
+eval whole scene point accuracy: 0.764613
+eval whole scene point avg class acc: 0.407768
+eval whole scene point calibrated average acc vox: 0.781934
+vox based --------class 1 weight: 0.393105, acc: 0.841684; class 2 weight: 0.306573, acc: 0.969511; class 3 weight: 0.057645, acc: 0.749301; class 4 weight: 0.035840, acc: 0.568428; class 5 weight: 0.017094, acc: 0.461263; class 6 weight: 0.022508, acc: 0.545525; class 7 weight: 0.018127, acc: 0.431908; class 8 weight: 0.029002, acc: 0.649232; class 9 weight: 0.003290, acc: 0.287234; class 10 weight: 0.002137, acc: 0.767535; class 11 weight: 0.002496, acc: 0.878108; class 12 weight: 0.008333, acc: 0.448252; class 13 weight: 0.007125, acc: 0.268771; class 14 weight: 0.022411, acc: 0.020496; class 15 weight: 0.005550, acc: 0.000000; class 16 weight: 0.000881, acc: 0.046070; class 17 weight: 0.003702, acc: 0.006113; class 18 weight: 0.001767, acc: 0.000000; class 19 weight: 0.026689, acc: 0.292795; class 20 weight: 0.035725, acc: 0.067458; 
+**** EPOCH 036 ****
+2019-07-10 19:08:12.647288
+ -- 010 / 075 --
+mean loss: 4.376392
+accuracy: 0.611638
+ -- 020 / 075 --
+mean loss: 4.715913
+accuracy: 0.582772
+ -- 030 / 075 --
+mean loss: 4.271927
+accuracy: 0.634760
+ -- 040 / 075 --
+mean loss: 4.091122
+accuracy: 0.630639
+ -- 050 / 075 --
+mean loss: 4.304761
+accuracy: 0.604968
+ -- 060 / 075 --
+mean loss: 4.050890
+accuracy: 0.598500
+ -- 070 / 075 --
+mean loss: 4.378392
+accuracy: 0.602190
+**** EPOCH 037 ****
+2019-07-10 19:09:04.992525
+ -- 010 / 075 --
+mean loss: 4.585427
+accuracy: 0.585385
+ -- 020 / 075 --
+mean loss: 4.287643
+accuracy: 0.590493
+ -- 030 / 075 --
+mean loss: 4.091934
+accuracy: 0.624201
+ -- 040 / 075 --
+mean loss: 4.560566
+accuracy: 0.612918
+ -- 050 / 075 --
+mean loss: 4.261410
+accuracy: 0.611462
+ -- 060 / 075 --
+mean loss: 4.655741
+accuracy: 0.583403
+ -- 070 / 075 --
+mean loss: 3.862494
+accuracy: 0.607384
+**** EPOCH 038 ****
+2019-07-10 19:09:57.379215
+ -- 010 / 075 --
+mean loss: 3.850928
+accuracy: 0.587592
+ -- 020 / 075 --
+mean loss: 3.833799
+accuracy: 0.604139
+ -- 030 / 075 --
+mean loss: 4.808886
+accuracy: 0.547856
+ -- 040 / 075 --
+mean loss: 4.293841
+accuracy: 0.582660
+ -- 050 / 075 --
+mean loss: 4.630246
+accuracy: 0.580233
+ -- 060 / 075 --
+mean loss: 4.004283
+accuracy: 0.581232
+ -- 070 / 075 --
+mean loss: 3.835080
+accuracy: 0.615445
+**** EPOCH 039 ****
+2019-07-10 19:10:50.125356
+ -- 010 / 075 --
+mean loss: 4.069316
+accuracy: 0.578479
+ -- 020 / 075 --
+mean loss: 4.499400
+accuracy: 0.581770
+ -- 030 / 075 --
+mean loss: 4.417010
+accuracy: 0.610747
+ -- 040 / 075 --
+mean loss: 4.132611
+accuracy: 0.586571
+ -- 050 / 075 --
+mean loss: 3.916359
+accuracy: 0.596265
+ -- 060 / 075 --
+mean loss: 4.403271
+accuracy: 0.601713
+ -- 070 / 075 --
+mean loss: 3.755145
+accuracy: 0.624761
+**** EPOCH 040 ****
+2019-07-10 19:11:42.235366
+ -- 010 / 075 --
+mean loss: 4.605622
+accuracy: 0.530811
+ -- 020 / 075 --
+mean loss: 4.067451
+accuracy: 0.603987
+ -- 030 / 075 --
+mean loss: 4.076660
+accuracy: 0.601564
+ -- 040 / 075 --
+mean loss: 4.525358
+accuracy: 0.559356
+ -- 050 / 075 --
+mean loss: 4.488875
+accuracy: 0.570607
+ -- 060 / 075 --
+mean loss: 4.342195
+accuracy: 0.578686
+ -- 070 / 075 --
+mean loss: 4.110977
+accuracy: 0.600017
+2019-07-10 19:12:34.538579
+---- EPOCH 016 EVALUATION ----
+eval mean loss: 0.950289
+eval point accuracy vox: 0.762460
+eval point avg class acc vox: 0.450865
+eval point accuracy: 0.763555
+eval point avg class acc: 0.451109
+eval point calibrated average acc: 0.806504
+vox based --------class 1 weight: 0.421734, acc: 0.870831; class 2 weight: 0.247674, acc: 0.981427; class 3 weight: 0.060272, acc: 0.698302; class 4 weight: 0.032247, acc: 0.491836; class 5 weight: 0.022659, acc: 0.421708; class 6 weight: 0.023209, acc: 0.312413; class 7 weight: 0.019308, acc: 0.774971; class 8 weight: 0.020350, acc: 0.939163; class 9 weight: 0.004614, acc: 0.422445; class 10 weight: 0.005064, acc: 0.887546; class 11 weight: 0.007984, acc: 0.446290; class 12 weight: 0.019222, acc: 0.670085; class 13 weight: 0.006168, acc: 0.254502; class 14 weight: 0.031668, acc: 0.054066; class 15 weight: 0.008749, acc: 0.000000; class 16 weight: 0.003924, acc: 0.269579; class 17 weight: 0.003668, acc: 0.000000; class 18 weight: 0.000497, acc: 0.000000; class 19 weight: 0.031951, acc: 0.443515; class 20 weight: 0.029037, acc: 0.083493; 
+2019-07-10 19:12:47.036128
+---- EPOCH 017 EVALUATION WHOLE SCENE----
+eval whole scene mean loss: 0.847030
+eval whole scene point accuracy vox: 0.782806
+eval whole scene point avg class acc vox: 0.430193
+eval whole scene point accuracy: 0.787923
+eval whole scene point avg class acc: 0.420853
+eval whole scene point calibrated average acc vox: 0.805741
+vox based --------class 1 weight: 0.393304, acc: 0.875116; class 2 weight: 0.306385, acc: 0.983891; class 3 weight: 0.057690, acc: 0.666317; class 4 weight: 0.035799, acc: 0.523345; class 5 weight: 0.017112, acc: 0.365096; class 6 weight: 0.022540, acc: 0.399316; class 7 weight: 0.018387, acc: 0.696255; class 8 weight: 0.028919, acc: 0.888138; class 9 weight: 0.003286, acc: 0.435111; class 10 weight: 0.002142, acc: 0.734785; class 11 weight: 0.002477, acc: 0.418227; class 12 weight: 0.008284, acc: 0.584465; class 13 weight: 0.007124, acc: 0.256861; class 14 weight: 0.022361, acc: 0.111600; class 15 weight: 0.005517, acc: 0.000737; class 16 weight: 0.000891, acc: 0.204185; class 17 weight: 0.003713, acc: 0.000000; class 18 weight: 0.001767, acc: 0.000000; class 19 weight: 0.026681, acc: 0.395208; class 20 weight: 0.035621, acc: 0.065211; 
+Model saved in file: log/model.ckpt
+**** EPOCH 041 ****
+2019-07-10 19:17:21.472453
+ -- 010 / 075 --
+mean loss: 4.567655
+accuracy: 0.557855
+ -- 020 / 075 --
+mean loss: 4.219704
+accuracy: 0.594433
+ -- 030 / 075 --
+mean loss: 3.841790
+accuracy: 0.606261
+ -- 040 / 075 --
+mean loss: 4.232171
+accuracy: 0.573789
+ -- 050 / 075 --
+mean loss: 4.215903
+accuracy: 0.595630
+ -- 060 / 075 --
+mean loss: 4.475192
+accuracy: 0.585484
+ -- 070 / 075 --
+mean loss: 3.851081
+accuracy: 0.610942
+**** EPOCH 042 ****
+2019-07-10 19:18:13.398595
+ -- 010 / 075 --
+mean loss: 4.207156
+accuracy: 0.550766
+ -- 020 / 075 --
+mean loss: 4.159630
+accuracy: 0.575182
+ -- 030 / 075 --
+mean loss: 4.542157
+accuracy: 0.566917
+ -- 040 / 075 --
+mean loss: 3.690819
+accuracy: 0.591679
+ -- 050 / 075 --
+mean loss: 4.330630
+accuracy: 0.581256
+ -- 060 / 075 --
+mean loss: 3.981126
+accuracy: 0.602229
+ -- 070 / 075 --
+mean loss: 4.226182
+accuracy: 0.573670
+**** EPOCH 043 ****
+2019-07-10 19:19:05.117858
+ -- 010 / 075 --
+mean loss: 4.124865
+accuracy: 0.597823
+ -- 020 / 075 --
+mean loss: 3.981354
+accuracy: 0.587587
+ -- 030 / 075 --
+mean loss: 4.803033
+accuracy: 0.611462
+ -- 040 / 075 --
+mean loss: 4.208657
+accuracy: 0.600664
+ -- 050 / 075 --
+mean loss: 4.136550
+accuracy: 0.599057
+ -- 060 / 075 --
+mean loss: 3.931238
+accuracy: 0.598097
+ -- 070 / 075 --
+mean loss: 4.427530
+accuracy: 0.559923
+**** EPOCH 044 ****
+2019-07-10 19:19:57.224655
+ -- 010 / 075 --
+mean loss: 4.012100
+accuracy: 0.597940
+ -- 020 / 075 --
+mean loss: 3.975797
+accuracy: 0.574070
+ -- 030 / 075 --
+mean loss: 4.009823
+accuracy: 0.606474
+ -- 040 / 075 --
+mean loss: 3.919695
+accuracy: 0.600518
+ -- 050 / 075 --
+mean loss: 4.283809
+accuracy: 0.573739
+ -- 060 / 075 --
+mean loss: 4.328097
+accuracy: 0.617671
+ -- 070 / 075 --
+mean loss: 3.985196
+accuracy: 0.609602
+**** EPOCH 045 ****
+2019-07-10 19:20:49.319398
+ -- 010 / 075 --
+mean loss: 3.985662
+accuracy: 0.610699
+ -- 020 / 075 --
+mean loss: 4.143814
+accuracy: 0.605720
+ -- 030 / 075 --
+mean loss: 4.064736
+accuracy: 0.600805
+ -- 040 / 075 --
+mean loss: 3.978993
+accuracy: 0.588990
+ -- 050 / 075 --
+mean loss: 4.647312
+accuracy: 0.562497
+ -- 060 / 075 --
+mean loss: 3.944489
+accuracy: 0.600524
+ -- 070 / 075 --
+mean loss: 4.364486
+accuracy: 0.557719
+2019-07-10 19:21:41.385182
+---- EPOCH 018 EVALUATION ----
+eval mean loss: 0.918723
+eval point accuracy vox: 0.761507
+eval point avg class acc vox: 0.473740
+eval point accuracy: 0.764822
+eval point avg class acc: 0.474350
+eval point calibrated average acc: 0.814362
+vox based --------class 1 weight: 0.422164, acc: 0.886873; class 2 weight: 0.223652, acc: 0.982133; class 3 weight: 0.072918, acc: 0.672661; class 4 weight: 0.039608, acc: 0.543371; class 5 weight: 0.012969, acc: 0.500597; class 6 weight: 0.022420, acc: 0.611108; class 7 weight: 0.018050, acc: 0.694340; class 8 weight: 0.027591, acc: 0.693121; class 9 weight: 0.005615, acc: 0.241854; class 10 weight: 0.006263, acc: 0.835417; class 11 weight: 0.006554, acc: 0.799280; class 12 weight: 0.018213, acc: 0.649612; class 13 weight: 0.009291, acc: 0.354608; class 14 weight: 0.022016, acc: 0.100351; class 15 weight: 0.008745, acc: 0.000000; class 16 weight: 0.004293, acc: 0.291422; class 17 weight: 0.004146, acc: 0.161048; class 18 weight: 0.001759, acc: 0.000000; class 19 weight: 0.034466, acc: 0.397613; class 20 weight: 0.039267, acc: 0.071597; 
+2019-07-10 19:21:53.734227
+---- EPOCH 019 EVALUATION WHOLE SCENE----
+eval whole scene mean loss: 0.819214
+eval whole scene point accuracy vox: 0.795317
+eval whole scene point avg class acc vox: 0.467493
+eval whole scene point accuracy: 0.798177
+eval whole scene point avg class acc: 0.457489
+eval whole scene point calibrated average acc vox: 0.817474
+vox based --------class 1 weight: 0.393116, acc: 0.894765; class 2 weight: 0.306440, acc: 0.982511; class 3 weight: 0.057692, acc: 0.698368; class 4 weight: 0.035887, acc: 0.590928; class 5 weight: 0.017059, acc: 0.411342; class 6 weight: 0.022560, acc: 0.640499; class 7 weight: 0.018416, acc: 0.709841; class 8 weight: 0.028925, acc: 0.689570; class 9 weight: 0.003298, acc: 0.361829; class 10 weight: 0.002156, acc: 0.827294; class 11 weight: 0.002467, acc: 0.789755; class 12 weight: 0.008298, acc: 0.588431; class 13 weight: 0.007140, acc: 0.286961; class 14 weight: 0.022420, acc: 0.157330; class 15 weight: 0.005513, acc: 0.000000; class 16 weight: 0.000885, acc: 0.213323; class 17 weight: 0.003688, acc: 0.133742; class 18 weight: 0.001756, acc: 0.000000; class 19 weight: 0.026620, acc: 0.317857; class 20 weight: 0.035663, acc: 0.055523; 
+Model saved in file: log/best_model_epoch_045.ckpt
+**** EPOCH 046 ****
+2019-07-10 19:26:27.965682
+ -- 010 / 075 --
+mean loss: 3.797654
+accuracy: 0.618336
+ -- 020 / 075 --
+mean loss: 4.083260
+accuracy: 0.580421
+ -- 030 / 075 --
+mean loss: 4.310979
+accuracy: 0.550559
+ -- 040 / 075 --
+mean loss: 4.160774
+accuracy: 0.574021
+ -- 050 / 075 --
+mean loss: 4.249019
+accuracy: 0.594585
+ -- 060 / 075 --
+mean loss: 4.151388
+accuracy: 0.590331
+ -- 070 / 075 --
+mean loss: 4.266171
+accuracy: 0.606491
+**** EPOCH 047 ****
+2019-07-10 19:27:20.463179
+ -- 010 / 075 --
+mean loss: 4.165507
+accuracy: 0.605094
+ -- 020 / 075 --
+mean loss: 3.913983
+accuracy: 0.635235
+ -- 030 / 075 --
+mean loss: 4.053870
+accuracy: 0.560754
+ -- 040 / 075 --
+mean loss: 4.053277
+accuracy: 0.582307
+ -- 050 / 075 --
+mean loss: 4.208365
+accuracy: 0.579449
+ -- 060 / 075 --
+mean loss: 4.073995
+accuracy: 0.610742
+ -- 070 / 075 --
+mean loss: 3.531313
+accuracy: 0.607751
+**** EPOCH 048 ****
+2019-07-10 19:28:13.068021
+ -- 010 / 075 --
+mean loss: 4.050306
+accuracy: 0.583972
+ -- 020 / 075 --
+mean loss: 4.079745
+accuracy: 0.611846
+ -- 030 / 075 --
+mean loss: 4.485035
+accuracy: 0.576267
+ -- 040 / 075 --
+mean loss: 3.803341
+accuracy: 0.599622
+ -- 050 / 075 --
+mean loss: 3.739998
+accuracy: 0.625604
+ -- 060 / 075 --
+mean loss: 4.140880
+accuracy: 0.594891
+ -- 070 / 075 --
+mean loss: 4.313953
+accuracy: 0.611834
+**** EPOCH 049 ****
+2019-07-10 19:29:04.814103
+ -- 010 / 075 --
+mean loss: 3.963020
+accuracy: 0.631552
+ -- 020 / 075 --
+mean loss: 3.974240
+accuracy: 0.642645
+ -- 030 / 075 --
+mean loss: 4.417180
+accuracy: 0.615549
+ -- 040 / 075 --
+mean loss: 4.116883
+accuracy: 0.606285
+ -- 050 / 075 --
+mean loss: 3.961872
+accuracy: 0.579545
+ -- 060 / 075 --
+mean loss: 3.370220
+accuracy: 0.597037
+ -- 070 / 075 --
+mean loss: 3.943351
+accuracy: 0.625069
+**** EPOCH 050 ****
+2019-07-10 19:29:57.795906
+ -- 010 / 075 --
+mean loss: 3.704577
+accuracy: 0.622947
+ -- 020 / 075 --
+mean loss: 4.330884
+accuracy: 0.585133
+ -- 030 / 075 --
+mean loss: 4.082457
+accuracy: 0.579272
+ -- 040 / 075 --
+mean loss: 4.114218
+accuracy: 0.633039
+ -- 050 / 075 --
+mean loss: 4.245091
+accuracy: 0.610725
+ -- 060 / 075 --
+mean loss: 4.370647
+accuracy: 0.599191
+ -- 070 / 075 --
+mean loss: 4.257845
+accuracy: 0.589581
+2019-07-10 19:30:50.861693
+---- EPOCH 020 EVALUATION ----
+eval mean loss: 0.950782
+eval point accuracy vox: 0.752053
+eval point avg class acc vox: 0.507321
+eval point accuracy: 0.753886
+eval point avg class acc: 0.505862
+eval point calibrated average acc: 0.793135
+vox based --------class 1 weight: 0.438558, acc: 0.841498; class 2 weight: 0.236537, acc: 0.975338; class 3 weight: 0.049814, acc: 0.666067; class 4 weight: 0.022434, acc: 0.352004; class 5 weight: 0.021604, acc: 0.398743; class 6 weight: 0.020510, acc: 0.604180; class 7 weight: 0.019396, acc: 0.697709; class 8 weight: 0.034265, acc: 0.844668; class 9 weight: 0.007301, acc: 0.594484; class 10 weight: 0.003693, acc: 0.956288; class 11 weight: 0.005886, acc: 0.813971; class 12 weight: 0.017755, acc: 0.391622; class 13 weight: 0.009872, acc: 0.295820; class 14 weight: 0.022812, acc: 0.399014; class 15 weight: 0.008955, acc: 0.000000; class 16 weight: 0.003290, acc: 0.835027; class 17 weight: 0.005108, acc: 0.073657; class 18 weight: 0.000861, acc: 0.000000; class 19 weight: 0.035058, acc: 0.241755; class 20 weight: 0.036293, acc: 0.135388; 
+2019-07-10 19:31:03.436952
+---- EPOCH 021 EVALUATION WHOLE SCENE----
+eval whole scene mean loss: 0.846937
+eval whole scene point accuracy vox: 0.779473
+eval whole scene point avg class acc vox: 0.495938
+eval whole scene point accuracy: 0.782373
+eval whole scene point avg class acc: 0.487762
+eval whole scene point calibrated average acc vox: 0.800646
+vox based --------class 1 weight: 0.393346, acc: 0.838853; class 2 weight: 0.306320, acc: 0.981051; class 3 weight: 0.057653, acc: 0.711488; class 4 weight: 0.035813, acc: 0.507838; class 5 weight: 0.017039, acc: 0.378258; class 6 weight: 0.022551, acc: 0.553542; class 7 weight: 0.018390, acc: 0.877239; class 8 weight: 0.028963, acc: 0.801456; class 9 weight: 0.003286, acc: 0.457337; class 10 weight: 0.002151, acc: 0.855171; class 11 weight: 0.002470, acc: 0.768314; class 12 weight: 0.008266, acc: 0.329913; class 13 weight: 0.007120, acc: 0.302420; class 14 weight: 0.022384, acc: 0.369947; class 15 weight: 0.005537, acc: 0.000000; class 16 weight: 0.000886, acc: 0.756107; class 17 weight: 0.003735, acc: 0.012680; class 18 weight: 0.001764, acc: 0.000000; class 19 weight: 0.026668, acc: 0.275289; class 20 weight: 0.035658, acc: 0.141849; 
+Model saved in file: log/model.ckpt
+**** EPOCH 051 ****
+2019-07-10 19:35:38.746946
+ -- 010 / 075 --
+mean loss: 4.199620
+accuracy: 0.567014
+ -- 020 / 075 --
+mean loss: 3.899642
+accuracy: 0.606907
+ -- 030 / 075 --
+mean loss: 4.327577
+accuracy: 0.590047
+ -- 040 / 075 --
+mean loss: 3.968916
+accuracy: 0.579112
+ -- 050 / 075 --
+mean loss: 3.306603
+accuracy: 0.634238
+ -- 060 / 075 --
+mean loss: 4.180046
+accuracy: 0.590160
+ -- 070 / 075 --
+mean loss: 3.825876
+accuracy: 0.609492
+**** EPOCH 052 ****
+2019-07-10 19:36:30.813054
+ -- 010 / 075 --
+mean loss: 3.724211
+accuracy: 0.597437
+ -- 020 / 075 --
+mean loss: 3.736305
+accuracy: 0.624533
+ -- 030 / 075 --
+mean loss: 4.267218
+accuracy: 0.595083
+ -- 040 / 075 --
+mean loss: 4.108361
+accuracy: 0.599738
+ -- 050 / 075 --
+mean loss: 3.913212
+accuracy: 0.581564
+ -- 060 / 075 --
+mean loss: 4.904186
+accuracy: 0.557824
+ -- 070 / 075 --
+mean loss: 3.992196
+accuracy: 0.583320
+**** EPOCH 053 ****
+2019-07-10 19:37:23.399042
+ -- 010 / 075 --
+mean loss: 3.943623
+accuracy: 0.570555
+ -- 020 / 075 --
+mean loss: 3.743060
+accuracy: 0.580441
+ -- 030 / 075 --
+mean loss: 3.838203
+accuracy: 0.559841
+ -- 040 / 075 --
+mean loss: 4.463562
+accuracy: 0.561181
+ -- 050 / 075 --
+mean loss: 4.038597
+accuracy: 0.573055
+ -- 060 / 075 --
+mean loss: 4.315626
+accuracy: 0.589970
+ -- 070 / 075 --
+mean loss: 3.942012
+accuracy: 0.604469
+**** EPOCH 054 ****
+2019-07-10 19:38:15.946712
+ -- 010 / 075 --
+mean loss: 4.590203
+accuracy: 0.562678
+ -- 020 / 075 --
+mean loss: 4.175766
+accuracy: 0.567355
+ -- 030 / 075 --
+mean loss: 3.992663
+accuracy: 0.575828
+ -- 040 / 075 --
+mean loss: 3.371592
+accuracy: 0.593090
+ -- 050 / 075 --
+mean loss: 4.046814
+accuracy: 0.583858
+ -- 060 / 075 --
+mean loss: 3.678725
+accuracy: 0.582616
+ -- 070 / 075 --
+mean loss: 4.233320
+accuracy: 0.568047
+**** EPOCH 055 ****
+2019-07-10 19:39:08.865234
+ -- 010 / 075 --
+mean loss: 4.325778
+accuracy: 0.567168
+ -- 020 / 075 --
+mean loss: 3.613448
+accuracy: 0.590111
+ -- 030 / 075 --
+mean loss: 3.977469
+accuracy: 0.552277
+ -- 040 / 075 --
+mean loss: 4.201316
+accuracy: 0.577937
+ -- 050 / 075 --
+mean loss: 4.337331
+accuracy: 0.540842
+ -- 060 / 075 --
+mean loss: 3.684497
+accuracy: 0.583643
+ -- 070 / 075 --
+mean loss: 4.287749
+accuracy: 0.600085
+2019-07-10 19:40:01.442009
+---- EPOCH 022 EVALUATION ----
+eval mean loss: 0.950303
+eval point accuracy vox: 0.771664
+eval point avg class acc vox: 0.516141
+eval point accuracy: 0.773417
+eval point avg class acc: 0.514792
+eval point calibrated average acc: 0.805465
+vox based --------class 1 weight: 0.425613, acc: 0.863274; class 2 weight: 0.252135, acc: 0.975188; class 3 weight: 0.059577, acc: 0.677246; class 4 weight: 0.033069, acc: 0.509694; class 5 weight: 0.018804, acc: 0.458504; class 6 weight: 0.017301, acc: 0.469536; class 7 weight: 0.026639, acc: 0.890319; class 8 weight: 0.022466, acc: 0.723589; class 9 weight: 0.006856, acc: 0.606252; class 10 weight: 0.005979, acc: 0.843086; class 11 weight: 0.005523, acc: 0.774544; class 12 weight: 0.009142, acc: 0.411907; class 13 weight: 0.008769, acc: 0.494566; class 14 weight: 0.032292, acc: 0.040862; class 15 weight: 0.007229, acc: 0.000000; class 16 weight: 0.001454, acc: 0.808637; class 17 weight: 0.003542, acc: 0.089238; class 18 weight: 0.001500, acc: 0.000000; class 19 weight: 0.031643, acc: 0.541740; class 20 weight: 0.030466, acc: 0.117666; 
+2019-07-10 19:40:13.816312
+---- EPOCH 023 EVALUATION WHOLE SCENE----
+eval whole scene mean loss: 0.859772
+eval whole scene point accuracy vox: 0.784979
+eval whole scene point avg class acc vox: 0.494839
+eval whole scene point accuracy: 0.788608
+eval whole scene point avg class acc: 0.487268
+eval whole scene point calibrated average acc vox: 0.806298
+vox based --------class 1 weight: 0.393114, acc: 0.867803; class 2 weight: 0.306573, acc: 0.980231; class 3 weight: 0.057688, acc: 0.691194; class 4 weight: 0.035815, acc: 0.551492; class 5 weight: 0.017089, acc: 0.349418; class 6 weight: 0.022537, acc: 0.558320; class 7 weight: 0.018267, acc: 0.884300; class 8 weight: 0.028943, acc: 0.677091; class 9 weight: 0.003308, acc: 0.382282; class 10 weight: 0.002131, acc: 0.698589; class 11 weight: 0.002474, acc: 0.760212; class 12 weight: 0.008297, acc: 0.604182; class 13 weight: 0.007112, acc: 0.492504; class 14 weight: 0.022453, acc: 0.026398; class 15 weight: 0.005542, acc: 0.000000; class 16 weight: 0.000890, acc: 0.753204; class 17 weight: 0.003678, acc: 0.104674; class 18 weight: 0.001777, acc: 0.000000; class 19 weight: 0.026648, acc: 0.418113; class 20 weight: 0.035664, acc: 0.096782; 
+**** EPOCH 056 ****
+2019-07-10 19:44:49.295508
+ -- 010 / 075 --
+mean loss: 4.000346
+accuracy: 0.587708
+ -- 020 / 075 --
+mean loss: 4.093678
+accuracy: 0.593725
+ -- 030 / 075 --
+mean loss: 3.591793
+accuracy: 0.636407
+ -- 040 / 075 --
+mean loss: 4.602459
+accuracy: 0.532521
+ -- 050 / 075 --
+mean loss: 3.882723
+accuracy: 0.547694
+ -- 060 / 075 --
+mean loss: 3.859085
+accuracy: 0.587949
+ -- 070 / 075 --
+mean loss: 3.835978
+accuracy: 0.607428
+**** EPOCH 057 ****
+2019-07-10 19:45:41.817267
+ -- 010 / 075 --
+mean loss: 4.084928
+accuracy: 0.583710
+ -- 020 / 075 --
+mean loss: 3.855069
+accuracy: 0.586725
+ -- 030 / 075 --
+mean loss: 3.768997
+accuracy: 0.583389
+ -- 040 / 075 --
+mean loss: 4.287881
+accuracy: 0.586276
+ -- 050 / 075 --
+mean loss: 3.674014
+accuracy: 0.619785
+ -- 060 / 075 --
+mean loss: 3.947670
+accuracy: 0.576577
+ -- 070 / 075 --
+mean loss: 3.991745
+accuracy: 0.561043
+**** EPOCH 058 ****
+2019-07-10 19:46:34.512302
+ -- 010 / 075 --
+mean loss: 3.773285
+accuracy: 0.574776
+ -- 020 / 075 --
+mean loss: 3.597873
+accuracy: 0.618407
+ -- 030 / 075 --
+mean loss: 4.122750
+accuracy: 0.605883
+ -- 040 / 075 --
+mean loss: 3.997796
+accuracy: 0.609201
+ -- 050 / 075 --
+mean loss: 3.624321
+accuracy: 0.610538
+ -- 060 / 075 --
+mean loss: 4.031070
+accuracy: 0.587620
+ -- 070 / 075 --
+mean loss: 4.184191
+accuracy: 0.566402
+**** EPOCH 059 ****
+2019-07-10 19:47:26.838975
+ -- 010 / 075 --
+mean loss: 3.279273
+accuracy: 0.620606
+ -- 020 / 075 --
+mean loss: 4.159666
+accuracy: 0.604687
+ -- 030 / 075 --
+mean loss: 3.619250
+accuracy: 0.641083
+ -- 040 / 075 --
+mean loss: 3.728769
+accuracy: 0.638915
+ -- 050 / 075 --
+mean loss: 3.543788
+accuracy: 0.631478
+ -- 060 / 075 --
+mean loss: 3.811950
+accuracy: 0.613208
+ -- 070 / 075 --
+mean loss: 4.421563
+accuracy: 0.578389
+**** EPOCH 060 ****
+2019-07-10 19:48:19.679922
+ -- 010 / 075 --
+mean loss: 4.264556
+accuracy: 0.574393
+ -- 020 / 075 --
+mean loss: 4.097664
+accuracy: 0.593597
+ -- 030 / 075 --
+mean loss: 3.719329
+accuracy: 0.613860
+ -- 040 / 075 --
+mean loss: 3.735644
+accuracy: 0.594184
+ -- 050 / 075 --
+mean loss: 3.576006
+accuracy: 0.618545
+ -- 060 / 075 --
+mean loss: 4.308167
+accuracy: 0.590208
+ -- 070 / 075 --
+mean loss: 4.017600
+accuracy: 0.630368
+2019-07-10 19:49:12.464515
+---- EPOCH 024 EVALUATION ----
+eval mean loss: 0.966316
+eval point accuracy vox: 0.758182
+eval point avg class acc vox: 0.522531
+eval point accuracy: 0.757321
+eval point avg class acc: 0.522303
+eval point calibrated average acc: 0.807490
+vox based --------class 1 weight: 0.421043, acc: 0.853663; class 2 weight: 0.233544, acc: 0.976565; class 3 weight: 0.061628, acc: 0.809024; class 4 weight: 0.029553, acc: 0.532692; class 5 weight: 0.015304, acc: 0.199630; class 6 weight: 0.022918, acc: 0.653068; class 7 weight: 0.017432, acc: 0.875792; class 8 weight: 0.026875, acc: 0.661299; class 9 weight: 0.003258, acc: 0.763182; class 10 weight: 0.006230, acc: 0.846321; class 11 weight: 0.004263, acc: 0.869365; class 12 weight: 0.015807, acc: 0.704667; class 13 weight: 0.006568, acc: 0.216447; class 14 weight: 0.037201, acc: 0.094407; class 15 weight: 0.013452, acc: 0.000000; class 16 weight: 0.004147, acc: 0.388003; class 17 weight: 0.005063, acc: 0.402547; class 18 weight: 0.001659, acc: 0.000000; class 19 weight: 0.033298, acc: 0.359447; class 20 weight: 0.040759, acc: 0.239939; 
+2019-07-10 19:49:25.012058
+---- EPOCH 025 EVALUATION WHOLE SCENE----
+eval whole scene mean loss: 0.829027
+eval whole scene point accuracy vox: 0.794347
+eval whole scene point avg class acc vox: 0.473293
+eval whole scene point accuracy: 0.798198
+eval whole scene point avg class acc: 0.459006
+eval whole scene point calibrated average acc vox: 0.812817
+vox based --------class 1 weight: 0.393092, acc: 0.874665; class 2 weight: 0.306621, acc: 0.982293; class 3 weight: 0.057708, acc: 0.852116; class 4 weight: 0.035816, acc: 0.535805; class 5 weight: 0.017095, acc: 0.249220; class 6 weight: 0.022581, acc: 0.657968; class 7 weight: 0.018117, acc: 0.850477; class 8 weight: 0.028960, acc: 0.531099; class 9 weight: 0.003319, acc: 0.452696; class 10 weight: 0.002154, acc: 0.771731; class 11 weight: 0.002487, acc: 0.764566; class 12 weight: 0.008290, acc: 0.455341; class 13 weight: 0.007131, acc: 0.257699; class 14 weight: 0.022420, acc: 0.085063; class 15 weight: 0.005537, acc: 0.003545; class 16 weight: 0.000884, acc: 0.318968; class 17 weight: 0.003699, acc: 0.250627; class 18 weight: 0.001762, acc: 0.000000; class 19 weight: 0.026673, acc: 0.350482; class 20 weight: 0.035653, acc: 0.221506; 
+Model saved in file: log/model.ckpt
+**** EPOCH 061 ****
+2019-07-10 19:53:59.693268
+ -- 010 / 075 --
+mean loss: 3.905725
+accuracy: 0.611042
+ -- 020 / 075 --
+mean loss: 3.808556
+accuracy: 0.599729
+ -- 030 / 075 --
+mean loss: 3.671327
+accuracy: 0.585211
+ -- 040 / 075 --
+mean loss: 3.908983
+accuracy: 0.558851
+ -- 050 / 075 --
+mean loss: 3.762259
+accuracy: 0.557822
+ -- 060 / 075 --
+mean loss: 3.867368
+accuracy: 0.588153
+ -- 070 / 075 --
+mean loss: 3.651381
+accuracy: 0.618651
+**** EPOCH 062 ****
+2019-07-10 19:54:51.771938
+ -- 010 / 075 --
+mean loss: 3.973483
+accuracy: 0.580950
+ -- 020 / 075 --
+mean loss: 3.898429
+accuracy: 0.584110
+ -- 030 / 075 --
+mean loss: 4.398022
+accuracy: 0.563080
+ -- 040 / 075 --
+mean loss: 3.670869
+accuracy: 0.598380
+ -- 050 / 075 --
+mean loss: 3.830201
+accuracy: 0.595546
+ -- 060 / 075 --
+mean loss: 3.724033
+accuracy: 0.596844
+ -- 070 / 075 --
+mean loss: 3.413764
+accuracy: 0.635039
+**** EPOCH 063 ****
+2019-07-10 19:55:43.892036
+ -- 010 / 075 --
+mean loss: 4.234564
+accuracy: 0.597092
+ -- 020 / 075 --
+mean loss: 4.027217
+accuracy: 0.594210
+ -- 030 / 075 --
+mean loss: 3.854218
+accuracy: 0.622237
+ -- 040 / 075 --
+mean loss: 3.629724
+accuracy: 0.622134
+ -- 050 / 075 --
+mean loss: 3.726807
+accuracy: 0.599030
+ -- 060 / 075 --
+mean loss: 3.874036
+accuracy: 0.600449
+ -- 070 / 075 --
+mean loss: 4.044062
+accuracy: 0.567793
+**** EPOCH 064 ****
+2019-07-10 19:56:36.273088
+ -- 010 / 075 --
+mean loss: 3.606585
+accuracy: 0.621018
+ -- 020 / 075 --
+mean loss: 3.536045
+accuracy: 0.610892
+ -- 030 / 075 --
+mean loss: 3.182106
+accuracy: 0.614193
+ -- 040 / 075 --
+mean loss: 3.685185
+accuracy: 0.602176
+ -- 050 / 075 --
+mean loss: 4.436227
+accuracy: 0.579398
+ -- 060 / 075 --
+mean loss: 4.108820
+accuracy: 0.619470
+ -- 070 / 075 --
+mean loss: 3.272881
+accuracy: 0.669633
+**** EPOCH 065 ****
+2019-07-10 19:57:29.140788
+ -- 010 / 075 --
+mean loss: 3.620390
+accuracy: 0.607017
+ -- 020 / 075 --
+mean loss: 3.967045
+accuracy: 0.597372
+ -- 030 / 075 --
+mean loss: 3.965944
+accuracy: 0.616074
+ -- 040 / 075 --
+mean loss: 3.472311
+accuracy: 0.608818
+ -- 050 / 075 --
+mean loss: 4.136060
+accuracy: 0.590829
+ -- 060 / 075 --
+mean loss: 3.219906
+accuracy: 0.648825
+ -- 070 / 075 --
+mean loss: 3.848432
+accuracy: 0.599603
+2019-07-10 19:58:22.157193
+---- EPOCH 026 EVALUATION ----
+eval mean loss: 0.878707
+eval point accuracy vox: 0.784496
+eval point avg class acc vox: 0.516957
+eval point accuracy: 0.786937
+eval point avg class acc: 0.521973
+eval point calibrated average acc: 0.833222
+vox based --------class 1 weight: 0.426192, acc: 0.925735; class 2 weight: 0.230432, acc: 0.974604; class 3 weight: 0.052134, acc: 0.664129; class 4 weight: 0.028568, acc: 0.586546; class 5 weight: 0.014470, acc: 0.448666; class 6 weight: 0.029109, acc: 0.727365; class 7 weight: 0.028211, acc: 0.939130; class 8 weight: 0.026600, acc: 0.744186; class 9 weight: 0.003336, acc: 0.522803; class 10 weight: 0.004560, acc: 0.742594; class 11 weight: 0.005109, acc: 0.592072; class 12 weight: 0.018064, acc: 0.647894; class 13 weight: 0.008004, acc: 0.499423; class 14 weight: 0.037689, acc: 0.054568; class 15 weight: 0.006805, acc: 0.000000; class 16 weight: 0.001420, acc: 0.677987; class 17 weight: 0.004565, acc: 0.285897; class 18 weight: 0.000989, acc: 0.000000; class 19 weight: 0.035532, acc: 0.361529; class 20 weight: 0.038210, acc: 0.044337; 
+2019-07-10 19:58:34.763009
+---- EPOCH 027 EVALUATION WHOLE SCENE----
+eval whole scene mean loss: 0.822155
+eval whole scene point accuracy vox: 0.793769
+eval whole scene point avg class acc vox: 0.476386
+eval whole scene point accuracy: 0.796481
+eval whole scene point avg class acc: 0.465735
+eval whole scene point calibrated average acc vox: 0.816211
+vox based --------class 1 weight: 0.393207, acc: 0.887860; class 2 weight: 0.306496, acc: 0.984307; class 3 weight: 0.057635, acc: 0.630812; class 4 weight: 0.035793, acc: 0.600134; class 5 weight: 0.017098, acc: 0.315156; class 6 weight: 0.022600, acc: 0.740585; class 7 weight: 0.018301, acc: 0.885058; class 8 weight: 0.028945, acc: 0.786100; class 9 weight: 0.003306, acc: 0.376009; class 10 weight: 0.002143, acc: 0.593671; class 11 weight: 0.002481, acc: 0.597599; class 12 weight: 0.008271, acc: 0.610526; class 13 weight: 0.007114, acc: 0.394015; class 14 weight: 0.022419, acc: 0.061752; class 15 weight: 0.005523, acc: 0.000000; class 16 weight: 0.000873, acc: 0.524957; class 17 weight: 0.003701, acc: 0.194870; class 18 weight: 0.001765, acc: 0.000000; class 19 weight: 0.026678, acc: 0.293427; class 20 weight: 0.035652, acc: 0.050887; 
+**** EPOCH 066 ****
+2019-07-10 20:03:09.329638
+ -- 010 / 075 --
+mean loss: 3.441609
+accuracy: 0.616763
+ -- 020 / 075 --
+mean loss: 3.459736
+accuracy: 0.586827
+ -- 030 / 075 --
+mean loss: 3.810242
+accuracy: 0.577374
+ -- 040 / 075 --
+mean loss: 3.909146
+accuracy: 0.592219
+ -- 050 / 075 --
+mean loss: 3.528620
+accuracy: 0.595844
+ -- 060 / 075 --
+mean loss: 3.467818
+accuracy: 0.606692
+ -- 070 / 075 --
+mean loss: 3.684067
+accuracy: 0.632140
+**** EPOCH 067 ****
+2019-07-10 20:04:02.468818
+ -- 010 / 075 --
+mean loss: 3.465799
+accuracy: 0.617308
+ -- 020 / 075 --
+mean loss: 3.853805
+accuracy: 0.585249
+ -- 030 / 075 --
+mean loss: 3.988523
+accuracy: 0.554368
+ -- 040 / 075 --
+mean loss: 4.171071
+accuracy: 0.583858
+ -- 050 / 075 --
+mean loss: 3.763781
+accuracy: 0.610770
+ -- 060 / 075 --
+mean loss: 3.719379
+accuracy: 0.640577
+ -- 070 / 075 --
+mean loss: 3.860886
+accuracy: 0.593786
+**** EPOCH 068 ****
+2019-07-10 20:04:55.232550
+ -- 010 / 075 --
+mean loss: 4.158742
+accuracy: 0.587842
+ -- 020 / 075 --
+mean loss: 3.734244
+accuracy: 0.592030
+ -- 030 / 075 --
+mean loss: 3.616725
+accuracy: 0.604474
+ -- 040 / 075 --
+mean loss: 3.861242
+accuracy: 0.633994
+ -- 050 / 075 --
+mean loss: 3.444019
+accuracy: 0.621463
+ -- 060 / 075 --
+mean loss: 3.833925
+accuracy: 0.609966
+ -- 070 / 075 --
+mean loss: 3.897948
+accuracy: 0.624162
+**** EPOCH 069 ****
+2019-07-10 20:05:48.152026
+ -- 010 / 075 --
+mean loss: 3.338456
+accuracy: 0.630849
+ -- 020 / 075 --
+mean loss: 3.575010
+accuracy: 0.603970
+ -- 030 / 075 --
+mean loss: 3.468874
+accuracy: 0.592197
+ -- 040 / 075 --
+mean loss: 3.407270
+accuracy: 0.600548
+ -- 050 / 075 --
+mean loss: 3.803160
+accuracy: 0.587901
+ -- 060 / 075 --
+mean loss: 4.369934
+accuracy: 0.573311
+ -- 070 / 075 --
+mean loss: 3.899749
+accuracy: 0.592514
+**** EPOCH 070 ****
+2019-07-10 20:06:41.562547
+ -- 010 / 075 --
+mean loss: 3.733213
+accuracy: 0.600130
+ -- 020 / 075 --
+mean loss: 3.590930
+accuracy: 0.633544
+ -- 030 / 075 --
+mean loss: 3.607052
+accuracy: 0.599168
+ -- 040 / 075 --
+mean loss: 3.592286
+accuracy: 0.589399
+ -- 050 / 075 --
+mean loss: 3.784515
+accuracy: 0.577177
+ -- 060 / 075 --
+mean loss: 3.982398
+accuracy: 0.580824
+ -- 070 / 075 --
+mean loss: 3.486246
+accuracy: 0.624149
+2019-07-10 20:07:35.473647
+---- EPOCH 028 EVALUATION ----
+eval mean loss: 0.955341
+eval point accuracy vox: 0.758777
+eval point avg class acc vox: 0.472360
+eval point accuracy: 0.758406
+eval point avg class acc: 0.469372
+eval point calibrated average acc: 0.808781
+vox based --------class 1 weight: 0.411859, acc: 0.900944; class 2 weight: 0.242787, acc: 0.969102; class 3 weight: 0.051632, acc: 0.681510; class 4 weight: 0.035109, acc: 0.537688; class 5 weight: 0.020686, acc: 0.252155; class 6 weight: 0.021144, acc: 0.469545; class 7 weight: 0.022761, acc: 0.517945; class 8 weight: 0.027137, acc: 0.867255; class 9 weight: 0.003784, acc: 0.724518; class 10 weight: 0.007223, acc: 0.709189; class 11 weight: 0.006543, acc: 0.720166; class 12 weight: 0.015116, acc: 0.541414; class 13 weight: 0.009552, acc: 0.297048; class 14 weight: 0.031400, acc: 0.130930; class 15 weight: 0.009486, acc: 0.000000; class 16 weight: 0.002069, acc: 0.300250; class 17 weight: 0.009332, acc: 0.381500; class 18 weight: 0.002872, acc: 0.000000; class 19 weight: 0.039812, acc: 0.274278; class 20 weight: 0.029696, acc: 0.112007; 
+2019-07-10 20:07:48.273134
+---- EPOCH 029 EVALUATION WHOLE SCENE----
+eval whole scene mean loss: 0.791702
+eval whole scene point accuracy vox: 0.800840
+eval whole scene point avg class acc vox: 0.467642
+eval whole scene point accuracy: 0.804761
+eval whole scene point avg class acc: 0.456318
+eval whole scene point calibrated average acc vox: 0.822303
+vox based --------class 1 weight: 0.393209, acc: 0.909070; class 2 weight: 0.306509, acc: 0.977181; class 3 weight: 0.057733, acc: 0.672536; class 4 weight: 0.035877, acc: 0.673814; class 5 weight: 0.017077, acc: 0.286576; class 6 weight: 0.022500, acc: 0.506803; class 7 weight: 0.018289, acc: 0.662125; class 8 weight: 0.028958, acc: 0.886331; class 9 weight: 0.003283, acc: 0.418367; class 10 weight: 0.002147, acc: 0.751678; class 11 weight: 0.002471, acc: 0.788412; class 12 weight: 0.008241, acc: 0.594025; class 13 weight: 0.007119, acc: 0.277249; class 14 weight: 0.022392, acc: 0.127025; class 15 weight: 0.005520, acc: 0.004562; class 16 weight: 0.000882, acc: 0.162444; class 17 weight: 0.003674, acc: 0.272406; class 18 weight: 0.001773, acc: 0.000000; class 19 weight: 0.026694, acc: 0.295838; class 20 weight: 0.035651, acc: 0.086400; 
+Model saved in file: log/best_model_epoch_070.ckpt
+Model saved in file: log/model.ckpt
+**** EPOCH 071 ****
+2019-07-10 20:12:28.378199
+ -- 010 / 075 --
+mean loss: 3.484360
+accuracy: 0.593530
+ -- 020 / 075 --
+mean loss: 4.099222
+accuracy: 0.561182
+ -- 030 / 075 --
+mean loss: 4.031055
+accuracy: 0.569205
+ -- 040 / 075 --
+mean loss: 3.628667
+accuracy: 0.582515
+ -- 050 / 075 --
+mean loss: 3.769480
+accuracy: 0.570377
+ -- 060 / 075 --
+mean loss: 3.663055
+accuracy: 0.583545
+ -- 070 / 075 --
+mean loss: 3.773271
+accuracy: 0.551083
+**** EPOCH 072 ****
+2019-07-10 20:13:22.432977
+ -- 010 / 075 --
+mean loss: 3.534453
+accuracy: 0.620506
+ -- 020 / 075 --
+mean loss: 3.761580
+accuracy: 0.601010
+ -- 030 / 075 --
+mean loss: 3.306990
+accuracy: 0.605293
+ -- 040 / 075 --
+mean loss: 3.551391
+accuracy: 0.598930
+ -- 050 / 075 --
+mean loss: 3.186843
+accuracy: 0.624140
+ -- 060 / 075 --
+mean loss: 3.883899
+accuracy: 0.577288
+ -- 070 / 075 --
+mean loss: 3.683490
+accuracy: 0.591457
+**** EPOCH 073 ****
+2019-07-10 20:14:16.408749
+ -- 010 / 075 --
+mean loss: 3.583438
+accuracy: 0.576665
+ -- 020 / 075 --
+mean loss: 3.829597
+accuracy: 0.577870
+ -- 030 / 075 --
+mean loss: 3.629654
+accuracy: 0.581378
+ -- 040 / 075 --
+mean loss: 3.434925
+accuracy: 0.586658
+ -- 050 / 075 --
+mean loss: 3.866514
+accuracy: 0.599773
+ -- 060 / 075 --
+mean loss: 3.785440
+accuracy: 0.573502
+ -- 070 / 075 --
+mean loss: 3.363655
+accuracy: 0.607523
+**** EPOCH 074 ****
+2019-07-10 20:15:10.342030
+ -- 010 / 075 --
+mean loss: 3.707487
+accuracy: 0.623016
+ -- 020 / 075 --
+mean loss: 3.187406
+accuracy: 0.605912
+ -- 030 / 075 --
+mean loss: 3.892173
+accuracy: 0.590015
+ -- 040 / 075 --
+mean loss: 4.495646
+accuracy: 0.550064
+ -- 050 / 075 --
+mean loss: 4.074634
+accuracy: 0.567510
+ -- 060 / 075 --
+mean loss: 3.732879
+accuracy: 0.588421
+ -- 070 / 075 --
+mean loss: 3.795762
+accuracy: 0.582220
+**** EPOCH 075 ****
+2019-07-10 20:16:04.173940
+ -- 010 / 075 --
+mean loss: 3.604879
+accuracy: 0.633339
+ -- 020 / 075 --
+mean loss: 3.869501
+accuracy: 0.608894
+ -- 030 / 075 --
+mean loss: 3.300498
+accuracy: 0.626199
+ -- 040 / 075 --
+mean loss: 4.197627
+accuracy: 0.570424
+ -- 050 / 075 --
+mean loss: 3.584596
+accuracy: 0.590619
+ -- 060 / 075 --
+mean loss: 4.064518
+accuracy: 0.576842
+ -- 070 / 075 --
+mean loss: 3.945959
+accuracy: 0.535782
+2019-07-10 20:16:57.198425
+---- EPOCH 030 EVALUATION ----
+eval mean loss: 0.913629
+eval point accuracy vox: 0.763006
+eval point avg class acc vox: 0.515076
+eval point accuracy: 0.765061
+eval point avg class acc: 0.513611
+eval point calibrated average acc: 0.817754
+vox based --------class 1 weight: 0.394860, acc: 0.881938; class 2 weight: 0.249272, acc: 0.985168; class 3 weight: 0.064467, acc: 0.643756; class 4 weight: 0.030365, acc: 0.657550; class 5 weight: 0.015117, acc: 0.256529; class 6 weight: 0.027304, acc: 0.673227; class 7 weight: 0.022267, acc: 0.745097; class 8 weight: 0.031224, acc: 0.718633; class 9 weight: 0.004025, acc: 0.604377; class 10 weight: 0.003748, acc: 0.899185; class 11 weight: 0.006850, acc: 0.688715; class 12 weight: 0.016735, acc: 0.580377; class 13 weight: 0.007279, acc: 0.287559; class 14 weight: 0.031320, acc: 0.269223; class 15 weight: 0.013132, acc: 0.048644; class 16 weight: 0.000699, acc: 0.770026; class 17 weight: 0.011499, acc: 0.123958; class 18 weight: 0.001240, acc: 0.000000; class 19 weight: 0.032779, acc: 0.364688; class 20 weight: 0.035817, acc: 0.073563; 
+2019-07-10 20:17:09.432985
+---- EPOCH 031 EVALUATION WHOLE SCENE----
+eval whole scene mean loss: 0.816649
+eval whole scene point accuracy vox: 0.793502
+eval whole scene point avg class acc vox: 0.455632
+eval whole scene point accuracy: 0.797777
+eval whole scene point avg class acc: 0.442492
+eval whole scene point calibrated average acc vox: 0.815781
+vox based --------class 1 weight: 0.393158, acc: 0.888083; class 2 weight: 0.306376, acc: 0.986999; class 3 weight: 0.057728, acc: 0.710100; class 4 weight: 0.035810, acc: 0.621258; class 5 weight: 0.017097, acc: 0.261910; class 6 weight: 0.022559, acc: 0.618843; class 7 weight: 0.018374, acc: 0.767391; class 8 weight: 0.028882, acc: 0.639179; class 9 weight: 0.003301, acc: 0.400380; class 10 weight: 0.002146, acc: 0.845068; class 11 weight: 0.002468, acc: 0.627765; class 12 weight: 0.008280, acc: 0.459146; class 13 weight: 0.007144, acc: 0.258765; class 14 weight: 0.022407, acc: 0.241513; class 15 weight: 0.005528, acc: 0.012513; class 16 weight: 0.000877, acc: 0.257252; class 17 weight: 0.003688, acc: 0.127812; class 18 weight: 0.001790, acc: 0.000000; class 19 weight: 0.026665, acc: 0.296340; class 20 weight: 0.035721, acc: 0.092326; 
+**** EPOCH 076 ****
+2019-07-10 20:21:50.925683
+ -- 010 / 075 --
+mean loss: 4.007527
+accuracy: 0.565599
+ -- 020 / 075 --
+mean loss: 3.567804
+accuracy: 0.571572
+ -- 030 / 075 --
+mean loss: 3.821952
+accuracy: 0.572916
+ -- 040 / 075 --
+mean loss: 3.550047
+accuracy: 0.569267
+ -- 050 / 075 --
+mean loss: 3.753249
+accuracy: 0.551715
+ -- 060 / 075 --
+mean loss: 3.982567
+accuracy: 0.571825
+ -- 070 / 075 --
+mean loss: 3.297192
+accuracy: 0.595238
+**** EPOCH 077 ****
+2019-07-10 20:22:45.222630
+ -- 010 / 075 --
+mean loss: 3.618253
+accuracy: 0.571606
+ -- 020 / 075 --
+mean loss: 3.495629
+accuracy: 0.549031
+ -- 030 / 075 --
+mean loss: 3.691853
+accuracy: 0.545177
+ -- 040 / 075 --
+mean loss: 3.830898
+accuracy: 0.564248
+ -- 050 / 075 --
+mean loss: 3.933015
+accuracy: 0.596149
+ -- 060 / 075 --
+mean loss: 3.483926
+accuracy: 0.626415
+ -- 070 / 075 --
+mean loss: 3.754848
+accuracy: 0.636137
+**** EPOCH 078 ****
+2019-07-10 20:23:39.441668
+ -- 010 / 075 --
+mean loss: 3.506863
+accuracy: 0.603281
+ -- 020 / 075 --
+mean loss: 4.104655
+accuracy: 0.576204
+ -- 030 / 075 --
+mean loss: 3.828677
+accuracy: 0.622514
+ -- 040 / 075 --
+mean loss: 3.580058
+accuracy: 0.602224
+ -- 050 / 075 --
+mean loss: 3.504620
+accuracy: 0.628223
+ -- 060 / 075 --
+mean loss: 3.698388
+accuracy: 0.652013
+ -- 070 / 075 --
+mean loss: 3.460032
+accuracy: 0.617826
+**** EPOCH 079 ****
+2019-07-10 20:24:32.284621
+ -- 010 / 075 --
+mean loss: 3.725017
+accuracy: 0.585517
+ -- 020 / 075 --
+mean loss: 3.620884
+accuracy: 0.585132
+ -- 030 / 075 --
+mean loss: 3.356152
+accuracy: 0.591623
+ -- 040 / 075 --
+mean loss: 3.492219
+accuracy: 0.550235
+ -- 050 / 075 --
+mean loss: 3.700398
+accuracy: 0.539307
+ -- 060 / 075 --
+mean loss: 3.854737
+accuracy: 0.512926
+ -- 070 / 075 --
+mean loss: 4.238172
+accuracy: 0.506904
+**** EPOCH 080 ****
+2019-07-10 20:25:25.611490
+ -- 010 / 075 --
+mean loss: 3.391520
+accuracy: 0.588732
+ -- 020 / 075 --
+mean loss: 3.801974
+accuracy: 0.547236
+ -- 030 / 075 --
+mean loss: 4.006389
+accuracy: 0.531115
+ -- 040 / 075 --
+mean loss: 3.709775
+accuracy: 0.551866
+ -- 050 / 075 --
+mean loss: 3.917708
+accuracy: 0.579969
+ -- 060 / 075 --
+mean loss: 3.710545
+accuracy: 0.594012
+ -- 070 / 075 --
+mean loss: 3.756503
+accuracy: 0.574440
+2019-07-10 20:26:19.391929
+---- EPOCH 032 EVALUATION ----
+eval mean loss: 0.948294
+eval point accuracy vox: 0.762665
+eval point avg class acc vox: 0.503940
+eval point accuracy: 0.764599
+eval point avg class acc: 0.509031
+eval point calibrated average acc: 0.812325
+vox based --------class 1 weight: 0.397145, acc: 0.892617; class 2 weight: 0.241400, acc: 0.973405; class 3 weight: 0.069138, acc: 0.636656; class 4 weight: 0.032334, acc: 0.428227; class 5 weight: 0.016041, acc: 0.316971; class 6 weight: 0.022238, acc: 0.600396; class 7 weight: 0.027320, acc: 0.875545; class 8 weight: 0.029557, acc: 0.773868; class 9 weight: 0.008955, acc: 0.424832; class 10 weight: 0.006152, acc: 0.819377; class 11 weight: 0.008146, acc: 0.789005; class 12 weight: 0.005617, acc: 0.279643; class 13 weight: 0.009009, acc: 0.437571; class 14 weight: 0.025516, acc: 0.187336; class 15 weight: 0.009939, acc: 0.000000; class 16 weight: 0.002628, acc: 0.586473; class 17 weight: 0.008208, acc: 0.683817; class 18 weight: 0.001501, acc: 0.000000; class 19 weight: 0.043792, acc: 0.306428; class 20 weight: 0.035365, acc: 0.168456; 
+2019-07-10 20:26:32.099186
+---- EPOCH 033 EVALUATION WHOLE SCENE----
+eval whole scene mean loss: 0.792342
+eval whole scene point accuracy vox: 0.801412
+eval whole scene point avg class acc vox: 0.502413
+eval whole scene point accuracy: 0.802376
+eval whole scene point avg class acc: 0.489991
+eval whole scene point calibrated average acc vox: 0.821369
+vox based --------class 1 weight: 0.393151, acc: 0.896753; class 2 weight: 0.306536, acc: 0.973074; class 3 weight: 0.057643, acc: 0.704283; class 4 weight: 0.035798, acc: 0.502844; class 5 weight: 0.017122, acc: 0.380189; class 6 weight: 0.022559, acc: 0.558416; class 7 weight: 0.018272, acc: 0.848639; class 8 weight: 0.028950, acc: 0.773093; class 9 weight: 0.003287, acc: 0.478267; class 10 weight: 0.002146, acc: 0.815068; class 11 weight: 0.002481, acc: 0.697461; class 12 weight: 0.008296, acc: 0.341052; class 13 weight: 0.007129, acc: 0.459774; class 14 weight: 0.022409, acc: 0.205685; class 15 weight: 0.005540, acc: 0.000000; class 16 weight: 0.000887, acc: 0.414666; class 17 weight: 0.003709, acc: 0.418987; class 18 weight: 0.001778, acc: 0.000000; class 19 weight: 0.026657, acc: 0.376884; class 20 weight: 0.035650, acc: 0.203130; 
+Model saved in file: log/model.ckpt
+**** EPOCH 081 ****
+2019-07-10 20:31:14.566698
+ -- 010 / 075 --
+mean loss: 3.731612
+accuracy: 0.613818
+ -- 020 / 075 --
+mean loss: 3.518253
+accuracy: 0.626252
+ -- 030 / 075 --
+mean loss: 3.737434
+accuracy: 0.568129
+ -- 040 / 075 --
+mean loss: 3.529827
+accuracy: 0.562118
+ -- 050 / 075 --
+mean loss: 3.688146
+accuracy: 0.565981
+ -- 060 / 075 --
+mean loss: 3.470119
+accuracy: 0.575252
+ -- 070 / 075 --
+mean loss: 3.858148
+accuracy: 0.575152
+**** EPOCH 082 ****
+2019-07-10 20:32:06.614610
+ -- 010 / 075 --
+mean loss: 3.641588
+accuracy: 0.558061
+ -- 020 / 075 --
+mean loss: 3.757008
+accuracy: 0.569857
+ -- 030 / 075 --
+mean loss: 3.448938
+accuracy: 0.604011
+ -- 040 / 075 --
+mean loss: 3.392548
+accuracy: 0.560111
+ -- 050 / 075 --
+mean loss: 3.659690
+accuracy: 0.600146
+ -- 060 / 075 --
+mean loss: 3.941379
+accuracy: 0.555302
+ -- 070 / 075 --
+mean loss: 3.706138
+accuracy: 0.565543
+**** EPOCH 083 ****
+2019-07-10 20:33:00.562818
+ -- 010 / 075 --
+mean loss: 3.679708
+accuracy: 0.573115
+ -- 020 / 075 --
+mean loss: 3.501808
+accuracy: 0.562229
+ -- 030 / 075 --
+mean loss: 3.445220
+accuracy: 0.607319
+ -- 040 / 075 --
+mean loss: 3.300702
+accuracy: 0.580882
+ -- 050 / 075 --
+mean loss: 3.599939
+accuracy: 0.581512
+ -- 060 / 075 --
+mean loss: 4.084282
+accuracy: 0.595919
+ -- 070 / 075 --
+mean loss: 3.311549
+accuracy: 0.622511
+**** EPOCH 084 ****
+2019-07-10 20:33:54.216471
+ -- 010 / 075 --
+mean loss: 3.568662
+accuracy: 0.570947
+ -- 020 / 075 --
+mean loss: 3.590383
+accuracy: 0.541654
+ -- 030 / 075 --
+mean loss: 3.638017
+accuracy: 0.556768
+ -- 040 / 075 --
+mean loss: 3.556068
+accuracy: 0.561555
+ -- 050 / 075 --
+mean loss: 3.381316
+accuracy: 0.560688
+ -- 060 / 075 --
+mean loss: 4.457090
+accuracy: 0.538361
+ -- 070 / 075 --
+mean loss: 3.687081
+accuracy: 0.558196
+**** EPOCH 085 ****
+2019-07-10 20:34:47.947526
+ -- 010 / 075 --
+mean loss: 4.226381
+accuracy: 0.533056
+ -- 020 / 075 --
+mean loss: 3.548662
+accuracy: 0.575798
+ -- 030 / 075 --
+mean loss: 4.087567
+accuracy: 0.549213
+ -- 040 / 075 --
+mean loss: 3.255231
+accuracy: 0.592216
+ -- 050 / 075 --
+mean loss: 3.590354
+accuracy: 0.581712
+ -- 060 / 075 --
+mean loss: 3.719483
+accuracy: 0.543937
+ -- 070 / 075 --
+mean loss: 3.643568
+accuracy: 0.578033
+2019-07-10 20:35:42.033903
+---- EPOCH 034 EVALUATION ----
+eval mean loss: 0.954050
+eval point accuracy vox: 0.743873
+eval point avg class acc vox: 0.521781
+eval point accuracy: 0.743970
+eval point avg class acc: 0.519436
+eval point calibrated average acc: 0.802938
+vox based --------class 1 weight: 0.415713, acc: 0.834970; class 2 weight: 0.231778, acc: 0.978420; class 3 weight: 0.052800, acc: 0.638745; class 4 weight: 0.029060, acc: 0.522642; class 5 weight: 0.024478, acc: 0.536524; class 6 weight: 0.021416, acc: 0.343812; class 7 weight: 0.015812, acc: 0.985672; class 8 weight: 0.028413, acc: 0.962613; class 9 weight: 0.006532, acc: 0.538414; class 10 weight: 0.005601, acc: 0.815682; class 11 weight: 0.005967, acc: 0.697277; class 12 weight: 0.014119, acc: 0.471477; class 13 weight: 0.013255, acc: 0.230157; class 14 weight: 0.029596, acc: 0.266326; class 15 weight: 0.011276, acc: 0.013870; class 16 weight: 0.005430, acc: 0.454675; class 17 weight: 0.009811, acc: 0.569009; class 18 weight: 0.001890, acc: 0.000000; class 19 weight: 0.036561, acc: 0.335874; class 20 weight: 0.040492, acc: 0.192566; 
+2019-07-10 20:35:54.774028
+---- EPOCH 035 EVALUATION WHOLE SCENE----
+eval whole scene mean loss: 0.800409
+eval whole scene point accuracy vox: 0.784379
+eval whole scene point avg class acc vox: 0.505053
+eval whole scene point accuracy: 0.788914
+eval whole scene point avg class acc: 0.492734
+eval whole scene point calibrated average acc vox: 0.806135
+vox based --------class 1 weight: 0.393212, acc: 0.844874; class 2 weight: 0.306527, acc: 0.983010; class 3 weight: 0.057569, acc: 0.645858; class 4 weight: 0.035778, acc: 0.591244; class 5 weight: 0.017082, acc: 0.411445; class 6 weight: 0.022471, acc: 0.449509; class 7 weight: 0.018385, acc: 0.854517; class 8 weight: 0.028928, acc: 0.912367; class 9 weight: 0.003302, acc: 0.525481; class 10 weight: 0.002148, acc: 0.791194; class 11 weight: 0.002478, acc: 0.649378; class 12 weight: 0.008273, acc: 0.563379; class 13 weight: 0.007141, acc: 0.269385; class 14 weight: 0.022533, acc: 0.326361; class 15 weight: 0.005530, acc: 0.031047; class 16 weight: 0.000879, acc: 0.411694; class 17 weight: 0.003711, acc: 0.431451; class 18 weight: 0.001764, acc: 0.000000; class 19 weight: 0.026613, acc: 0.267612; class 20 weight: 0.035677, acc: 0.141249; 
+**** EPOCH 086 ****
+2019-07-10 20:40:33.612535
+ -- 010 / 075 --
+mean loss: 3.639578
+accuracy: 0.592139
+ -- 020 / 075 --
+mean loss: 3.933798
+accuracy: 0.584102
+ -- 030 / 075 --
+mean loss: 3.487209
+accuracy: 0.612637
+ -- 040 / 075 --
+mean loss: 4.266322
+accuracy: 0.574209
+ -- 050 / 075 --
+mean loss: 3.720785
+accuracy: 0.578701
+ -- 060 / 075 --
+mean loss: 3.633729
+accuracy: 0.605299
+ -- 070 / 075 --
+mean loss: 3.229393
+accuracy: 0.596952
+**** EPOCH 087 ****
+2019-07-10 20:41:27.051986
+ -- 010 / 075 --
+mean loss: 3.921772
+accuracy: 0.554469
+ -- 020 / 075 --
+mean loss: 3.665810
+accuracy: 0.554659
+ -- 030 / 075 --
+mean loss: 3.521150
+accuracy: 0.548452
+ -- 040 / 075 --
+mean loss: 4.336112
+accuracy: 0.533665
+ -- 050 / 075 --
+mean loss: 3.615908
+accuracy: 0.568941
+ -- 060 / 075 --
+mean loss: 3.908562
+accuracy: 0.558084
+ -- 070 / 075 --
+mean loss: 3.686582
+accuracy: 0.571976
+**** EPOCH 088 ****
+2019-07-10 20:42:20.738146
+ -- 010 / 075 --
+mean loss: 3.866831
+accuracy: 0.569166
+ -- 020 / 075 --
+mean loss: 3.599721
+accuracy: 0.566689
+ -- 030 / 075 --
+mean loss: 3.579797
+accuracy: 0.593427
+ -- 040 / 075 --
+mean loss: 4.260998
+accuracy: 0.601420
+ -- 050 / 075 --
+mean loss: 3.135364
+accuracy: 0.647762
+ -- 060 / 075 --
+mean loss: 3.642620
+accuracy: 0.598034
+ -- 070 / 075 --
+mean loss: 3.274535
+accuracy: 0.596767
+**** EPOCH 089 ****
+2019-07-10 20:43:14.250714
+ -- 010 / 075 --
+mean loss: 3.244071
+accuracy: 0.569115
+ -- 020 / 075 --
+mean loss: 3.503733
+accuracy: 0.591965
+ -- 030 / 075 --
+mean loss: 3.265977
+accuracy: 0.567391
+ -- 040 / 075 --
+mean loss: 3.683908
+accuracy: 0.589870
+ -- 050 / 075 --
+mean loss: 3.932837
+accuracy: 0.562202
+ -- 060 / 075 --
+mean loss: 3.549013
+accuracy: 0.575455
+ -- 070 / 075 --
+mean loss: 3.495782
+accuracy: 0.580610
+**** EPOCH 090 ****
+2019-07-10 20:44:08.056954
+ -- 010 / 075 --
+mean loss: 3.898627
+accuracy: 0.561263
+ -- 020 / 075 --
+mean loss: 4.279087
+accuracy: 0.564034
+ -- 030 / 075 --
+mean loss: 3.817647
+accuracy: 0.575177
+ -- 040 / 075 --
+mean loss: 3.371159
+accuracy: 0.558580
+ -- 050 / 075 --
+mean loss: 3.623176
+accuracy: 0.605140
+ -- 060 / 075 --
+mean loss: 3.582528
+accuracy: 0.593452
+ -- 070 / 075 --
+mean loss: 3.658070
+accuracy: 0.565427
+2019-07-10 20:45:02.088143
+---- EPOCH 036 EVALUATION ----
+eval mean loss: 0.923006
+eval point accuracy vox: 0.754189
+eval point avg class acc vox: 0.515135
+eval point accuracy: 0.755267
+eval point avg class acc: 0.513675
+eval point calibrated average acc: 0.794754
+vox based --------class 1 weight: 0.420085, acc: 0.841367; class 2 weight: 0.231742, acc: 0.973524; class 3 weight: 0.059158, acc: 0.783838; class 4 weight: 0.030592, acc: 0.449652; class 5 weight: 0.021636, acc: 0.337164; class 6 weight: 0.021675, acc: 0.449406; class 7 weight: 0.028674, acc: 0.903990; class 8 weight: 0.028021, acc: 0.714105; class 9 weight: 0.004826, acc: 0.515561; class 10 weight: 0.006627, acc: 0.702856; class 11 weight: 0.006376, acc: 0.844995; class 12 weight: 0.016407, acc: 0.614877; class 13 weight: 0.009196, acc: 0.177496; class 14 weight: 0.022288, acc: 0.089707; class 15 weight: 0.011781, acc: 0.423298; class 16 weight: 0.003665, acc: 0.735799; class 17 weight: 0.008164, acc: 0.197519; class 18 weight: 0.002884, acc: 0.000000; class 19 weight: 0.031781, acc: 0.410549; class 20 weight: 0.034424, acc: 0.107801; 
+2019-07-10 20:45:14.617348
+---- EPOCH 037 EVALUATION WHOLE SCENE----
+eval whole scene mean loss: 0.800677
+eval whole scene point accuracy vox: 0.784476
+eval whole scene point avg class acc vox: 0.514974
+eval whole scene point accuracy: 0.786671
+eval whole scene point avg class acc: 0.502225
+eval whole scene point calibrated average acc vox: 0.804018
+vox based --------class 1 weight: 0.393153, acc: 0.835855; class 2 weight: 0.306523, acc: 0.983812; class 3 weight: 0.057653, acc: 0.762162; class 4 weight: 0.035883, acc: 0.519029; class 5 weight: 0.017092, acc: 0.397497; class 6 weight: 0.022553, acc: 0.515189; class 7 weight: 0.018123, acc: 0.895285; class 8 weight: 0.028939, acc: 0.716799; class 9 weight: 0.003331, acc: 0.464285; class 10 weight: 0.002144, acc: 0.750134; class 11 weight: 0.002471, acc: 0.752790; class 12 weight: 0.008300, acc: 0.652801; class 13 weight: 0.007117, acc: 0.189704; class 14 weight: 0.022436, acc: 0.173947; class 15 weight: 0.005541, acc: 0.256602; class 16 weight: 0.000889, acc: 0.542118; class 17 weight: 0.003703, acc: 0.281768; class 18 weight: 0.001766, acc: 0.000000; class 19 weight: 0.026647, acc: 0.447971; class 20 weight: 0.035738, acc: 0.161734; 
+Model saved in file: log/model.ckpt
+**** EPOCH 091 ****
+2019-07-10 20:49:54.357926
+ -- 010 / 075 --
+mean loss: 3.642170
+accuracy: 0.596124
+ -- 020 / 075 --
+mean loss: 3.671894
+accuracy: 0.583075
+ -- 030 / 075 --
+mean loss: 4.278464
+accuracy: 0.556821
+ -- 040 / 075 --
+mean loss: 3.266028
+accuracy: 0.623064
+ -- 050 / 075 --
+mean loss: 3.431003
+accuracy: 0.597908
+ -- 060 / 075 --
+mean loss: 3.550672
+accuracy: 0.617953
+ -- 070 / 075 --
+mean loss: 3.440252
+accuracy: 0.611715
+**** EPOCH 092 ****
+2019-07-10 20:50:48.638794
+ -- 010 / 075 --
+mean loss: 3.596844
+accuracy: 0.572443
+ -- 020 / 075 --
+mean loss: 3.793884
+accuracy: 0.585463
+ -- 030 / 075 --
+mean loss: 3.804055
+accuracy: 0.579102
+ -- 040 / 075 --
+mean loss: 3.717349
+accuracy: 0.556150
+ -- 050 / 075 --
+mean loss: 3.629814
+accuracy: 0.567387
+ -- 060 / 075 --
+mean loss: 3.364805
+accuracy: 0.573290
+ -- 070 / 075 --
+mean loss: 3.319011
+accuracy: 0.603235
+**** EPOCH 093 ****
+2019-07-10 20:51:42.273661
+ -- 010 / 075 --
+mean loss: 3.566179
+accuracy: 0.576738
+ -- 020 / 075 --
+mean loss: 3.567535
+accuracy: 0.568672
+ -- 030 / 075 --
+mean loss: 3.962202
+accuracy: 0.544646
+ -- 040 / 075 --
+mean loss: 3.301563
+accuracy: 0.563140
+ -- 050 / 075 --
+mean loss: 3.484897
+accuracy: 0.631886
+ -- 060 / 075 --
+mean loss: 3.357620
+accuracy: 0.613997
+ -- 070 / 075 --
+mean loss: 3.768693
+accuracy: 0.599029
+**** EPOCH 094 ****
+2019-07-10 20:52:36.322288
+ -- 010 / 075 --
+mean loss: 3.403783
+accuracy: 0.604471
+ -- 020 / 075 --
+mean loss: 3.883428
+accuracy: 0.594506
+ -- 030 / 075 --
+mean loss: 3.638326
+accuracy: 0.564514
+ -- 040 / 075 --
+mean loss: 3.298702
+accuracy: 0.609848
+ -- 050 / 075 --
+mean loss: 3.800190
+accuracy: 0.591056
+ -- 060 / 075 --
+mean loss: 3.605465
+accuracy: 0.567576
+ -- 070 / 075 --
+mean loss: 3.620901
+accuracy: 0.565952
+**** EPOCH 095 ****
+2019-07-10 20:53:30.391627
+ -- 010 / 075 --
+mean loss: 3.628907
+accuracy: 0.558094
+ -- 020 / 075 --
+mean loss: 3.767678
+accuracy: 0.589085
+ -- 030 / 075 --
+mean loss: 3.202755
+accuracy: 0.587552
+ -- 040 / 075 --
+mean loss: 3.638443
+accuracy: 0.579015
+ -- 050 / 075 --
+mean loss: 3.535298
+accuracy: 0.613212
+ -- 060 / 075 --
+mean loss: 3.174998
+accuracy: 0.620987
+ -- 070 / 075 --
+mean loss: 3.176389
+accuracy: 0.612753
+2019-07-10 20:54:23.670689
+---- EPOCH 038 EVALUATION ----
+eval mean loss: 0.818331
+eval point accuracy vox: 0.789726
+eval point avg class acc vox: 0.582108
+eval point accuracy: 0.790972
+eval point avg class acc: 0.584891
+eval point calibrated average acc: 0.832850
+vox based --------class 1 weight: 0.420312, acc: 0.894564; class 2 weight: 0.239360, acc: 0.977513; class 3 weight: 0.051764, acc: 0.767752; class 4 weight: 0.034909, acc: 0.549538; class 5 weight: 0.013685, acc: 0.648500; class 6 weight: 0.015825, acc: 0.767016; class 7 weight: 0.017112, acc: 0.572384; class 8 weight: 0.032834, acc: 0.658161; class 9 weight: 0.006301, acc: 0.624325; class 10 weight: 0.004285, acc: 0.883476; class 11 weight: 0.005904, acc: 0.833874; class 12 weight: 0.015992, acc: 0.785888; class 13 weight: 0.009510, acc: 0.469601; class 14 weight: 0.032590, acc: 0.149012; class 15 weight: 0.007222, acc: 0.256036; class 16 weight: 0.004693, acc: 0.769500; class 17 weight: 0.006165, acc: 0.445501; class 18 weight: 0.001830, acc: 0.000000; class 19 weight: 0.044609, acc: 0.464898; class 20 weight: 0.035100, acc: 0.180290; 
+2019-07-10 20:54:36.015064
+---- EPOCH 039 EVALUATION WHOLE SCENE----
+eval whole scene mean loss: 0.767394
+eval whole scene point accuracy vox: 0.810582
+eval whole scene point avg class acc vox: 0.526811
+eval whole scene point accuracy: 0.812530
+eval whole scene point avg class acc: 0.510524
+eval whole scene point calibrated average acc vox: 0.830076
+vox based --------class 1 weight: 0.393109, acc: 0.904843; class 2 weight: 0.306558, acc: 0.982080; class 3 weight: 0.057685, acc: 0.759976; class 4 weight: 0.035845, acc: 0.539971; class 5 weight: 0.017080, acc: 0.549314; class 6 weight: 0.022529, acc: 0.668240; class 7 weight: 0.018159, acc: 0.635512; class 8 weight: 0.028945, acc: 0.708020; class 9 weight: 0.003308, acc: 0.553611; class 10 weight: 0.002154, acc: 0.816604; class 11 weight: 0.002493, acc: 0.753945; class 12 weight: 0.008314, acc: 0.597663; class 13 weight: 0.007133, acc: 0.385519; class 14 weight: 0.022428, acc: 0.162142; class 15 weight: 0.005492, acc: 0.196249; class 16 weight: 0.000879, acc: 0.514883; class 17 weight: 0.003704, acc: 0.305143; class 18 weight: 0.001767, acc: 0.000000; class 19 weight: 0.026734, acc: 0.365026; class 20 weight: 0.035685, acc: 0.137474; 
+Model saved in file: log/best_model_epoch_095.ckpt
+**** EPOCH 096 ****
+2019-07-10 20:59:16.912779
+ -- 010 / 075 --
+mean loss: 3.703690
+accuracy: 0.563614
+ -- 020 / 075 --
+mean loss: 3.630982
+accuracy: 0.555254
+ -- 030 / 075 --
+mean loss: 3.557079
+accuracy: 0.572138
+ -- 040 / 075 --
+mean loss: 3.647166
+accuracy: 0.544994
+ -- 050 / 075 --
+mean loss: 3.628431
+accuracy: 0.608472
+ -- 060 / 075 --
+mean loss: 3.553677
+accuracy: 0.568317
+ -- 070 / 075 --
+mean loss: 3.562715
+accuracy: 0.589297
+**** EPOCH 097 ****
+2019-07-10 21:00:10.144416
+ -- 010 / 075 --
+mean loss: 3.490120
+accuracy: 0.604429
+ -- 020 / 075 --
+mean loss: 3.305298
+accuracy: 0.599342
+ -- 030 / 075 --
+mean loss: 3.698689
+accuracy: 0.604376
+ -- 040 / 075 --
+mean loss: 3.453270
+accuracy: 0.598734
+ -- 050 / 075 --
+mean loss: 3.581610
+accuracy: 0.628510
+ -- 060 / 075 --
+mean loss: 3.410282
+accuracy: 0.591880
+ -- 070 / 075 --
+mean loss: 3.778082
+accuracy: 0.594485
+**** EPOCH 098 ****
+2019-07-10 21:01:03.281658
+ -- 010 / 075 --
+mean loss: 3.534305
+accuracy: 0.601844
+ -- 020 / 075 --
+mean loss: 3.437320
+accuracy: 0.577484
+ -- 030 / 075 --
+mean loss: 3.390187
+accuracy: 0.604942
+ -- 040 / 075 --
+mean loss: 3.378658
+accuracy: 0.596441
+ -- 050 / 075 --
+mean loss: 3.320565
+accuracy: 0.592821
+ -- 060 / 075 --
+mean loss: 3.075253
+accuracy: 0.602055
+ -- 070 / 075 --
+mean loss: 3.612778
+accuracy: 0.626362
+**** EPOCH 099 ****
+2019-07-10 21:01:56.363834
+ -- 010 / 075 --
+mean loss: 3.683186
+accuracy: 0.574009
+ -- 020 / 075 --
+mean loss: 3.698908
+accuracy: 0.517653
+ -- 030 / 075 --
+mean loss: 3.414294
+accuracy: 0.555447
+ -- 040 / 075 --
+mean loss: 3.413450
+accuracy: 0.563992
+ -- 050 / 075 --
+mean loss: 3.592249
+accuracy: 0.553404
+ -- 060 / 075 --
+mean loss: 3.292541
+accuracy: 0.590432
+ -- 070 / 075 --
+mean loss: 3.733021
+accuracy: 0.579431
+**** EPOCH 100 ****
+2019-07-10 21:02:50.109254
+ -- 010 / 075 --
+mean loss: 3.388742
+accuracy: 0.553830
+ -- 020 / 075 --
+mean loss: 3.782123
+accuracy: 0.581634
+ -- 030 / 075 --
+mean loss: 3.468011
+accuracy: 0.584041
+ -- 040 / 075 --
+mean loss: 3.403050
+accuracy: 0.591576
+ -- 050 / 075 --
+mean loss: 3.197502
+accuracy: 0.603274
+ -- 060 / 075 --
+mean loss: 4.200356
+accuracy: 0.571522
+ -- 070 / 075 --
+mean loss: 4.055413
+accuracy: 0.563561
+2019-07-10 21:03:43.584875
+---- EPOCH 040 EVALUATION ----
+eval mean loss: 0.871114
+eval point accuracy vox: 0.767615
+eval point avg class acc vox: 0.571136
+eval point accuracy: 0.768678
+eval point avg class acc: 0.571080
+eval point calibrated average acc: 0.811692
+vox based --------class 1 weight: 0.412041, acc: 0.833179; class 2 weight: 0.239060, acc: 0.975702; class 3 weight: 0.059462, acc: 0.673730; class 4 weight: 0.032569, acc: 0.600575; class 5 weight: 0.016644, acc: 0.565741; class 6 weight: 0.020469, acc: 0.710122; class 7 weight: 0.028908, acc: 0.657669; class 8 weight: 0.026086, acc: 0.789934; class 9 weight: 0.007361, acc: 0.599808; class 10 weight: 0.004619, acc: 0.545761; class 11 weight: 0.006803, acc: 0.808810; class 12 weight: 0.015903, acc: 0.567902; class 13 weight: 0.012866, acc: 0.418703; class 14 weight: 0.028164, acc: 0.325219; class 15 weight: 0.010008, acc: 0.176334; class 16 weight: 0.003142, acc: 0.812606; class 17 weight: 0.003341, acc: 0.656840; class 18 weight: 0.001927, acc: 0.000000; class 19 weight: 0.039579, acc: 0.493335; class 20 weight: 0.031047, acc: 0.209621; 
+2019-07-10 21:03:56.373159
+---- EPOCH 041 EVALUATION WHOLE SCENE----
+eval whole scene mean loss: 0.800067
+eval whole scene point accuracy vox: 0.788995
+eval whole scene point avg class acc vox: 0.542132
+eval whole scene point accuracy: 0.791672
+eval whole scene point avg class acc: 0.530468
+eval whole scene point calibrated average acc vox: 0.809041
+vox based --------class 1 weight: 0.393174, acc: 0.843589; class 2 weight: 0.306493, acc: 0.982019; class 3 weight: 0.057579, acc: 0.719485; class 4 weight: 0.035768, acc: 0.605084; class 5 weight: 0.017098, acc: 0.416144; class 6 weight: 0.022500, acc: 0.696339; class 7 weight: 0.018417, acc: 0.584314; class 8 weight: 0.028951, acc: 0.726282; class 9 weight: 0.003294, acc: 0.610517; class 10 weight: 0.002134, acc: 0.822205; class 11 weight: 0.002488, acc: 0.768016; class 12 weight: 0.008292, acc: 0.559402; class 13 weight: 0.007111, acc: 0.440214; class 14 weight: 0.022451, acc: 0.318816; class 15 weight: 0.005513, acc: 0.192240; class 16 weight: 0.000884, acc: 0.630706; class 17 weight: 0.003712, acc: 0.416020; class 18 weight: 0.001765, acc: 0.000000; class 19 weight: 0.026670, acc: 0.367897; class 20 weight: 0.035706, acc: 0.143356; 
+Model saved in file: log/model.ckpt
+**** EPOCH 101 ****
+2019-07-10 21:08:38.212107
+ -- 010 / 075 --
+mean loss: 3.355687
+accuracy: 0.639367
+ -- 020 / 075 --
+mean loss: 3.504833
+accuracy: 0.608541
+ -- 030 / 075 --
+mean loss: 3.388110
+accuracy: 0.580860
+ -- 040 / 075 --
+mean loss: 3.909942
+accuracy: 0.563174
+ -- 050 / 075 --
+mean loss: 3.574397
+accuracy: 0.588853
+ -- 060 / 075 --
+mean loss: 3.098717
+accuracy: 0.575146
+ -- 070 / 075 --
+mean loss: 3.708896
+accuracy: 0.592065
+**** EPOCH 102 ****
+2019-07-10 21:09:31.018034
+ -- 010 / 075 --
+mean loss: 3.078128
+accuracy: 0.600914
+ -- 020 / 075 --
+mean loss: 3.696526
+accuracy: 0.588924
+ -- 030 / 075 --
+mean loss: 3.371642
+accuracy: 0.569094
+ -- 040 / 075 --
+mean loss: 3.706223
+accuracy: 0.596947
+ -- 050 / 075 --
+mean loss: 3.827209
+accuracy: 0.599364
+ -- 060 / 075 --
+mean loss: 3.769813
+accuracy: 0.568275
+ -- 070 / 075 --
+mean loss: 3.386297
+accuracy: 0.633031
+**** EPOCH 103 ****
+2019-07-10 21:10:24.091359
+ -- 010 / 075 --
+mean loss: 3.783238
+accuracy: 0.589091
+ -- 020 / 075 --
+mean loss: 3.647925
+accuracy: 0.568130
+ -- 030 / 075 --
+mean loss: 3.543612
+accuracy: 0.576790
+ -- 040 / 075 --
+mean loss: 3.473964
+accuracy: 0.612233
+ -- 050 / 075 --
+mean loss: 3.375340
+accuracy: 0.593186
+ -- 060 / 075 --
+mean loss: 3.334432
+accuracy: 0.599300
+ -- 070 / 075 --
+mean loss: 3.348503
+accuracy: 0.595325
+**** EPOCH 104 ****
+2019-07-10 21:11:17.746742
+ -- 010 / 075 --
+mean loss: 3.794531
+accuracy: 0.607082
+ -- 020 / 075 --
+mean loss: 3.639851
+accuracy: 0.568053
+ -- 030 / 075 --
+mean loss: 3.362615
+accuracy: 0.593039
+ -- 040 / 075 --
+mean loss: 3.455808
+accuracy: 0.587234
+ -- 050 / 075 --
+mean loss: 3.123895
+accuracy: 0.579679
+ -- 060 / 075 --
+mean loss: 3.560144
+accuracy: 0.577899
+ -- 070 / 075 --
+mean loss: 3.706922
+accuracy: 0.578608
+**** EPOCH 105 ****
+2019-07-10 21:12:11.459704
+ -- 010 / 075 --
+mean loss: 3.755350
+accuracy: 0.589722
+ -- 020 / 075 --
+mean loss: 3.636218
+accuracy: 0.579276
+ -- 030 / 075 --
+mean loss: 3.198655
+accuracy: 0.608012
+ -- 040 / 075 --
+mean loss: 3.801378
+accuracy: 0.569804
+ -- 050 / 075 --
+mean loss: 3.438929
+accuracy: 0.583965
+ -- 060 / 075 --
+mean loss: 3.777912
+accuracy: 0.563290
+ -- 070 / 075 --
+mean loss: 3.089151
+accuracy: 0.591209
+2019-07-10 21:13:04.872875
+---- EPOCH 042 EVALUATION ----
+eval mean loss: 0.882719
+eval point accuracy vox: 0.771566
+eval point avg class acc vox: 0.516807
+eval point accuracy: 0.773491
+eval point avg class acc: 0.515056
+eval point calibrated average acc: 0.819845
+vox based --------class 1 weight: 0.405976, acc: 0.867157; class 2 weight: 0.243652, acc: 0.986239; class 3 weight: 0.059032, acc: 0.807245; class 4 weight: 0.036652, acc: 0.540990; class 5 weight: 0.017128, acc: 0.483151; class 6 weight: 0.019820, acc: 0.695997; class 7 weight: 0.021759, acc: 0.871294; class 8 weight: 0.033630, acc: 0.865285; class 9 weight: 0.006922, acc: 0.595534; class 10 weight: 0.005594, acc: 0.840167; class 11 weight: 0.006515, acc: 0.903506; class 12 weight: 0.011080, acc: 0.516405; class 13 weight: 0.011285, acc: 0.151986; class 14 weight: 0.036661, acc: 0.065157; class 15 weight: 0.007409, acc: 0.013773; class 16 weight: 0.004633, acc: 0.382553; class 17 weight: 0.007862, acc: 0.274255; class 18 weight: 0.001153, acc: 0.000000; class 19 weight: 0.032663, acc: 0.301456; class 20 weight: 0.030572, acc: 0.138974; 
+2019-07-10 21:13:17.620629
+---- EPOCH 043 EVALUATION WHOLE SCENE----
+eval whole scene mean loss: 0.782439
+eval whole scene point accuracy vox: 0.807935
+eval whole scene point avg class acc vox: 0.514593
+eval whole scene point accuracy: 0.809421
+eval whole scene point avg class acc: 0.500677
+eval whole scene point calibrated average acc vox: 0.825648
+vox based --------class 1 weight: 0.393198, acc: 0.881159; class 2 weight: 0.306386, acc: 0.984412; class 3 weight: 0.057613, acc: 0.829478; class 4 weight: 0.035809, acc: 0.590551; class 5 weight: 0.017109, acc: 0.384744; class 6 weight: 0.022518, acc: 0.708765; class 7 weight: 0.018407, acc: 0.806882; class 8 weight: 0.028972, acc: 0.780691; class 9 weight: 0.003307, acc: 0.649270; class 10 weight: 0.002134, acc: 0.817500; class 11 weight: 0.002476, acc: 0.808880; class 12 weight: 0.008269, acc: 0.632367; class 13 weight: 0.007109, acc: 0.277160; class 14 weight: 0.022369, acc: 0.079948; class 15 weight: 0.005494, acc: 0.002187; class 16 weight: 0.000887, acc: 0.314306; class 17 weight: 0.003709, acc: 0.250310; class 18 weight: 0.001781, acc: 0.000000; class 19 weight: 0.026718, acc: 0.312835; class 20 weight: 0.035734, acc: 0.180407; 
+**** EPOCH 106 ****
+2019-07-10 21:17:54.017030
+ -- 010 / 075 --
+mean loss: 3.468559
+accuracy: 0.598814
+ -- 020 / 075 --
+mean loss: 3.386030
+accuracy: 0.581208
+ -- 030 / 075 --
+mean loss: 3.680530
+accuracy: 0.577859
+ -- 040 / 075 --
+mean loss: 3.676964
+accuracy: 0.568111
+ -- 050 / 075 --
+mean loss: 3.262597
+accuracy: 0.573685
+ -- 060 / 075 --
+mean loss: 3.793110
+accuracy: 0.594132
+ -- 070 / 075 --
+mean loss: 3.294410
+accuracy: 0.587617
+**** EPOCH 107 ****
+2019-07-10 21:18:47.623227
+ -- 010 / 075 --
+mean loss: 3.669841
+accuracy: 0.595550
+ -- 020 / 075 --
+mean loss: 3.749117
+accuracy: 0.605711
+ -- 030 / 075 --
+mean loss: 3.266776
+accuracy: 0.604851
+ -- 040 / 075 --
+mean loss: 3.454436
+accuracy: 0.588522
+ -- 050 / 075 --
+mean loss: 3.632711
+accuracy: 0.609583
+ -- 060 / 075 --
+mean loss: 3.732047
+accuracy: 0.578454
+ -- 070 / 075 --
+mean loss: 3.105474
+accuracy: 0.617098
+**** EPOCH 108 ****
+2019-07-10 21:19:41.504231
+ -- 010 / 075 --
+mean loss: 3.579608
+accuracy: 0.574363
+ -- 020 / 075 --
+mean loss: 3.494402
+accuracy: 0.601437
+ -- 030 / 075 --
+mean loss: 3.688438
+accuracy: 0.597704
+ -- 040 / 075 --
+mean loss: 3.388960
+accuracy: 0.557543
+ -- 050 / 075 --
+mean loss: 3.617051
+accuracy: 0.597519
+ -- 060 / 075 --
+mean loss: 3.700247
+accuracy: 0.559653
+ -- 070 / 075 --
+mean loss: 3.272402
+accuracy: 0.560312
+**** EPOCH 109 ****
+2019-07-10 21:20:35.187672
+ -- 010 / 075 --
+mean loss: 3.529594
+accuracy: 0.566264
+ -- 020 / 075 --
+mean loss: 3.181213
+accuracy: 0.580042
+ -- 030 / 075 --
+mean loss: 3.340112
+accuracy: 0.580495
+ -- 040 / 075 --
+mean loss: 3.325906
+accuracy: 0.619897
+ -- 050 / 075 --
+mean loss: 3.397835
+accuracy: 0.582889
+ -- 060 / 075 --
+mean loss: 3.490241
+accuracy: 0.560996
+ -- 070 / 075 --
+mean loss: 3.040078
+accuracy: 0.595963
+**** EPOCH 110 ****
+2019-07-10 21:21:28.535499
+ -- 010 / 075 --
+mean loss: 3.258406
+accuracy: 0.545660
+ -- 020 / 075 --
+mean loss: 3.713319
+accuracy: 0.601448
+ -- 030 / 075 --
+mean loss: 3.735825
+accuracy: 0.603640
+ -- 040 / 075 --
+mean loss: 3.344896
+accuracy: 0.597900
+ -- 050 / 075 --
+mean loss: 3.376250
+accuracy: 0.570307
+ -- 060 / 075 --
+mean loss: 3.888425
+accuracy: 0.507178
+ -- 070 / 075 --
+mean loss: 3.291922
+accuracy: 0.577142
+2019-07-10 21:22:22.442280
+---- EPOCH 044 EVALUATION ----
+eval mean loss: 0.864379
+eval point accuracy vox: 0.773212
+eval point avg class acc vox: 0.503563
+eval point accuracy: 0.772589
+eval point avg class acc: 0.501224
+eval point calibrated average acc: 0.819899
+vox based --------class 1 weight: 0.398620, acc: 0.907114; class 2 weight: 0.249388, acc: 0.971245; class 3 weight: 0.068287, acc: 0.726921; class 4 weight: 0.027204, acc: 0.367289; class 5 weight: 0.015581, acc: 0.547928; class 6 weight: 0.019464, acc: 0.525503; class 7 weight: 0.025070, acc: 0.908028; class 8 weight: 0.024199, acc: 0.791132; class 9 weight: 0.004848, acc: 0.796766; class 10 weight: 0.006479, acc: 0.721540; class 11 weight: 0.005462, acc: 0.685491; class 12 weight: 0.013249, acc: 0.342160; class 13 weight: 0.012763, acc: 0.202823; class 14 weight: 0.029430, acc: 0.049923; class 15 weight: 0.009005, acc: 0.073941; class 16 weight: 0.000796, acc: 0.408815; class 17 weight: 0.005116, acc: 0.432713; class 18 weight: 0.001701, acc: 0.000000; class 19 weight: 0.043022, acc: 0.413345; class 20 weight: 0.040317, acc: 0.151795; 
+2019-07-10 21:22:35.212789
+---- EPOCH 045 EVALUATION WHOLE SCENE----
+eval whole scene mean loss: 0.783604
+eval whole scene point accuracy vox: 0.805546
+eval whole scene point avg class acc vox: 0.507952
+eval whole scene point accuracy: 0.806642
+eval whole scene point avg class acc: 0.496532
+eval whole scene point calibrated average acc vox: 0.825002
+vox based --------class 1 weight: 0.393277, acc: 0.909825; class 2 weight: 0.306467, acc: 0.976924; class 3 weight: 0.057711, acc: 0.750390; class 4 weight: 0.035811, acc: 0.426736; class 5 weight: 0.017057, acc: 0.441654; class 6 weight: 0.022549, acc: 0.603815; class 7 weight: 0.018138, acc: 0.883059; class 8 weight: 0.028912, acc: 0.766224; class 9 weight: 0.003303, acc: 0.601076; class 10 weight: 0.002133, acc: 0.675010; class 11 weight: 0.002507, acc: 0.791565; class 12 weight: 0.008307, acc: 0.373299; class 13 weight: 0.007122, acc: 0.277102; class 14 weight: 0.022416, acc: 0.105851; class 15 weight: 0.005519, acc: 0.145152; class 16 weight: 0.000892, acc: 0.653247; class 17 weight: 0.003705, acc: 0.254922; class 18 weight: 0.001776, acc: 0.000000; class 19 weight: 0.026663, acc: 0.380328; class 20 weight: 0.035734, acc: 0.142854; 
+Model saved in file: log/model.ckpt
+**** EPOCH 111 ****
+2019-07-10 21:27:17.418680
+ -- 010 / 075 --
+mean loss: 3.277975
+accuracy: 0.575736
+ -- 020 / 075 --
+mean loss: 3.586020
+accuracy: 0.569848
+ -- 030 / 075 --
+mean loss: 3.181846
+accuracy: 0.575981
+ -- 040 / 075 --
+mean loss: 3.502539
+accuracy: 0.536583
+ -- 050 / 075 --
+mean loss: 3.484225
+accuracy: 0.579739
+ -- 060 / 075 --
+mean loss: 3.196866
+accuracy: 0.545121
+ -- 070 / 075 --
+mean loss: 3.250703
+accuracy: 0.538099
+**** EPOCH 112 ****
+2019-07-10 21:28:11.260311
+ -- 010 / 075 --
+mean loss: 3.383784
+accuracy: 0.517339
+ -- 020 / 075 --
+mean loss: 3.488207
+accuracy: 0.538826
+ -- 030 / 075 --
+mean loss: 3.093182
+accuracy: 0.559684
+ -- 040 / 075 --
+mean loss: 3.827225
+accuracy: 0.557888
+ -- 050 / 075 --
+mean loss: 3.268311
+accuracy: 0.585564
+ -- 060 / 075 --
+mean loss: 2.911321
+accuracy: 0.567391
+ -- 070 / 075 --
+mean loss: 3.381016
+accuracy: 0.568418
+**** EPOCH 113 ****
+2019-07-10 21:29:04.943352
+ -- 010 / 075 --
+mean loss: 3.235027
+accuracy: 0.563583
+ -- 020 / 075 --
+mean loss: 3.272759
+accuracy: 0.576844
+ -- 030 / 075 --
+mean loss: 2.819852
+accuracy: 0.584468
+ -- 040 / 075 --
+mean loss: 3.232374
+accuracy: 0.590282
+ -- 050 / 075 --
+mean loss: 3.726625
+accuracy: 0.567963
+ -- 060 / 075 --
+mean loss: 2.992287
+accuracy: 0.586951
+ -- 070 / 075 --
+mean loss: 3.530948
+accuracy: 0.556950
+**** EPOCH 114 ****
+2019-07-10 21:29:58.078936
+ -- 010 / 075 --
+mean loss: 3.576557
+accuracy: 0.611427
+ -- 020 / 075 --
+mean loss: 3.276530
+accuracy: 0.586028
+ -- 030 / 075 --
+mean loss: 3.559572
+accuracy: 0.613094
+ -- 040 / 075 --
+mean loss: 3.267718
+accuracy: 0.589431
+ -- 050 / 075 --
+mean loss: 3.427507
+accuracy: 0.593629
+ -- 060 / 075 --
+mean loss: 3.300882
+accuracy: 0.606683
+ -- 070 / 075 --
+mean loss: 3.245043
+accuracy: 0.618085
+**** EPOCH 115 ****
+2019-07-10 21:30:51.948481
+ -- 010 / 075 --
+mean loss: 3.249293
+accuracy: 0.604578
+ -- 020 / 075 --
+mean loss: 3.605002
+accuracy: 0.584610
+ -- 030 / 075 --
+mean loss: 3.788884
+accuracy: 0.575983
+ -- 040 / 075 --
+mean loss: 3.510347
+accuracy: 0.607729
+ -- 050 / 075 --
+mean loss: 3.123836
+accuracy: 0.604480
+ -- 060 / 075 --
+mean loss: 3.277157
+accuracy: 0.598540
+ -- 070 / 075 --
+mean loss: 3.607845
+accuracy: 0.562941
+2019-07-10 21:31:45.254403
+---- EPOCH 046 EVALUATION ----
+eval mean loss: 0.880914
+eval point accuracy vox: 0.775969
+eval point avg class acc vox: 0.536197
+eval point accuracy: 0.777817
+eval point avg class acc: 0.534094
+eval point calibrated average acc: 0.821517
+vox based --------class 1 weight: 0.431106, acc: 0.878020; class 2 weight: 0.231432, acc: 0.988257; class 3 weight: 0.057806, acc: 0.697042; class 4 weight: 0.025178, acc: 0.505054; class 5 weight: 0.021617, acc: 0.376963; class 6 weight: 0.021176, acc: 0.411384; class 7 weight: 0.022776, acc: 0.676817; class 8 weight: 0.022658, acc: 0.877307; class 9 weight: 0.007426, acc: 0.399145; class 10 weight: 0.005483, acc: 0.879411; class 11 weight: 0.007908, acc: 0.915341; class 12 weight: 0.017527, acc: 0.473085; class 13 weight: 0.007872, acc: 0.405023; class 14 weight: 0.024508, acc: 0.191595; class 15 weight: 0.011500, acc: 0.566285; class 16 weight: 0.004091, acc: 0.408555; class 17 weight: 0.009289, acc: 0.361012; class 18 weight: 0.002429, acc: 0.000000; class 19 weight: 0.033113, acc: 0.396587; class 20 weight: 0.035105, acc: 0.274987; 
+2019-07-10 21:31:57.769282
+---- EPOCH 047 EVALUATION WHOLE SCENE----
+eval whole scene mean loss: 0.763977
+eval whole scene point accuracy vox: 0.806863
+eval whole scene point avg class acc vox: 0.545905
+eval whole scene point accuracy: 0.807903
+eval whole scene point avg class acc: 0.531953
+eval whole scene point calibrated average acc vox: 0.825556
+vox based --------class 1 weight: 0.393359, acc: 0.877984; class 2 weight: 0.306326, acc: 0.984838; class 3 weight: 0.057626, acc: 0.751164; class 4 weight: 0.035802, acc: 0.499840; class 5 weight: 0.017090, acc: 0.405689; class 6 weight: 0.022493, acc: 0.672086; class 7 weight: 0.018406, acc: 0.743774; class 8 weight: 0.028939, acc: 0.835457; class 9 weight: 0.003294, acc: 0.449658; class 10 weight: 0.002143, acc: 0.758065; class 11 weight: 0.002446, acc: 0.834079; class 12 weight: 0.008299, acc: 0.521334; class 13 weight: 0.007114, acc: 0.434853; class 14 weight: 0.022426, acc: 0.255250; class 15 weight: 0.005517, acc: 0.332725; class 16 weight: 0.000885, acc: 0.607164; class 17 weight: 0.003706, acc: 0.403045; class 18 weight: 0.001767, acc: 0.000000; class 19 weight: 0.026659, acc: 0.344344; class 20 weight: 0.035700, acc: 0.206756; 
+**** EPOCH 116 ****
+2019-07-10 21:36:37.729110
+ -- 010 / 075 --
+mean loss: 3.334392
+accuracy: 0.594419
+ -- 020 / 075 --
+mean loss: 2.939081
+accuracy: 0.610341
+ -- 030 / 075 --
+mean loss: 3.688047
+accuracy: 0.541370
+ -- 040 / 075 --
+mean loss: 3.378298
+accuracy: 0.552776
+ -- 050 / 075 --
+mean loss: 3.465544
+accuracy: 0.598546
+ -- 060 / 075 --
+mean loss: 3.569746
+accuracy: 0.553317
+ -- 070 / 075 --
+mean loss: 3.307580
+accuracy: 0.617312
+**** EPOCH 117 ****
+2019-07-10 21:37:31.699235
+ -- 010 / 075 --
+mean loss: 3.593711
+accuracy: 0.576192
+ -- 020 / 075 --
+mean loss: 3.356406
+accuracy: 0.556285
+ -- 030 / 075 --
+mean loss: 3.206170
+accuracy: 0.574399
+ -- 040 / 075 --
+mean loss: 3.325793
+accuracy: 0.570337
+ -- 050 / 075 --
+mean loss: 3.389821
+accuracy: 0.532535
+ -- 060 / 075 --
+mean loss: 3.252667
+accuracy: 0.601853
+ -- 070 / 075 --
+mean loss: 3.077050
+accuracy: 0.581022
+**** EPOCH 118 ****
+2019-07-10 21:38:25.426203
+ -- 010 / 075 --
+mean loss: 3.605231
+accuracy: 0.555701
+ -- 020 / 075 --
+mean loss: 2.971148
+accuracy: 0.592917
+ -- 030 / 075 --
+mean loss: 3.074681
+accuracy: 0.572852
+ -- 040 / 075 --
+mean loss: 3.522434
+accuracy: 0.604544
+ -- 050 / 075 --
+mean loss: 3.944767
+accuracy: 0.565860
+ -- 060 / 075 --
+mean loss: 3.354163
+accuracy: 0.614451
+ -- 070 / 075 --
+mean loss: 3.212999
+accuracy: 0.602415
+**** EPOCH 119 ****
+2019-07-10 21:39:18.413483
+ -- 010 / 075 --
+mean loss: 3.551615
+accuracy: 0.585144
+ -- 020 / 075 --
+mean loss: 4.071067
+accuracy: 0.583386
+ -- 030 / 075 --
+mean loss: 3.311559
+accuracy: 0.557194
+ -- 040 / 075 --
+mean loss: 3.279717
+accuracy: 0.586426
+ -- 050 / 075 --
+mean loss: 3.529395
+accuracy: 0.579340
+ -- 060 / 075 --
+mean loss: 3.078274
+accuracy: 0.604067
+ -- 070 / 075 --
+mean loss: 3.322888
+accuracy: 0.583753
+**** EPOCH 120 ****
+2019-07-10 21:40:11.449548
+ -- 010 / 075 --
+mean loss: 3.209996
+accuracy: 0.600304
+ -- 020 / 075 --
+mean loss: 3.298323
+accuracy: 0.600626
+ -- 030 / 075 --
+mean loss: 3.760180
+accuracy: 0.579429
+ -- 040 / 075 --
+mean loss: 3.568332
+accuracy: 0.575268
+ -- 050 / 075 --
+mean loss: 3.329188
+accuracy: 0.590710
+ -- 060 / 075 --
+mean loss: 3.473589
+accuracy: 0.571171
+ -- 070 / 075 --
+mean loss: 3.237590
+accuracy: 0.613159
+2019-07-10 21:41:04.769931
+---- EPOCH 048 EVALUATION ----
+eval mean loss: 0.907382
+eval point accuracy vox: 0.767442
+eval point avg class acc vox: 0.576399
+eval point accuracy: 0.768035
+eval point avg class acc: 0.578213
+eval point calibrated average acc: 0.798887
+vox based --------class 1 weight: 0.436574, acc: 0.820539; class 2 weight: 0.233510, acc: 0.969836; class 3 weight: 0.057182, acc: 0.871283; class 4 weight: 0.030149, acc: 0.594835; class 5 weight: 0.020228, acc: 0.617186; class 6 weight: 0.021839, acc: 0.581621; class 7 weight: 0.017313, acc: 0.651708; class 8 weight: 0.028913, acc: 0.580454; class 9 weight: 0.007589, acc: 0.608968; class 10 weight: 0.005845, acc: 0.951655; class 11 weight: 0.005620, acc: 0.555473; class 12 weight: 0.010804, acc: 0.670792; class 13 weight: 0.012448, acc: 0.415631; class 14 weight: 0.017690, acc: 0.144829; class 15 weight: 0.006727, acc: 0.208210; class 16 weight: 0.003917, acc: 0.973982; class 17 weight: 0.007317, acc: 0.786619; class 18 weight: 0.003675, acc: 0.000000; class 19 weight: 0.043527, acc: 0.408071; class 20 weight: 0.029135, acc: 0.152565; 
+2019-07-10 21:41:17.370484
+---- EPOCH 049 EVALUATION WHOLE SCENE----
+eval whole scene mean loss: 0.820023
+eval whole scene point accuracy vox: 0.778702
+eval whole scene point avg class acc vox: 0.537521
+eval whole scene point accuracy: 0.780388
+eval whole scene point avg class acc: 0.528872
+eval whole scene point calibrated average acc vox: 0.796153
+vox based --------class 1 weight: 0.392975, acc: 0.812630; class 2 weight: 0.306596, acc: 0.979319; class 3 weight: 0.057687, acc: 0.893406; class 4 weight: 0.035804, acc: 0.639964; class 5 weight: 0.017119, acc: 0.530628; class 6 weight: 0.022547, acc: 0.570849; class 7 weight: 0.018255, acc: 0.537679; class 8 weight: 0.028960, acc: 0.572436; class 9 weight: 0.003310, acc: 0.656918; class 10 weight: 0.002146, acc: 0.881401; class 11 weight: 0.002483, acc: 0.519187; class 12 weight: 0.008311, acc: 0.568485; class 13 weight: 0.007121, acc: 0.359927; class 14 weight: 0.022389, acc: 0.182847; class 15 weight: 0.005516, acc: 0.162388; class 16 weight: 0.000881, acc: 0.652314; class 17 weight: 0.003708, acc: 0.701183; class 18 weight: 0.001756, acc: 0.000000; class 19 weight: 0.026696, acc: 0.376371; class 20 weight: 0.035740, acc: 0.152491; 
+Model saved in file: log/model.ckpt
+**** EPOCH 121 ****
+2019-07-10 21:45:56.616617
+ -- 010 / 075 --
+mean loss: 3.253597
+accuracy: 0.562401
+ -- 020 / 075 --
+mean loss: 3.773750
+accuracy: 0.528479
+ -- 030 / 075 --
+mean loss: 3.265091
+accuracy: 0.558956
+ -- 040 / 075 --
+mean loss: 3.094933
+accuracy: 0.578201
+ -- 050 / 075 --
+mean loss: 3.572356
+accuracy: 0.582222
+ -- 060 / 075 --
+mean loss: 3.673053
+accuracy: 0.569956
+ -- 070 / 075 --
+mean loss: 3.366432
+accuracy: 0.546013
+**** EPOCH 122 ****
+2019-07-10 21:46:49.693804
+ -- 010 / 075 --
+mean loss: 3.761633
+accuracy: 0.580218
+ -- 020 / 075 --
+mean loss: 3.418248
+accuracy: 0.572162
+ -- 030 / 075 --
+mean loss: 3.653701
+accuracy: 0.547234
+ -- 040 / 075 --
+mean loss: 3.459308
+accuracy: 0.572298
+ -- 050 / 075 --
+mean loss: 3.140467
+accuracy: 0.593598
+ -- 060 / 075 --
+mean loss: 3.867021
+accuracy: 0.556659
+ -- 070 / 075 --
+mean loss: 3.522709
+accuracy: 0.593155
+**** EPOCH 123 ****
+2019-07-10 21:47:42.175914
+ -- 010 / 075 --
+mean loss: 2.960901
+accuracy: 0.585249
+ -- 020 / 075 --
+mean loss: 3.074270
+accuracy: 0.625249
+ -- 030 / 075 --
+mean loss: 3.239399
+accuracy: 0.626204
+ -- 040 / 075 --
+mean loss: 3.499830
+accuracy: 0.595287
+ -- 050 / 075 --
+mean loss: 3.193921
+accuracy: 0.597649
+ -- 060 / 075 --
+mean loss: 3.356179
+accuracy: 0.585838
+ -- 070 / 075 --
+mean loss: 3.210094
+accuracy: 0.564629
+**** EPOCH 124 ****
+2019-07-10 21:48:35.995240
+ -- 010 / 075 --
+mean loss: 3.228011
+accuracy: 0.601174
+ -- 020 / 075 --
+mean loss: 3.545073
+accuracy: 0.582117
+ -- 030 / 075 --
+mean loss: 3.121622
+accuracy: 0.574707
+ -- 040 / 075 --
+mean loss: 3.111869
+accuracy: 0.547399
+ -- 050 / 075 --
+mean loss: 3.251374
+accuracy: 0.586154
+ -- 060 / 075 --
+mean loss: 3.271221
+accuracy: 0.556642
+ -- 070 / 075 --
+mean loss: 3.607859
+accuracy: 0.567144
+**** EPOCH 125 ****
+2019-07-10 21:49:29.673684
+ -- 010 / 075 --
+mean loss: 3.270366
+accuracy: 0.600847
+ -- 020 / 075 --
+mean loss: 3.172330
+accuracy: 0.589537
+ -- 030 / 075 --
+mean loss: 2.902975
+accuracy: 0.591365
+ -- 040 / 075 --
+mean loss: 3.334802
+accuracy: 0.583653
+ -- 050 / 075 --
+mean loss: 3.173297
+accuracy: 0.576493
+ -- 060 / 075 --
+mean loss: 3.257668
+accuracy: 0.585223
+ -- 070 / 075 --
+mean loss: 2.987710
+accuracy: 0.609304
+2019-07-10 21:50:23.187047
+---- EPOCH 050 EVALUATION ----
+eval mean loss: 0.855205
+eval point accuracy vox: 0.781478
+eval point avg class acc vox: 0.551845
+eval point accuracy: 0.781750
+eval point avg class acc: 0.551797
+eval point calibrated average acc: 0.815774
+vox based --------class 1 weight: 0.426107, acc: 0.866292; class 2 weight: 0.243129, acc: 0.967623; class 3 weight: 0.059092, acc: 0.643151; class 4 weight: 0.027330, acc: 0.543970; class 5 weight: 0.021551, acc: 0.583535; class 6 weight: 0.025472, acc: 0.727071; class 7 weight: 0.015865, acc: 0.743210; class 8 weight: 0.027301, acc: 0.760761; class 9 weight: 0.003374, acc: 0.548129; class 10 weight: 0.006007, acc: 0.890504; class 11 weight: 0.004204, acc: 0.537053; class 12 weight: 0.022707, acc: 0.794314; class 13 weight: 0.006278, acc: 0.419776; class 14 weight: 0.027370, acc: 0.190657; class 15 weight: 0.009431, acc: 0.180925; class 16 weight: 0.001588, acc: 0.653579; class 17 weight: 0.007152, acc: 0.353513; class 18 weight: 0.002058, acc: 0.000000; class 19 weight: 0.030506, acc: 0.453409; class 20 weight: 0.033479, acc: 0.178473; 
+2019-07-10 21:50:35.982029
+---- EPOCH 051 EVALUATION WHOLE SCENE----
+eval whole scene mean loss: 0.777762
+eval whole scene point accuracy vox: 0.805674
+eval whole scene point avg class acc vox: 0.529523
+eval whole scene point accuracy: 0.806436
+eval whole scene point avg class acc: 0.517330
+eval whole scene point calibrated average acc vox: 0.824299
+vox based --------class 1 weight: 0.393167, acc: 0.865945; class 2 weight: 0.306465, acc: 0.978552; class 3 weight: 0.057764, acc: 0.724651; class 4 weight: 0.035846, acc: 0.612085; class 5 weight: 0.017096, acc: 0.465068; class 6 weight: 0.022531, acc: 0.725221; class 7 weight: 0.018272, acc: 0.789405; class 8 weight: 0.028894, acc: 0.814081; class 9 weight: 0.003303, acc: 0.437607; class 10 weight: 0.002157, acc: 0.743035; class 11 weight: 0.002483, acc: 0.477885; class 12 weight: 0.008301, acc: 0.762117; class 13 weight: 0.007146, acc: 0.354179; class 14 weight: 0.022419, acc: 0.243793; class 15 weight: 0.005506, acc: 0.148997; class 16 weight: 0.000886, acc: 0.458753; class 17 weight: 0.003678, acc: 0.382084; class 18 weight: 0.001766, acc: 0.000000; class 19 weight: 0.026658, acc: 0.394415; class 20 weight: 0.035663, acc: 0.212593; 
+**** EPOCH 126 ****
+2019-07-10 21:55:15.134698
+ -- 010 / 075 --
+mean loss: 3.324014
+accuracy: 0.578452
+ -- 020 / 075 --
+mean loss: 3.487557
+accuracy: 0.550639
+ -- 030 / 075 --
+mean loss: 3.252631
+accuracy: 0.568092
+ -- 040 / 075 --
+mean loss: 3.477757
+accuracy: 0.587313
+ -- 050 / 075 --
+mean loss: 3.544946
+accuracy: 0.562391
+ -- 060 / 075 --
+mean loss: 3.085011
+accuracy: 0.599339
+ -- 070 / 075 --
+mean loss: 3.202846
+accuracy: 0.570889
+**** EPOCH 127 ****
+2019-07-10 21:56:08.817620
+ -- 010 / 075 --
+mean loss: 3.354612
+accuracy: 0.572100
+ -- 020 / 075 --
+mean loss: 3.345733
+accuracy: 0.583070
+ -- 030 / 075 --
+mean loss: 3.467246
+accuracy: 0.608904
+ -- 040 / 075 --
+mean loss: 3.305867
+accuracy: 0.563469
+ -- 050 / 075 --
+mean loss: 2.867096
+accuracy: 0.598758
+ -- 060 / 075 --
+mean loss: 3.233747
+accuracy: 0.571003
+ -- 070 / 075 --
+mean loss: 3.102998
+accuracy: 0.546202
+**** EPOCH 128 ****
+2019-07-10 21:57:02.313478
+ -- 010 / 075 --
+mean loss: 3.241548
+accuracy: 0.571170
+ -- 020 / 075 --
+mean loss: 3.484250
+accuracy: 0.566993
+ -- 030 / 075 --
+mean loss: 3.762619
+accuracy: 0.565501
+ -- 040 / 075 --
+mean loss: 3.490825
+accuracy: 0.596210
+ -- 050 / 075 --
+mean loss: 3.495066
+accuracy: 0.548383
+ -- 060 / 075 --
+mean loss: 3.408506
+accuracy: 0.586346
+ -- 070 / 075 --
+mean loss: 3.376831
+accuracy: 0.561893
+**** EPOCH 129 ****
+2019-07-10 21:57:55.313046
+ -- 010 / 075 --
+mean loss: 3.007828
+accuracy: 0.582652
+ -- 020 / 075 --
+mean loss: 3.096447
+accuracy: 0.553683
+ -- 030 / 075 --
+mean loss: 3.594294
+accuracy: 0.550553
+ -- 040 / 075 --
+mean loss: 3.215716
+accuracy: 0.628440
+ -- 050 / 075 --
+mean loss: 3.543593
+accuracy: 0.569759
+ -- 060 / 075 --
+mean loss: 3.291877
+accuracy: 0.581102
+ -- 070 / 075 --
+mean loss: 3.294500
+accuracy: 0.570641
+**** EPOCH 130 ****
+2019-07-10 21:58:48.664284
+ -- 010 / 075 --
+mean loss: 2.996265
+accuracy: 0.574290
+ -- 020 / 075 --
+mean loss: 2.969266
+accuracy: 0.593512
+ -- 030 / 075 --
+mean loss: 3.397414
+accuracy: 0.592105
+ -- 040 / 075 --
+mean loss: 3.212415
+accuracy: 0.571619
+ -- 050 / 075 --
+mean loss: 2.856424
+accuracy: 0.556971
+ -- 060 / 075 --
+mean loss: 2.948380
+accuracy: 0.555927
+ -- 070 / 075 --
+mean loss: 4.183716
+accuracy: 0.522652
+2019-07-10 21:59:42.551109
+---- EPOCH 052 EVALUATION ----
+eval mean loss: 0.881689
+eval point accuracy vox: 0.766960
+eval point avg class acc vox: 0.554672
+eval point accuracy: 0.768122
+eval point avg class acc: 0.552867
+eval point calibrated average acc: 0.799492
+vox based --------class 1 weight: 0.447991, acc: 0.830388; class 2 weight: 0.233491, acc: 0.967278; class 3 weight: 0.057064, acc: 0.662231; class 4 weight: 0.028542, acc: 0.490411; class 5 weight: 0.015573, acc: 0.450835; class 6 weight: 0.025845, acc: 0.732311; class 7 weight: 0.019976, acc: 0.733607; class 8 weight: 0.031079, acc: 0.820204; class 9 weight: 0.006454, acc: 0.455719; class 10 weight: 0.004303, acc: 0.973934; class 11 weight: 0.007587, acc: 0.856189; class 12 weight: 0.006053, acc: 0.340446; class 13 weight: 0.010654, acc: 0.400809; class 14 weight: 0.029221, acc: 0.206381; class 15 weight: 0.007207, acc: 0.091017; class 16 weight: 0.001077, acc: 0.991010; class 17 weight: 0.003158, acc: 0.352744; class 18 weight: 0.003050, acc: 0.000000; class 19 weight: 0.033554, acc: 0.413733; class 20 weight: 0.028119, acc: 0.288090; 
+2019-07-10 21:59:55.384063
+---- EPOCH 053 EVALUATION WHOLE SCENE----
+eval whole scene mean loss: 0.785174
+eval whole scene point accuracy vox: 0.797705
+eval whole scene point avg class acc vox: 0.563485
+eval whole scene point accuracy: 0.798682
+eval whole scene point avg class acc: 0.551847
+eval whole scene point calibrated average acc vox: 0.817579
+vox based --------class 1 weight: 0.393288, acc: 0.853256; class 2 weight: 0.306270, acc: 0.980930; class 3 weight: 0.057658, acc: 0.661595; class 4 weight: 0.035793, acc: 0.592319; class 5 weight: 0.017056, acc: 0.466386; class 6 weight: 0.022558, acc: 0.746127; class 7 weight: 0.018377, acc: 0.818150; class 8 weight: 0.028950, acc: 0.819403; class 9 weight: 0.003298, acc: 0.449032; class 10 weight: 0.002153, acc: 0.838142; class 11 weight: 0.002473, acc: 0.831565; class 12 weight: 0.008292, acc: 0.540342; class 13 weight: 0.007131, acc: 0.490479; class 14 weight: 0.022418, acc: 0.240478; class 15 weight: 0.005554, acc: 0.146893; class 16 weight: 0.000883, acc: 0.813013; class 17 weight: 0.003687, acc: 0.413506; class 18 weight: 0.001775, acc: 0.000000; class 19 weight: 0.026695, acc: 0.359424; class 20 weight: 0.035694, acc: 0.208666; 
+Model saved in file: log/model.ckpt
+**** EPOCH 131 ****
+2019-07-10 22:04:34.568609
+ -- 010 / 075 --
+mean loss: 3.089343
+accuracy: 0.586234
+ -- 020 / 075 --
+mean loss: 3.212452
+accuracy: 0.572447
+ -- 030 / 075 --
+mean loss: 2.981226
+accuracy: 0.558928
+ -- 040 / 075 --
+mean loss: 3.114518
+accuracy: 0.564560
+ -- 050 / 075 --
+mean loss: 3.384833
+accuracy: 0.560170
+ -- 060 / 075 --
+mean loss: 3.184660
+accuracy: 0.576473
+ -- 070 / 075 --
+mean loss: 2.953041
+accuracy: 0.584472
+**** EPOCH 132 ****
+2019-07-10 22:05:28.033659
+ -- 010 / 075 --
+mean loss: 3.734234
+accuracy: 0.555820
+ -- 020 / 075 --
+mean loss: 3.217604
+accuracy: 0.584831
+ -- 030 / 075 --
+mean loss: 3.172535
+accuracy: 0.596863
+ -- 040 / 075 --
+mean loss: 3.060497
+accuracy: 0.601598
+ -- 050 / 075 --
+mean loss: 3.428687
+accuracy: 0.578107
+ -- 060 / 075 --
+mean loss: 3.284285
+accuracy: 0.556951
+ -- 070 / 075 --
+mean loss: 3.358078
+accuracy: 0.528799
+**** EPOCH 133 ****
+2019-07-10 22:06:21.857156
+ -- 010 / 075 --
+mean loss: 3.554260
+accuracy: 0.576484
+ -- 020 / 075 --
+mean loss: 3.099636
+accuracy: 0.560095
+ -- 030 / 075 --
+mean loss: 4.180420
+accuracy: 0.570036
+ -- 040 / 075 --
+mean loss: 2.966476
+accuracy: 0.596510
+ -- 050 / 075 --
+mean loss: 3.346609
+accuracy: 0.613935
+ -- 060 / 075 --
+mean loss: 3.328760
+accuracy: 0.569768
+ -- 070 / 075 --
+mean loss: 3.246994
+accuracy: 0.593744
+**** EPOCH 134 ****
+2019-07-10 22:07:15.551967
+ -- 010 / 075 --
+mean loss: 3.848100
+accuracy: 0.578090
+ -- 020 / 075 --
+mean loss: 3.657873
+accuracy: 0.573267
+ -- 030 / 075 --
+mean loss: 3.097146
+accuracy: 0.630293
+ -- 040 / 075 --
+mean loss: 3.582657
+accuracy: 0.552947
+ -- 050 / 075 --
+mean loss: 3.752770
+accuracy: 0.569992
+ -- 060 / 075 --
+mean loss: 2.975801
+accuracy: 0.574220
+ -- 070 / 075 --
+mean loss: 3.541997
+accuracy: 0.550444
+**** EPOCH 135 ****
+2019-07-10 22:08:09.529000
+ -- 010 / 075 --
+mean loss: 3.563066
+accuracy: 0.567001
+ -- 020 / 075 --
+mean loss: 3.727310
+accuracy: 0.566721
+ -- 030 / 075 --
+mean loss: 3.204884
+accuracy: 0.578680
+ -- 040 / 075 --
+mean loss: 3.112462
+accuracy: 0.593898
+ -- 050 / 075 --
+mean loss: 2.972985
+accuracy: 0.587394
+ -- 060 / 075 --
+mean loss: 3.192073
+accuracy: 0.552703
+ -- 070 / 075 --
+mean loss: 3.349807
+accuracy: 0.601104
+2019-07-10 22:09:02.867107
+---- EPOCH 054 EVALUATION ----
+eval mean loss: 0.882224
+eval point accuracy vox: 0.765641
+eval point avg class acc vox: 0.591111
+eval point accuracy: 0.766761
+eval point avg class acc: 0.590272
+eval point calibrated average acc: 0.801235
+vox based --------class 1 weight: 0.425803, acc: 0.816313; class 2 weight: 0.237819, acc: 0.962064; class 3 weight: 0.056415, acc: 0.778034; class 4 weight: 0.024384, acc: 0.596985; class 5 weight: 0.014701, acc: 0.626361; class 6 weight: 0.016576, acc: 0.524191; class 7 weight: 0.022110, acc: 0.938875; class 8 weight: 0.034387, acc: 0.814933; class 9 weight: 0.007364, acc: 0.817155; class 10 weight: 0.004578, acc: 0.885199; class 11 weight: 0.005272, acc: 0.916526; class 12 weight: 0.021312, acc: 0.628923; class 13 weight: 0.007636, acc: 0.229321; class 14 weight: 0.029875, acc: 0.292094; class 15 weight: 0.012649, acc: 0.253653; class 16 weight: 0.003723, acc: 0.743444; class 17 weight: 0.007441, acc: 0.472849; class 18 weight: 0.001890, acc: 0.000000; class 19 weight: 0.030559, acc: 0.349384; class 20 weight: 0.035506, acc: 0.159129; 
+2019-07-10 22:09:15.585947
+---- EPOCH 055 EVALUATION WHOLE SCENE----
+eval whole scene mean loss: 0.804023
+eval whole scene point accuracy vox: 0.783724
+eval whole scene point avg class acc vox: 0.568447
+eval whole scene point accuracy: 0.785998
+eval whole scene point avg class acc: 0.555989
+eval whole scene point calibrated average acc vox: 0.800839
+vox based --------class 1 weight: 0.393123, acc: 0.795765; class 2 weight: 0.306405, acc: 0.980147; class 3 weight: 0.057700, acc: 0.826913; class 4 weight: 0.035795, acc: 0.584370; class 5 weight: 0.017119, acc: 0.418073; class 6 weight: 0.022554, acc: 0.636053; class 7 weight: 0.018423, acc: 0.895354; class 8 weight: 0.028922, acc: 0.739235; class 9 weight: 0.003309, acc: 0.591657; class 10 weight: 0.002138, acc: 0.871653; class 11 weight: 0.002489, acc: 0.852217; class 12 weight: 0.008269, acc: 0.562081; class 13 weight: 0.007114, acc: 0.338418; class 14 weight: 0.022434, acc: 0.405693; class 15 weight: 0.005548, acc: 0.185455; class 16 weight: 0.000885, acc: 0.719720; class 17 weight: 0.003706, acc: 0.379101; class 18 weight: 0.001760, acc: 0.000000; class 19 weight: 0.026650, acc: 0.393226; class 20 weight: 0.035657, acc: 0.193807; 
+**** EPOCH 136 ****
+2019-07-10 22:13:53.235735
+ -- 010 / 075 --
+mean loss: 3.292660
+accuracy: 0.581015
+ -- 020 / 075 --
+mean loss: 3.294995
+accuracy: 0.608072
+ -- 030 / 075 --
+mean loss: 3.430104
+accuracy: 0.556326
+ -- 040 / 075 --
+mean loss: 3.684557
+accuracy: 0.574989
+ -- 050 / 075 --
+mean loss: 3.473708
+accuracy: 0.567369
+ -- 060 / 075 --
+mean loss: 3.626259
+accuracy: 0.571098
+ -- 070 / 075 --
+mean loss: 3.164968
+accuracy: 0.583274
+**** EPOCH 137 ****
+2019-07-10 22:14:46.956740
+ -- 010 / 075 --
+mean loss: 3.572697
+accuracy: 0.575858
+ -- 020 / 075 --
+mean loss: 3.207642
+accuracy: 0.604549
+ -- 030 / 075 --
+mean loss: 2.992641
+accuracy: 0.596551
+ -- 040 / 075 --
+mean loss: 3.272762
+accuracy: 0.573097
+ -- 050 / 075 --
+mean loss: 3.152626
+accuracy: 0.589757
+ -- 060 / 075 --
+mean loss: 3.252331
+accuracy: 0.550971
+ -- 070 / 075 --
+mean loss: 3.054123
+accuracy: 0.546667
+**** EPOCH 138 ****
+2019-07-10 22:15:40.905774
+ -- 010 / 075 --
+mean loss: 3.003128
+accuracy: 0.608594
+ -- 020 / 075 --
+mean loss: 3.335263
+accuracy: 0.582613
+ -- 030 / 075 --
+mean loss: 3.047034
+accuracy: 0.594016
+ -- 040 / 075 --
+mean loss: 3.058353
+accuracy: 0.572585
+ -- 050 / 075 --
+mean loss: 3.673240
+accuracy: 0.566400
+ -- 060 / 075 --
+mean loss: 3.118428
+accuracy: 0.575185
+ -- 070 / 075 --
+mean loss: 3.316613
+accuracy: 0.549500
+**** EPOCH 139 ****
+2019-07-10 22:16:34.896739
+ -- 010 / 075 --
+mean loss: 3.313367
+accuracy: 0.572884
+ -- 020 / 075 --
+mean loss: 3.723269
+accuracy: 0.565945
+ -- 030 / 075 --
+mean loss: 2.891198
+accuracy: 0.615444
+ -- 040 / 075 --
+mean loss: 3.286606
+accuracy: 0.567795
+ -- 050 / 075 --
+mean loss: 3.230964
+accuracy: 0.563985
+ -- 060 / 075 --
+mean loss: 3.112144
+accuracy: 0.557273
+ -- 070 / 075 --
+mean loss: 3.057070
+accuracy: 0.592087
+**** EPOCH 140 ****
+2019-07-10 22:17:28.253004
+ -- 010 / 075 --
+mean loss: 3.572210
+accuracy: 0.579436
+ -- 020 / 075 --
+mean loss: 3.020996
+accuracy: 0.556771
+ -- 030 / 075 --
+mean loss: 3.316067
+accuracy: 0.564439
+ -- 040 / 075 --
+mean loss: 3.477392
+accuracy: 0.566805
+ -- 050 / 075 --
+mean loss: 2.851809
+accuracy: 0.590685
+ -- 060 / 075 --
+mean loss: 3.302197
+accuracy: 0.573450
+ -- 070 / 075 --
+mean loss: 3.446294
+accuracy: 0.575210
+2019-07-10 22:18:21.517981
+---- EPOCH 056 EVALUATION ----
+eval mean loss: 0.854937
+eval point accuracy vox: 0.777986
+eval point avg class acc vox: 0.561618
+eval point accuracy: 0.778091
+eval point avg class acc: 0.562317
+eval point calibrated average acc: 0.814551
+vox based --------class 1 weight: 0.447222, acc: 0.866424; class 2 weight: 0.234084, acc: 0.970384; class 3 weight: 0.050304, acc: 0.620869; class 4 weight: 0.023068, acc: 0.597433; class 5 weight: 0.016360, acc: 0.303244; class 6 weight: 0.019259, acc: 0.729727; class 7 weight: 0.014732, acc: 0.903351; class 8 weight: 0.031407, acc: 0.702869; class 9 weight: 0.004129, acc: 0.656577; class 10 weight: 0.008503, acc: 0.760734; class 11 weight: 0.005305, acc: 0.901111; class 12 weight: 0.018665, acc: 0.571798; class 13 weight: 0.006875, acc: 0.425433; class 14 weight: 0.023624, acc: 0.190895; class 15 weight: 0.009286, acc: 0.085971; class 16 weight: 0.002447, acc: 0.887805; class 17 weight: 0.005796, acc: 0.395104; class 18 weight: 0.001753, acc: 0.000000; class 19 weight: 0.038014, acc: 0.429576; class 20 weight: 0.039168, acc: 0.247039; 
+2019-07-10 22:18:34.068030
+---- EPOCH 057 EVALUATION WHOLE SCENE----
+eval whole scene mean loss: 0.751872
+eval whole scene point accuracy vox: 0.805849
+eval whole scene point avg class acc vox: 0.565572
+eval whole scene point accuracy: 0.808661
+eval whole scene point avg class acc: 0.554202
+eval whole scene point calibrated average acc vox: 0.822460
+vox based --------class 1 weight: 0.393327, acc: 0.860245; class 2 weight: 0.306395, acc: 0.977943; class 3 weight: 0.057644, acc: 0.783713; class 4 weight: 0.035811, acc: 0.600811; class 5 weight: 0.017084, acc: 0.261010; class 6 weight: 0.022552, acc: 0.675652; class 7 weight: 0.018346, acc: 0.896910; class 8 weight: 0.028907, acc: 0.796404; class 9 weight: 0.003316, acc: 0.548625; class 10 weight: 0.002152, acc: 0.870560; class 11 weight: 0.002468, acc: 0.835923; class 12 weight: 0.008256, acc: 0.505635; class 13 weight: 0.007120, acc: 0.314323; class 14 weight: 0.022375, acc: 0.242855; class 15 weight: 0.005539, acc: 0.317888; class 16 weight: 0.000880, acc: 0.592972; class 17 weight: 0.003706, acc: 0.577355; class 18 weight: 0.001765, acc: 0.000000; class 19 weight: 0.026652, acc: 0.368608; class 20 weight: 0.035704, acc: 0.284008; 
+Model saved in file: log/model.ckpt
+**** EPOCH 141 ****
+2019-07-10 22:23:09.930160
+ -- 010 / 075 --
+mean loss: 3.424349
+accuracy: 0.575748
+ -- 020 / 075 --
+mean loss: 3.359902
+accuracy: 0.559645
+ -- 030 / 075 --
+mean loss: 3.105424
+accuracy: 0.597329
+ -- 040 / 075 --
+mean loss: 3.177379
+accuracy: 0.566789
+ -- 050 / 075 --
+mean loss: 3.125044
+accuracy: 0.530771
+ -- 060 / 075 --
+mean loss: 3.051634
+accuracy: 0.551165
+ -- 070 / 075 --
+mean loss: 3.483824
+accuracy: 0.597069
+**** EPOCH 142 ****
+2019-07-10 22:24:02.737719
+ -- 010 / 075 --
+mean loss: 3.421080
+accuracy: 0.597989
+ -- 020 / 075 --
+mean loss: 3.472947
+accuracy: 0.606029
+ -- 030 / 075 --
+mean loss: 3.536383
+accuracy: 0.574330
+ -- 040 / 075 --
+mean loss: 3.026530
+accuracy: 0.582320
+ -- 050 / 075 --
+mean loss: 3.546729
+accuracy: 0.579287
+ -- 060 / 075 --
+mean loss: 3.355030
+accuracy: 0.573798
+ -- 070 / 075 --
+mean loss: 3.434448
+accuracy: 0.539053
+**** EPOCH 143 ****
+2019-07-10 22:24:55.013260
+ -- 010 / 075 --
+mean loss: 3.013518
+accuracy: 0.590946
+ -- 020 / 075 --
+mean loss: 3.714506
+accuracy: 0.588298
+ -- 030 / 075 --
+mean loss: 3.351245
+accuracy: 0.561825
+ -- 040 / 075 --
+mean loss: 3.198642
+accuracy: 0.571447
+ -- 050 / 075 --
+mean loss: 3.161580
+accuracy: 0.578098
+ -- 060 / 075 --
+mean loss: 2.877974
+accuracy: 0.594886
+ -- 070 / 075 --
+mean loss: 3.001108
+accuracy: 0.588844
+**** EPOCH 144 ****
+2019-07-10 22:25:47.326459
+ -- 010 / 075 --
+mean loss: 3.329017
+accuracy: 0.560957
+ -- 020 / 075 --
+mean loss: 3.222897
+accuracy: 0.592558
+ -- 030 / 075 --
+mean loss: 3.752951
+accuracy: 0.594337
+ -- 040 / 075 --
+mean loss: 3.200074
+accuracy: 0.572598
+ -- 050 / 075 --
+mean loss: 3.652906
+accuracy: 0.595284
+ -- 060 / 075 --
+mean loss: 3.073971
+accuracy: 0.593333
+ -- 070 / 075 --
+mean loss: 3.222189
+accuracy: 0.578175
+**** EPOCH 145 ****
+2019-07-10 22:26:39.947979
+ -- 010 / 075 --
+mean loss: 3.098310
+accuracy: 0.614082
+ -- 020 / 075 --
+mean loss: 3.361798
+accuracy: 0.606792
+ -- 030 / 075 --
+mean loss: 3.300586
+accuracy: 0.576392
+ -- 040 / 075 --
+mean loss: 3.217695
+accuracy: 0.567258
+ -- 050 / 075 --
+mean loss: 3.131561
+accuracy: 0.568042
+ -- 060 / 075 --
+mean loss: 3.256741
+accuracy: 0.555390
+ -- 070 / 075 --
+mean loss: 3.280709
+accuracy: 0.532605
+2019-07-10 22:27:32.528088
+---- EPOCH 058 EVALUATION ----
+eval mean loss: 0.816793
+eval point accuracy vox: 0.785597
+eval point avg class acc vox: 0.533808
+eval point accuracy: 0.783581
+eval point avg class acc: 0.530020
+eval point calibrated average acc: 0.823867
+vox based --------class 1 weight: 0.420883, acc: 0.889061; class 2 weight: 0.241339, acc: 0.970348; class 3 weight: 0.063139, acc: 0.774356; class 4 weight: 0.031978, acc: 0.492415; class 5 weight: 0.021573, acc: 0.630946; class 6 weight: 0.021564, acc: 0.462816; class 7 weight: 0.013608, acc: 0.730746; class 8 weight: 0.026936, acc: 0.804622; class 9 weight: 0.009337, acc: 0.640785; class 10 weight: 0.004860, acc: 0.869387; class 11 weight: 0.004832, acc: 0.888342; class 12 weight: 0.006940, acc: 0.400312; class 13 weight: 0.008186, acc: 0.191424; class 14 weight: 0.034034, acc: 0.212556; class 15 weight: 0.009750, acc: 0.000000; class 16 weight: 0.002561, acc: 0.531041; class 17 weight: 0.002711, acc: 0.410176; class 18 weight: 0.001928, acc: 0.000000; class 19 weight: 0.041389, acc: 0.461714; class 20 weight: 0.032451, acc: 0.239353; 
+2019-07-10 22:27:44.961949
+---- EPOCH 059 EVALUATION WHOLE SCENE----
+eval whole scene mean loss: 0.747692
+eval whole scene point accuracy vox: 0.815629
+eval whole scene point avg class acc vox: 0.552306
+eval whole scene point accuracy: 0.817003
+eval whole scene point avg class acc: 0.540724
+eval whole scene point calibrated average acc vox: 0.833558
+vox based --------class 1 weight: 0.393106, acc: 0.896016; class 2 weight: 0.306532, acc: 0.976134; class 3 weight: 0.057659, acc: 0.777901; class 4 weight: 0.035832, acc: 0.487984; class 5 weight: 0.017107, acc: 0.549385; class 6 weight: 0.022576, acc: 0.572734; class 7 weight: 0.018102, acc: 0.820656; class 8 weight: 0.028968, acc: 0.809856; class 9 weight: 0.003285, acc: 0.539797; class 10 weight: 0.002154, acc: 0.838531; class 11 weight: 0.002497, acc: 0.838041; class 12 weight: 0.008277, acc: 0.610216; class 13 weight: 0.007161, acc: 0.308647; class 14 weight: 0.022448, acc: 0.296631; class 15 weight: 0.005517, acc: 0.018842; class 16 weight: 0.000871, acc: 0.497514; class 17 weight: 0.003720, acc: 0.571799; class 18 weight: 0.001767, acc: 0.000000; class 19 weight: 0.026676, acc: 0.415575; class 20 weight: 0.035744, acc: 0.219855; 
+Model saved in file: log/best_model_epoch_145.ckpt
+**** EPOCH 146 ****
+2019-07-10 22:32:17.025978
+ -- 010 / 075 --
+mean loss: 3.095549
+accuracy: 0.574414
+ -- 020 / 075 --
+mean loss: 2.941259
+accuracy: 0.580545
+ -- 030 / 075 --
+mean loss: 2.905372
+accuracy: 0.618015
+ -- 040 / 075 --
+mean loss: 3.255451
+accuracy: 0.573918
+ -- 050 / 075 --
+mean loss: 3.372826
+accuracy: 0.574238
+ -- 060 / 075 --
+mean loss: 3.324600
+accuracy: 0.558097
+ -- 070 / 075 --
+mean loss: 2.907662
+accuracy: 0.543969
+**** EPOCH 147 ****
+2019-07-10 22:33:09.285330
+ -- 010 / 075 --
+mean loss: 3.323907
+accuracy: 0.567528
+ -- 020 / 075 --
+mean loss: 3.434500
+accuracy: 0.567268
+ -- 030 / 075 --
+mean loss: 3.257999
+accuracy: 0.584895
+ -- 040 / 075 --
+mean loss: 3.388312
+accuracy: 0.589119
+ -- 050 / 075 --
+mean loss: 3.272125
+accuracy: 0.584439
+ -- 060 / 075 --
+mean loss: 3.423906
+accuracy: 0.595788
+ -- 070 / 075 --
+mean loss: 4.012760
+accuracy: 0.587815
+**** EPOCH 148 ****
+2019-07-10 22:34:01.573564
+ -- 010 / 075 --
+mean loss: 3.066789
+accuracy: 0.616216
+ -- 020 / 075 --
+mean loss: 3.036666
+accuracy: 0.578767
+ -- 030 / 075 --
+mean loss: 2.998958
+accuracy: 0.567912
+ -- 040 / 075 --
+mean loss: 3.251640
+accuracy: 0.574935
+ -- 050 / 075 --
+mean loss: 3.423995
+accuracy: 0.583955
+ -- 060 / 075 --
+mean loss: 3.192067
+accuracy: 0.580986
+ -- 070 / 075 --
+mean loss: 2.940996
+accuracy: 0.564875
+**** EPOCH 149 ****
+2019-07-10 22:34:54.594097
+ -- 010 / 075 --
+mean loss: 3.124330
+accuracy: 0.579507
+ -- 020 / 075 --
+mean loss: 3.445138
+accuracy: 0.553720
+ -- 030 / 075 --
+mean loss: 3.298472
+accuracy: 0.570981
+ -- 040 / 075 --
+mean loss: 3.314551
+accuracy: 0.559991
+ -- 050 / 075 --
+mean loss: 3.199505
+accuracy: 0.570517
+ -- 060 / 075 --
+mean loss: 3.144047
+accuracy: 0.560776
+ -- 070 / 075 --
+mean loss: 3.270414
+accuracy: 0.576962
+**** EPOCH 150 ****
+2019-07-10 22:35:47.356906
+ -- 010 / 075 --
+mean loss: 2.923656
+accuracy: 0.576936
+ -- 020 / 075 --
+mean loss: 3.118113
+accuracy: 0.553848
+ -- 030 / 075 --
+mean loss: 3.193168
+accuracy: 0.574722
+ -- 040 / 075 --
+mean loss: 3.323512
+accuracy: 0.582513
+ -- 050 / 075 --
+mean loss: 3.209620
+accuracy: 0.585368
+ -- 060 / 075 --
+mean loss: 2.706500
+accuracy: 0.615661
+ -- 070 / 075 --
+mean loss: 3.168165
+accuracy: 0.555679
+2019-07-10 22:36:40.115335
+---- EPOCH 060 EVALUATION ----
+eval mean loss: 0.819352
+eval point accuracy vox: 0.776152
+eval point avg class acc vox: 0.530571
+eval point accuracy: 0.777271
+eval point avg class acc: 0.528986
+eval point calibrated average acc: 0.812096
+vox based --------class 1 weight: 0.413363, acc: 0.829030; class 2 weight: 0.244490, acc: 0.980562; class 3 weight: 0.060927, acc: 0.813611; class 4 weight: 0.026718, acc: 0.499989; class 5 weight: 0.017925, acc: 0.601254; class 6 weight: 0.022417, acc: 0.505381; class 7 weight: 0.023048, acc: 0.897390; class 8 weight: 0.042435, acc: 0.827915; class 9 weight: 0.005292, acc: 0.674754; class 10 weight: 0.005671, acc: 0.964697; class 11 weight: 0.004481, acc: 0.781752; class 12 weight: 0.010471, acc: 0.124899; class 13 weight: 0.009574, acc: 0.184747; class 14 weight: 0.030239, acc: 0.349853; class 15 weight: 0.008970, acc: 0.000000; class 16 weight: 0.002129, acc: 0.586732; class 17 weight: 0.002234, acc: 0.199467; class 18 weight: 0.001368, acc: 0.000000; class 19 weight: 0.039315, acc: 0.373985; class 20 weight: 0.028930, acc: 0.383695; 
+2019-07-10 22:36:52.622665
+---- EPOCH 061 EVALUATION WHOLE SCENE----
+eval whole scene mean loss: 0.760216
+eval whole scene point accuracy vox: 0.802121
+eval whole scene point avg class acc vox: 0.532739
+eval whole scene point accuracy: 0.807166
+eval whole scene point avg class acc: 0.521084
+eval whole scene point calibrated average acc vox: 0.820287
+vox based --------class 1 weight: 0.393154, acc: 0.840129; class 2 weight: 0.306431, acc: 0.986092; class 3 weight: 0.057660, acc: 0.773754; class 4 weight: 0.035821, acc: 0.608357; class 5 weight: 0.017106, acc: 0.476021; class 6 weight: 0.022531, acc: 0.499690; class 7 weight: 0.018382, acc: 0.896541; class 8 weight: 0.028937, acc: 0.822933; class 9 weight: 0.003283, acc: 0.617649; class 10 weight: 0.002144, acc: 0.841810; class 11 weight: 0.002470, acc: 0.724599; class 12 weight: 0.008290, acc: 0.273725; class 13 weight: 0.007128, acc: 0.264142; class 14 weight: 0.022445, acc: 0.441015; class 15 weight: 0.005540, acc: 0.048698; class 16 weight: 0.000880, acc: 0.431483; class 17 weight: 0.003717, acc: 0.407308; class 18 weight: 0.001772, acc: 0.000000; class 19 weight: 0.026647, acc: 0.363657; class 20 weight: 0.035663, acc: 0.337177; 
+Model saved in file: log/model.ckpt
+**** EPOCH 151 ****
+2019-07-10 22:41:26.594662
+ -- 010 / 075 --
+mean loss: 3.620923
+accuracy: 0.585971
+ -- 020 / 075 --
+mean loss: 3.226697
+accuracy: 0.610912
+ -- 030 / 075 --
+mean loss: 3.161769
+accuracy: 0.532636
+ -- 040 / 075 --
+mean loss: 3.324843
+accuracy: 0.547075
+ -- 050 / 075 --
+mean loss: 3.453583
+accuracy: 0.585525
+ -- 060 / 075 --
+mean loss: 3.453249
+accuracy: 0.595079
+ -- 070 / 075 --
+mean loss: 3.421679
+accuracy: 0.625631
+**** EPOCH 152 ****
+2019-07-10 22:42:20.046421
+ -- 010 / 075 --
+mean loss: 2.822607
+accuracy: 0.574290
+ -- 020 / 075 --
+mean loss: 3.470653
+accuracy: 0.591376
+ -- 030 / 075 --
+mean loss: 3.062226
+accuracy: 0.570626
+ -- 040 / 075 --
+mean loss: 3.029210
+accuracy: 0.565230
+ -- 050 / 075 --
+mean loss: 2.787710
+accuracy: 0.576201
+ -- 060 / 075 --
+mean loss: 3.112103
+accuracy: 0.556058
+ -- 070 / 075 --
+mean loss: 3.128724
+accuracy: 0.566393
+**** EPOCH 153 ****
+2019-07-10 22:43:13.267297
+ -- 010 / 075 --
+mean loss: 2.847352
+accuracy: 0.596109
+ -- 020 / 075 --
+mean loss: 3.376083
+accuracy: 0.586635
+ -- 030 / 075 --
+mean loss: 3.439807
+accuracy: 0.544681
+ -- 040 / 075 --
+mean loss: 3.026471
+accuracy: 0.595278
+ -- 050 / 075 --
+mean loss: 3.134031
+accuracy: 0.587465
+ -- 060 / 075 --
+mean loss: 3.229177
+accuracy: 0.605190
+ -- 070 / 075 --
+mean loss: 3.184863
+accuracy: 0.595718
+**** EPOCH 154 ****
+2019-07-10 22:44:06.621291
+ -- 010 / 075 --
+mean loss: 3.607287
+accuracy: 0.576125
+ -- 020 / 075 --
+mean loss: 3.102550
+accuracy: 0.546062
+ -- 030 / 075 --
+mean loss: 3.036465
+accuracy: 0.561230
+ -- 040 / 075 --
+mean loss: 3.071680
+accuracy: 0.606088
+ -- 050 / 075 --
+mean loss: 3.266048
+accuracy: 0.581480
+ -- 060 / 075 --
+mean loss: 3.409967
+accuracy: 0.578553
+ -- 070 / 075 --
+mean loss: 3.082233
+accuracy: 0.617152
+**** EPOCH 155 ****
+2019-07-10 22:44:59.693016
+ -- 010 / 075 --
+mean loss: 3.475446
+accuracy: 0.574616
+ -- 020 / 075 --
+mean loss: 2.957859
+accuracy: 0.603607
+ -- 030 / 075 --
+mean loss: 3.463268
+accuracy: 0.570877
+ -- 040 / 075 --
+mean loss: 2.962485
+accuracy: 0.568147
+ -- 050 / 075 --
+mean loss: 3.498170
+accuracy: 0.562264
+ -- 060 / 075 --
+mean loss: 3.171085
+accuracy: 0.560778
+ -- 070 / 075 --
+mean loss: 3.798707
+accuracy: 0.556673
+2019-07-10 22:45:52.078395
+---- EPOCH 062 EVALUATION ----
+eval mean loss: 0.919023
+eval point accuracy vox: 0.751402
+eval point avg class acc vox: 0.543391
+eval point accuracy: 0.751706
+eval point avg class acc: 0.541129
+eval point calibrated average acc: 0.791447
+vox based --------class 1 weight: 0.393081, acc: 0.830233; class 2 weight: 0.252713, acc: 0.958837; class 3 weight: 0.060168, acc: 0.917133; class 4 weight: 0.039931, acc: 0.420447; class 5 weight: 0.023193, acc: 0.415978; class 6 weight: 0.025262, acc: 0.641595; class 7 weight: 0.023668, acc: 0.705383; class 8 weight: 0.024714, acc: 0.495296; class 9 weight: 0.006801, acc: 0.644296; class 10 weight: 0.004201, acc: 0.839559; class 11 weight: 0.006094, acc: 0.952823; class 12 weight: 0.018682, acc: 0.415334; class 13 weight: 0.006667, acc: 0.329219; class 14 weight: 0.033422, acc: 0.071003; class 15 weight: 0.009202, acc: 0.428847; class 16 weight: 0.003042, acc: 0.536158; class 17 weight: 0.005686, acc: 0.517189; class 18 weight: 0.001534, acc: 0.000000; class 19 weight: 0.028078, acc: 0.507573; class 20 weight: 0.033861, acc: 0.195680; 
+2019-07-10 22:46:04.440530
+---- EPOCH 063 EVALUATION WHOLE SCENE----
+eval whole scene mean loss: 0.757499
+eval whole scene point accuracy vox: 0.798914
+eval whole scene point avg class acc vox: 0.524362
+eval whole scene point accuracy: 0.800467
+eval whole scene point avg class acc: 0.509907
+eval whole scene point calibrated average acc vox: 0.815556
+vox based --------class 1 weight: 0.393111, acc: 0.868705; class 2 weight: 0.306552, acc: 0.977151; class 3 weight: 0.057671, acc: 0.883623; class 4 weight: 0.035775, acc: 0.524659; class 5 weight: 0.017090, acc: 0.410627; class 6 weight: 0.022538, acc: 0.703969; class 7 weight: 0.018372, acc: 0.751694; class 8 weight: 0.028894, acc: 0.542471; class 9 weight: 0.003326, acc: 0.675683; class 10 weight: 0.002146, acc: 0.782050; class 11 weight: 0.002470, acc: 0.843207; class 12 weight: 0.008281, acc: 0.288004; class 13 weight: 0.007098, acc: 0.368198; class 14 weight: 0.022405, acc: 0.070227; class 15 weight: 0.005520, acc: 0.205824; class 16 weight: 0.000886, acc: 0.411853; class 17 weight: 0.003710, acc: 0.514063; class 18 weight: 0.001772, acc: 0.000000; class 19 weight: 0.026692, acc: 0.439798; class 20 weight: 0.035692, acc: 0.225425; 
+**** EPOCH 156 ****
+2019-07-10 22:50:35.880260
+ -- 010 / 075 --
+mean loss: 3.321486
+accuracy: 0.582786
+ -- 020 / 075 --
+mean loss: 3.257419
+accuracy: 0.552077
+ -- 030 / 075 --
+mean loss: 2.858189
+accuracy: 0.570615
+ -- 040 / 075 --
+mean loss: 3.210620
+accuracy: 0.592409
+ -- 050 / 075 --
+mean loss: 3.076159
+accuracy: 0.584621
+ -- 060 / 075 --
+mean loss: 3.272685
+accuracy: 0.534622
+ -- 070 / 075 --
+mean loss: 3.521067
+accuracy: 0.560979
+**** EPOCH 157 ****
+2019-07-10 22:51:28.530659
+ -- 010 / 075 --
+mean loss: 3.059559
+accuracy: 0.560212
+ -- 020 / 075 --
+mean loss: 3.447826
+accuracy: 0.542104
+ -- 030 / 075 --
+mean loss: 2.935785
+accuracy: 0.608203
+ -- 040 / 075 --
+mean loss: 3.365320
+accuracy: 0.564787
+ -- 050 / 075 --
+mean loss: 3.384786
+accuracy: 0.576659
+ -- 060 / 075 --
+mean loss: 3.175918
+accuracy: 0.600813
+ -- 070 / 075 --
+mean loss: 3.308616
+accuracy: 0.591457
+**** EPOCH 158 ****
+2019-07-10 22:52:21.655481
+ -- 010 / 075 --
+mean loss: 3.104234
+accuracy: 0.591395
+ -- 020 / 075 --
+mean loss: 3.385343
+accuracy: 0.581583
+ -- 030 / 075 --
+mean loss: 3.195289
+accuracy: 0.564944
+ -- 040 / 075 --
+mean loss: 3.427844
+accuracy: 0.582808
+ -- 050 / 075 --
+mean loss: 3.303660
+accuracy: 0.603766
+ -- 060 / 075 --
+mean loss: 3.628162
+accuracy: 0.605760
+ -- 070 / 075 --
+mean loss: 3.206571
+accuracy: 0.617608
+**** EPOCH 159 ****
+2019-07-10 22:53:14.375931
+ -- 010 / 075 --
+mean loss: 2.974003
+accuracy: 0.609187
+ -- 020 / 075 --
+mean loss: 3.112644
+accuracy: 0.621773
+ -- 030 / 075 --
+mean loss: 3.539047
+accuracy: 0.558742
+ -- 040 / 075 --
+mean loss: 3.287700
+accuracy: 0.572911
+ -- 050 / 075 --
+mean loss: 3.687735
+accuracy: 0.546230
+ -- 060 / 075 --
+mean loss: 2.864823
+accuracy: 0.575407
+ -- 070 / 075 --
+mean loss: 2.941399
+accuracy: 0.567097
+**** EPOCH 160 ****
+2019-07-10 22:54:07.610678
+ -- 010 / 075 --
+mean loss: 3.438976
+accuracy: 0.566132
+ -- 020 / 075 --
+mean loss: 2.859050
+accuracy: 0.591586
+ -- 030 / 075 --
+mean loss: 3.234907
+accuracy: 0.578019
+ -- 040 / 075 --
+mean loss: 2.989835
+accuracy: 0.553201
+ -- 050 / 075 --
+mean loss: 3.090088
+accuracy: 0.564825
+ -- 060 / 075 --
+mean loss: 3.289439
+accuracy: 0.595185
+ -- 070 / 075 --
+mean loss: 3.352108
+accuracy: 0.549927
+2019-07-10 22:55:00.033146
+---- EPOCH 064 EVALUATION ----
+eval mean loss: 0.803158
+eval point accuracy vox: 0.790175
+eval point avg class acc vox: 0.589486
+eval point accuracy: 0.790086
+eval point avg class acc: 0.589912
+eval point calibrated average acc: 0.816524
+vox based --------class 1 weight: 0.440930, acc: 0.865984; class 2 weight: 0.244429, acc: 0.947266; class 3 weight: 0.052917, acc: 0.817643; class 4 weight: 0.027289, acc: 0.546852; class 5 weight: 0.021777, acc: 0.495652; class 6 weight: 0.021911, acc: 0.657275; class 7 weight: 0.016575, acc: 0.938331; class 8 weight: 0.025102, acc: 0.967008; class 9 weight: 0.003729, acc: 0.940909; class 10 weight: 0.006274, acc: 0.822601; class 11 weight: 0.005004, acc: 0.767195; class 12 weight: 0.022269, acc: 0.462331; class 13 weight: 0.006688, acc: 0.176554; class 14 weight: 0.024898, acc: 0.111629; class 15 weight: 0.009184, acc: 0.205103; class 16 weight: 0.003093, acc: 0.902488; class 17 weight: 0.006373, acc: 0.570767; class 18 weight: 0.000929, acc: 0.000000; class 19 weight: 0.033306, acc: 0.367009; class 20 weight: 0.027324, acc: 0.235635; 
+2019-07-10 22:55:12.246588
+---- EPOCH 065 EVALUATION WHOLE SCENE----
+eval whole scene mean loss: 0.749242
+eval whole scene point accuracy vox: 0.806548
+eval whole scene point avg class acc vox: 0.565970
+eval whole scene point accuracy: 0.807906
+eval whole scene point avg class acc: 0.554903
+eval whole scene point calibrated average acc vox: 0.823651
+vox based --------class 1 weight: 0.393096, acc: 0.875316; class 2 weight: 0.306423, acc: 0.967955; class 3 weight: 0.057663, acc: 0.758615; class 4 weight: 0.035862, acc: 0.653220; class 5 weight: 0.017066, acc: 0.425407; class 6 weight: 0.022533, acc: 0.697550; class 7 weight: 0.018423, acc: 0.854225; class 8 weight: 0.028950, acc: 0.847314; class 9 weight: 0.003296, acc: 0.646221; class 10 weight: 0.002145, acc: 0.828142; class 11 weight: 0.002473, acc: 0.786153; class 12 weight: 0.008271, acc: 0.424736; class 13 weight: 0.007119, acc: 0.252980; class 14 weight: 0.022429, acc: 0.199503; class 15 weight: 0.005514, acc: 0.329823; class 16 weight: 0.000875, acc: 0.803111; class 17 weight: 0.003697, acc: 0.439750; class 18 weight: 0.001767, acc: 0.000000; class 19 weight: 0.026739, acc: 0.360671; class 20 weight: 0.035658, acc: 0.168713; 
+Model saved in file: log/model.ckpt
+**** EPOCH 161 ****
+2019-07-10 22:59:44.207836
+ -- 010 / 075 --
+mean loss: 3.543947
+accuracy: 0.606290
+ -- 020 / 075 --
+mean loss: 3.026886
+accuracy: 0.618390
+ -- 030 / 075 --
+mean loss: 3.358323
+accuracy: 0.568873
+ -- 040 / 075 --
+mean loss: 3.223670
+accuracy: 0.622382
+ -- 050 / 075 --
+mean loss: 3.253750
+accuracy: 0.573224
+ -- 060 / 075 --
+mean loss: 3.307715
+accuracy: 0.607062
+ -- 070 / 075 --
+mean loss: 3.008815
+accuracy: 0.601806
+**** EPOCH 162 ****
+2019-07-10 23:00:37.025772
+ -- 010 / 075 --
+mean loss: 3.028958
+accuracy: 0.588623
+ -- 020 / 075 --
+mean loss: 3.102419
+accuracy: 0.602554
+ -- 030 / 075 --
+mean loss: 2.946939
+accuracy: 0.574100
+ -- 040 / 075 --
+mean loss: 3.235623
+accuracy: 0.566238
+ -- 050 / 075 --
+mean loss: 2.902433
+accuracy: 0.583498
+ -- 060 / 075 --
+mean loss: 3.435850
+accuracy: 0.560915
+ -- 070 / 075 --
+mean loss: 2.934821
+accuracy: 0.576984
+**** EPOCH 163 ****
+2019-07-10 23:01:29.466787
+ -- 010 / 075 --
+mean loss: 3.736872
+accuracy: 0.540479
+ -- 020 / 075 --
+mean loss: 3.176023
+accuracy: 0.600108
+ -- 030 / 075 --
+mean loss: 3.215373
+accuracy: 0.610361
+ -- 040 / 075 --
+mean loss: 3.550002
+accuracy: 0.556337
+ -- 050 / 075 --
+mean loss: 2.846970
+accuracy: 0.593728
+ -- 060 / 075 --
+mean loss: 3.320647
+accuracy: 0.567657
+ -- 070 / 075 --
+mean loss: 3.363898
+accuracy: 0.562181
+**** EPOCH 164 ****
+2019-07-10 23:02:21.627043
+ -- 010 / 075 --
+mean loss: 3.140582
+accuracy: 0.527914
+ -- 020 / 075 --
+mean loss: 3.214127
+accuracy: 0.566140
+ -- 030 / 075 --
+mean loss: 3.394356
+accuracy: 0.573168
+ -- 040 / 075 --
+mean loss: 3.216005
+accuracy: 0.570557
+ -- 050 / 075 --
+mean loss: 3.202459
+accuracy: 0.584662
+ -- 060 / 075 --
+mean loss: 2.986647
+accuracy: 0.581632
+ -- 070 / 075 --
+mean loss: 3.270414
+accuracy: 0.593257
+**** EPOCH 165 ****
+2019-07-10 23:03:15.163872
+ -- 010 / 075 --
+mean loss: 3.032951
+accuracy: 0.569376
+ -- 020 / 075 --
+mean loss: 3.024220
+accuracy: 0.569498
+ -- 030 / 075 --
+mean loss: 3.004946
+accuracy: 0.578387
+ -- 040 / 075 --
+mean loss: 3.271599
+accuracy: 0.559939
+ -- 050 / 075 --
+mean loss: 3.179737
+accuracy: 0.589007
+ -- 060 / 075 --
+mean loss: 2.964065
+accuracy: 0.630324
+ -- 070 / 075 --
+mean loss: 3.621035
+accuracy: 0.578357
+2019-07-10 23:04:09.471409
+---- EPOCH 066 EVALUATION ----
+eval mean loss: 0.864449
+eval point accuracy vox: 0.778023
+eval point avg class acc vox: 0.557616
+eval point accuracy: 0.777038
+eval point avg class acc: 0.555606
+eval point calibrated average acc: 0.825436
+vox based --------class 1 weight: 0.404280, acc: 0.887597; class 2 weight: 0.239652, acc: 0.973900; class 3 weight: 0.057730, acc: 0.746599; class 4 weight: 0.034177, acc: 0.608182; class 5 weight: 0.017427, acc: 0.290840; class 6 weight: 0.023514, acc: 0.621415; class 7 weight: 0.023120, acc: 0.882559; class 8 weight: 0.026340, acc: 0.697822; class 9 weight: 0.008278, acc: 0.568092; class 10 weight: 0.005573, acc: 0.944496; class 11 weight: 0.007182, acc: 0.741385; class 12 weight: 0.016181, acc: 0.422824; class 13 weight: 0.008644, acc: 0.435556; class 14 weight: 0.027438, acc: 0.209648; class 15 weight: 0.011700, acc: 0.243349; class 16 weight: 0.003461, acc: 0.850807; class 17 weight: 0.007316, acc: 0.354508; class 18 weight: 0.002453, acc: 0.000000; class 19 weight: 0.037703, acc: 0.314920; class 20 weight: 0.037832, acc: 0.317621; 
+2019-07-10 23:04:22.291318
+---- EPOCH 067 EVALUATION WHOLE SCENE----
+eval whole scene mean loss: 0.753125
+eval whole scene point accuracy vox: 0.812531
+eval whole scene point avg class acc vox: 0.541571
+eval whole scene point accuracy: 0.816189
+eval whole scene point avg class acc: 0.528646
+eval whole scene point calibrated average acc vox: 0.830761
+vox based --------class 1 weight: 0.393147, acc: 0.890259; class 2 weight: 0.306530, acc: 0.980509; class 3 weight: 0.057650, acc: 0.715699; class 4 weight: 0.035836, acc: 0.615090; class 5 weight: 0.017093, acc: 0.254763; class 6 weight: 0.022506, acc: 0.687148; class 7 weight: 0.018415, acc: 0.885694; class 8 weight: 0.028953, acc: 0.810516; class 9 weight: 0.003284, acc: 0.483094; class 10 weight: 0.002152, acc: 0.833648; class 11 weight: 0.002462, acc: 0.830965; class 12 weight: 0.008262, acc: 0.423089; class 13 weight: 0.007140, acc: 0.366361; class 14 weight: 0.022392, acc: 0.230078; class 15 weight: 0.005551, acc: 0.285746; class 16 weight: 0.000885, acc: 0.565499; class 17 weight: 0.003687, acc: 0.361275; class 18 weight: 0.001767, acc: 0.000000; class 19 weight: 0.026603, acc: 0.316339; class 20 weight: 0.035685, acc: 0.295656; 
+**** EPOCH 166 ****
+2019-07-10 23:09:01.324605
+ -- 010 / 075 --
+mean loss: 2.996869
+accuracy: 0.571163
+ -- 020 / 075 --
+mean loss: 3.122954
+accuracy: 0.600321
+ -- 030 / 075 --
+mean loss: 3.261669
+accuracy: 0.616280
+ -- 040 / 075 --
+mean loss: 3.771531
+accuracy: 0.523257
+ -- 050 / 075 --
+mean loss: 3.353041
+accuracy: 0.573598
+ -- 060 / 075 --
+mean loss: 2.929691
+accuracy: 0.593531
+ -- 070 / 075 --
+mean loss: 2.835055
+accuracy: 0.556282
+**** EPOCH 167 ****
+2019-07-10 23:09:53.806867
+ -- 010 / 075 --
+mean loss: 2.709757
+accuracy: 0.569302
+ -- 020 / 075 --
+mean loss: 2.839185
+accuracy: 0.602384
+ -- 030 / 075 --
+mean loss: 3.338263
+accuracy: 0.554982
+ -- 040 / 075 --
+mean loss: 3.017187
+accuracy: 0.548885
+ -- 050 / 075 --
+mean loss: 3.505275
+accuracy: 0.552905
+ -- 060 / 075 --
+mean loss: 3.553211
+accuracy: 0.567660
+ -- 070 / 075 --
+mean loss: 3.425669
+accuracy: 0.580148
+**** EPOCH 168 ****
+2019-07-10 23:10:47.053029
+ -- 010 / 075 --
+mean loss: 2.962051
+accuracy: 0.582803
+ -- 020 / 075 --
+mean loss: 2.810935
+accuracy: 0.612544
+ -- 030 / 075 --
+mean loss: 2.926426
+accuracy: 0.578098
+ -- 040 / 075 --
+mean loss: 2.967537
+accuracy: 0.583419
+ -- 050 / 075 --
+mean loss: 2.898305
+accuracy: 0.571710
+ -- 060 / 075 --
+mean loss: 2.998763
+accuracy: 0.587910
+ -- 070 / 075 --
+mean loss: 3.019273
+accuracy: 0.603352
+**** EPOCH 169 ****
+2019-07-10 23:11:40.454222
+ -- 010 / 075 --
+mean loss: 2.789609
+accuracy: 0.595674
+ -- 020 / 075 --
+mean loss: 3.303326
+accuracy: 0.575053
+ -- 030 / 075 --
+mean loss: 2.444794
+accuracy: 0.593153
+ -- 040 / 075 --
+mean loss: 2.825424
+accuracy: 0.563610
+ -- 050 / 075 --
+mean loss: 3.186853
+accuracy: 0.549158
+ -- 060 / 075 --
+mean loss: 2.910791
+accuracy: 0.596270
+ -- 070 / 075 --
+mean loss: 3.204263
+accuracy: 0.579071
+**** EPOCH 170 ****
+2019-07-10 23:12:33.867682
+ -- 010 / 075 --
+mean loss: 3.704488
+accuracy: 0.530392
+ -- 020 / 075 --
+mean loss: 2.994903
+accuracy: 0.598372
+ -- 030 / 075 --
+mean loss: 2.676756
+accuracy: 0.613598
+ -- 040 / 075 --
+mean loss: 2.906175
+accuracy: 0.610157
+ -- 050 / 075 --
+mean loss: 2.735672
+accuracy: 0.575565
+ -- 060 / 075 --
+mean loss: 3.018573
+accuracy: 0.586054
+ -- 070 / 075 --
+mean loss: 3.173373
+accuracy: 0.579228
+2019-07-10 23:13:27.179451
+---- EPOCH 068 EVALUATION ----
+eval mean loss: 0.803625
+eval point accuracy vox: 0.789268
+eval point avg class acc vox: 0.619474
+eval point accuracy: 0.790597
+eval point avg class acc: 0.617101
+eval point calibrated average acc: 0.838568
+vox based --------class 1 weight: 0.404770, acc: 0.880846; class 2 weight: 0.235927, acc: 0.975556; class 3 weight: 0.068096, acc: 0.810504; class 4 weight: 0.028226, acc: 0.713260; class 5 weight: 0.018950, acc: 0.619550; class 6 weight: 0.026874, acc: 0.671987; class 7 weight: 0.009825, acc: 0.977707; class 8 weight: 0.023055, acc: 0.745591; class 9 weight: 0.006129, acc: 0.852950; class 10 weight: 0.006243, acc: 0.766753; class 11 weight: 0.006505, acc: 0.738029; class 12 weight: 0.020534, acc: 0.648144; class 13 weight: 0.015312, acc: 0.374132; class 14 weight: 0.023485, acc: 0.237900; class 15 weight: 0.009403, acc: 0.209710; class 16 weight: 0.002843, acc: 0.970968; class 17 weight: 0.007245, acc: 0.596621; class 18 weight: 0.002813, acc: 0.000000; class 19 weight: 0.040607, acc: 0.399408; class 20 weight: 0.043158, acc: 0.152408; 
+2019-07-10 23:13:39.465993
+---- EPOCH 069 EVALUATION WHOLE SCENE----
+eval whole scene mean loss: 0.734572
+eval whole scene point accuracy vox: 0.819809
+eval whole scene point avg class acc vox: 0.588780
+eval whole scene point accuracy: 0.822638
+eval whole scene point avg class acc: 0.576581
+eval whole scene point calibrated average acc vox: 0.836108
+vox based --------class 1 weight: 0.393097, acc: 0.883012; class 2 weight: 0.306480, acc: 0.979878; class 3 weight: 0.057646, acc: 0.825707; class 4 weight: 0.035857, acc: 0.642124; class 5 weight: 0.017093, acc: 0.414864; class 6 weight: 0.022558, acc: 0.696418; class 7 weight: 0.018143, acc: 0.876533; class 8 weight: 0.028947, acc: 0.796468; class 9 weight: 0.003300, acc: 0.681152; class 10 weight: 0.002154, acc: 0.846586; class 11 weight: 0.002485, acc: 0.794017; class 12 weight: 0.008296, acc: 0.549653; class 13 weight: 0.007148, acc: 0.385336; class 14 weight: 0.022464, acc: 0.286402; class 15 weight: 0.005557, acc: 0.219403; class 16 weight: 0.000880, acc: 0.802312; class 17 weight: 0.003693, acc: 0.544462; class 18 weight: 0.001757, acc: 0.000000; class 19 weight: 0.026712, acc: 0.379505; class 20 weight: 0.035732, acc: 0.171768; 
+Model saved in file: log/best_model_epoch_170.ckpt
+Model saved in file: log/model.ckpt
+**** EPOCH 171 ****
+2019-07-10 23:18:13.048251
+ -- 010 / 075 --
+mean loss: 3.030343
+accuracy: 0.583373
+ -- 020 / 075 --
+mean loss: 2.713599
+accuracy: 0.589571
+ -- 030 / 075 --
+mean loss: 2.898677
+accuracy: 0.594949
+ -- 040 / 075 --
+mean loss: 3.387569
+accuracy: 0.586214
+ -- 050 / 075 --
+mean loss: 2.763738
+accuracy: 0.594550
+ -- 060 / 075 --
+mean loss: 2.713814
+accuracy: 0.576923
+ -- 070 / 075 --
+mean loss: 3.169653
+accuracy: 0.578629
+**** EPOCH 172 ****
+2019-07-10 23:19:05.396868
+ -- 010 / 075 --
+mean loss: 2.605388
+accuracy: 0.567292
+ -- 020 / 075 --
+mean loss: 3.285705
+accuracy: 0.546066
+ -- 030 / 075 --
+mean loss: 2.776839
+accuracy: 0.605943
+ -- 040 / 075 --
+mean loss: 3.019404
+accuracy: 0.541933
+ -- 050 / 075 --
+mean loss: 3.173015
+accuracy: 0.576229
+ -- 060 / 075 --
+mean loss: 3.544422
+accuracy: 0.548562
+ -- 070 / 075 --
+mean loss: 3.075067
+accuracy: 0.579696
+**** EPOCH 173 ****
+2019-07-10 23:19:57.957524
+ -- 010 / 075 --
+mean loss: 3.034166
+accuracy: 0.554976
+ -- 020 / 075 --
+mean loss: 3.054594
+accuracy: 0.541930
+ -- 030 / 075 --
+mean loss: 2.831704
+accuracy: 0.523123
+ -- 040 / 075 --
+mean loss: 3.029784
+accuracy: 0.552048
+ -- 050 / 075 --
+mean loss: 3.147361
+accuracy: 0.511390
+ -- 060 / 075 --
+mean loss: 2.995296
+accuracy: 0.561953
+ -- 070 / 075 --
+mean loss: 3.135460
+accuracy: 0.543890
+**** EPOCH 174 ****
+2019-07-10 23:20:51.063199
+ -- 010 / 075 --
+mean loss: 2.572464
+accuracy: 0.569687
+ -- 020 / 075 --
+mean loss: 3.165956
+accuracy: 0.565220
+ -- 030 / 075 --
+mean loss: 3.423822
+accuracy: 0.552169
+ -- 040 / 075 --
+mean loss: 3.020793
+accuracy: 0.566102
+ -- 050 / 075 --
+mean loss: 2.548087
+accuracy: 0.571931
+ -- 060 / 075 --
+mean loss: 3.436065
+accuracy: 0.559652
+ -- 070 / 075 --
+mean loss: 3.020396
+accuracy: 0.566850
+**** EPOCH 175 ****
+2019-07-10 23:21:43.746967
+ -- 010 / 075 --
+mean loss: 3.184377
+accuracy: 0.563445
+ -- 020 / 075 --
+mean loss: 3.046373
+accuracy: 0.588933
+ -- 030 / 075 --
+mean loss: 2.740106
+accuracy: 0.586167
+ -- 040 / 075 --
+mean loss: 2.732573
+accuracy: 0.584003
+ -- 050 / 075 --
+mean loss: 3.054280
+accuracy: 0.589953
+ -- 060 / 075 --
+mean loss: 3.091732
+accuracy: 0.555791
+ -- 070 / 075 --
+mean loss: 3.085038
+accuracy: 0.565276
+2019-07-10 23:22:36.471451
+---- EPOCH 070 EVALUATION ----
+eval mean loss: 0.842425
+eval point accuracy vox: 0.775641
+eval point avg class acc vox: 0.540682
+eval point accuracy: 0.774740
+eval point avg class acc: 0.533390
+eval point calibrated average acc: 0.812818
+vox based --------class 1 weight: 0.397761, acc: 0.853449; class 2 weight: 0.256175, acc: 0.951145; class 3 weight: 0.061692, acc: 0.811220; class 4 weight: 0.031256, acc: 0.615986; class 5 weight: 0.023110, acc: 0.410403; class 6 weight: 0.021475, acc: 0.716305; class 7 weight: 0.013207, acc: 0.764042; class 8 weight: 0.029337, acc: 0.864173; class 9 weight: 0.003082, acc: 0.618666; class 10 weight: 0.006903, acc: 0.795954; class 11 weight: 0.005144, acc: 0.763392; class 12 weight: 0.021794, acc: 0.541585; class 13 weight: 0.004063, acc: 0.404155; class 14 weight: 0.032363, acc: 0.260720; class 15 weight: 0.008301, acc: 0.164191; class 16 weight: 0.004504, acc: 0.207959; class 17 weight: 0.003747, acc: 0.299479; class 18 weight: 0.001174, acc: 0.000000; class 19 weight: 0.040252, acc: 0.469721; class 20 weight: 0.034661, acc: 0.155247; 
+2019-07-10 23:22:49.172096
+---- EPOCH 071 EVALUATION WHOLE SCENE----
+eval whole scene mean loss: 0.784832
+eval whole scene point accuracy vox: 0.799073
+eval whole scene point avg class acc vox: 0.566446
+eval whole scene point accuracy: 0.784641
+eval whole scene point avg class acc: 0.549422
+eval whole scene point calibrated average acc vox: 0.813622
+vox based --------class 1 weight: 0.393145, acc: 0.860193; class 2 weight: 0.306441, acc: 0.933300; class 3 weight: 0.057641, acc: 0.785531; class 4 weight: 0.035816, acc: 0.648640; class 5 weight: 0.017063, acc: 0.442425; class 6 weight: 0.022567, acc: 0.726923; class 7 weight: 0.018419, acc: 0.852748; class 8 weight: 0.028917, acc: 0.863681; class 9 weight: 0.003292, acc: 0.615521; class 10 weight: 0.002156, acc: 0.860609; class 11 weight: 0.002490, acc: 0.760044; class 12 weight: 0.008304, acc: 0.468933; class 13 weight: 0.007094, acc: 0.366972; class 14 weight: 0.022451, acc: 0.350819; class 15 weight: 0.005523, acc: 0.263687; class 16 weight: 0.000878, acc: 0.443662; class 17 weight: 0.003710, acc: 0.464567; class 18 weight: 0.001767, acc: 0.000000; class 19 weight: 0.026698, acc: 0.457503; class 20 weight: 0.035628, acc: 0.163170; 
+**** EPOCH 176 ****
+2019-07-10 23:27:20.861597
+ -- 010 / 075 --
+mean loss: 2.972647
+accuracy: 0.572079
+ -- 020 / 075 --
+mean loss: 3.253230
+accuracy: 0.598483
+ -- 030 / 075 --
+mean loss: 3.302331
+accuracy: 0.584303
+ -- 040 / 075 --
+mean loss: 2.772887
+accuracy: 0.596664
+ -- 050 / 075 --
+mean loss: 3.083724
+accuracy: 0.565221
+ -- 060 / 075 --
+mean loss: 2.723862
+accuracy: 0.583076
+ -- 070 / 075 --
+mean loss: 3.129646
+accuracy: 0.589553
+**** EPOCH 177 ****
+2019-07-10 23:28:13.200260
+ -- 010 / 075 --
+mean loss: 2.533657
+accuracy: 0.591530
+ -- 020 / 075 --
+mean loss: 3.159612
+accuracy: 0.559393
+ -- 030 / 075 --
+mean loss: 2.968991
+accuracy: 0.587145
+ -- 040 / 075 --
+mean loss: 3.494056
+accuracy: 0.574348
+ -- 050 / 075 --
+mean loss: 2.886288
+accuracy: 0.612328
+ -- 060 / 075 --
+mean loss: 3.056098
+accuracy: 0.605064
+ -- 070 / 075 --
+mean loss: 2.970450
+accuracy: 0.592378
+**** EPOCH 178 ****
+2019-07-10 23:29:05.676363
+ -- 010 / 075 --
+mean loss: 2.970782
+accuracy: 0.596464
+ -- 020 / 075 --
+mean loss: 3.305919
+accuracy: 0.570815
+ -- 030 / 075 --
+mean loss: 2.862893
+accuracy: 0.601974
+ -- 040 / 075 --
+mean loss: 2.655839
+accuracy: 0.587514
+ -- 050 / 075 --
+mean loss: 2.797412
+accuracy: 0.589841
+ -- 060 / 075 --
+mean loss: 3.199797
+accuracy: 0.588783
+ -- 070 / 075 --
+mean loss: 3.657634
+accuracy: 0.568987
+**** EPOCH 179 ****
+2019-07-10 23:29:58.614306
+ -- 010 / 075 --
+mean loss: 3.132649
+accuracy: 0.556467
+ -- 020 / 075 --
+mean loss: 2.550179
+accuracy: 0.579359
+ -- 030 / 075 --
+mean loss: 2.893543
+accuracy: 0.606603
+ -- 040 / 075 --
+mean loss: 3.214814
+accuracy: 0.554956
+ -- 050 / 075 --
+mean loss: 3.131580
+accuracy: 0.607998
+ -- 060 / 075 --
+mean loss: 3.201997
+accuracy: 0.580769
+ -- 070 / 075 --
+mean loss: 3.050331
+accuracy: 0.608396
+**** EPOCH 180 ****
+2019-07-10 23:30:51.337085
+ -- 010 / 075 --
+mean loss: 2.874906
+accuracy: 0.581123
+ -- 020 / 075 --
+mean loss: 3.215688
+accuracy: 0.533774
+ -- 030 / 075 --
+mean loss: 2.852659
+accuracy: 0.574619
+ -- 040 / 075 --
+mean loss: 3.311924
+accuracy: 0.569201
+ -- 050 / 075 --
+mean loss: 3.074846
+accuracy: 0.601909
+ -- 060 / 075 --
+mean loss: 2.574954
+accuracy: 0.615727
+ -- 070 / 075 --
+mean loss: 3.064105
+accuracy: 0.552071
+2019-07-10 23:31:44.256076
+---- EPOCH 072 EVALUATION ----
+eval mean loss: 0.836760
+eval point accuracy vox: 0.797693
+eval point avg class acc vox: 0.585484
+eval point accuracy: 0.798460
+eval point avg class acc: 0.584599
+eval point calibrated average acc: 0.837898
+vox based --------class 1 weight: 0.412585, acc: 0.891873; class 2 weight: 0.237396, acc: 0.980391; class 3 weight: 0.063446, acc: 0.848907; class 4 weight: 0.029647, acc: 0.601109; class 5 weight: 0.017295, acc: 0.473784; class 6 weight: 0.023149, acc: 0.690876; class 7 weight: 0.024242, acc: 0.942098; class 8 weight: 0.023459, acc: 0.699980; class 9 weight: 0.005593, acc: 0.721593; class 10 weight: 0.006944, acc: 0.794062; class 11 weight: 0.005579, acc: 0.833542; class 12 weight: 0.015464, acc: 0.660657; class 13 weight: 0.011766, acc: 0.337010; class 14 weight: 0.027646, acc: 0.117443; class 15 weight: 0.009506, acc: 0.166572; class 16 weight: 0.001651, acc: 0.836204; class 17 weight: 0.009592, acc: 0.442768; class 18 weight: 0.002032, acc: 0.000000; class 19 weight: 0.036650, acc: 0.413067; class 20 weight: 0.036359, acc: 0.240050; 
+2019-07-10 23:31:56.572050
+---- EPOCH 073 EVALUATION WHOLE SCENE----
+eval whole scene mean loss: 0.737952
+eval whole scene point accuracy vox: 0.821396
+eval whole scene point avg class acc vox: 0.568996
+eval whole scene point accuracy: 0.824071
+eval whole scene point avg class acc: 0.555884
+eval whole scene point calibrated average acc vox: 0.837202
+vox based --------class 1 weight: 0.393078, acc: 0.887750; class 2 weight: 0.306497, acc: 0.983938; class 3 weight: 0.057618, acc: 0.866527; class 4 weight: 0.035866, acc: 0.626666; class 5 weight: 0.017065, acc: 0.425778; class 6 weight: 0.022534, acc: 0.695945; class 7 weight: 0.018301, acc: 0.896623; class 8 weight: 0.028935, acc: 0.715139; class 9 weight: 0.003287, acc: 0.686440; class 10 weight: 0.002142, acc: 0.831800; class 11 weight: 0.002486, acc: 0.852841; class 12 weight: 0.008294, acc: 0.669792; class 13 weight: 0.007102, acc: 0.403636; class 14 weight: 0.022433, acc: 0.107566; class 15 weight: 0.005550, acc: 0.128455; class 16 weight: 0.000888, acc: 0.573348; class 17 weight: 0.003724, acc: 0.397665; class 18 weight: 0.001772, acc: 0.000000; class 19 weight: 0.026722, acc: 0.420464; class 20 weight: 0.035708, acc: 0.209546; 
+Model saved in file: log/best_model_epoch_180.ckpt
+Model saved in file: log/model.ckpt
+**** EPOCH 181 ****
+2019-07-10 23:36:28.370184
+ -- 010 / 075 --
+mean loss: 2.877195
+accuracy: 0.553313
+ -- 020 / 075 --
+mean loss: 3.134070
+accuracy: 0.542731
+ -- 030 / 075 --
+mean loss: 3.075438
+accuracy: 0.579119
+ -- 040 / 075 --
+mean loss: 2.744082
+accuracy: 0.577476
+ -- 050 / 075 --
+mean loss: 2.922286
+accuracy: 0.585753
+ -- 060 / 075 --
+mean loss: 3.209525
+accuracy: 0.549557
+ -- 070 / 075 --
+mean loss: 3.525908
+accuracy: 0.557573
+**** EPOCH 182 ****
+2019-07-10 23:37:21.378562
+ -- 010 / 075 --
+mean loss: 3.056534
+accuracy: 0.570904
+ -- 020 / 075 --
+mean loss: 3.563616
+accuracy: 0.549249
+ -- 030 / 075 --
+mean loss: 2.743177
+accuracy: 0.576370
+ -- 040 / 075 --
+mean loss: 2.461737
+accuracy: 0.595116
+ -- 050 / 075 --
+mean loss: 2.893748
+accuracy: 0.561415
+ -- 060 / 075 --
+mean loss: 2.713942
+accuracy: 0.581364
+ -- 070 / 075 --
+mean loss: 2.731568
+accuracy: 0.552074
+**** EPOCH 183 ****
+2019-07-10 23:38:14.153034
+ -- 010 / 075 --
+mean loss: 3.041410
+accuracy: 0.573895
+ -- 020 / 075 --
+mean loss: 3.167773
+accuracy: 0.567042
+ -- 030 / 075 --
+mean loss: 2.620439
+accuracy: 0.593505
+ -- 040 / 075 --
+mean loss: 3.327241
+accuracy: 0.544798
+ -- 050 / 075 --
+mean loss: 2.833767
+accuracy: 0.566171
+ -- 060 / 075 --
+mean loss: 3.062501
+accuracy: 0.527811
+ -- 070 / 075 --
+mean loss: 2.932890
+accuracy: 0.567710
+**** EPOCH 184 ****
+2019-07-10 23:39:06.796341
+ -- 010 / 075 --
+mean loss: 3.113878
+accuracy: 0.590183
+ -- 020 / 075 --
+mean loss: 3.168218
+accuracy: 0.582257
+ -- 030 / 075 --
+mean loss: 2.662187
+accuracy: 0.561899
+ -- 040 / 075 --
+mean loss: 3.353496
+accuracy: 0.556459
+ -- 050 / 075 --
+mean loss: 3.087505
+accuracy: 0.548808
+ -- 060 / 075 --
+mean loss: 3.187118
+accuracy: 0.589088
+ -- 070 / 075 --
+mean loss: 2.692743
+accuracy: 0.596938
+**** EPOCH 185 ****
+2019-07-10 23:39:58.926552
+ -- 010 / 075 --
+mean loss: 2.686755
+accuracy: 0.599609
+ -- 020 / 075 --
+mean loss: 2.629994
+accuracy: 0.575385
+ -- 030 / 075 --
+mean loss: 2.840272
+accuracy: 0.591555
+ -- 040 / 075 --
+mean loss: 2.608580
+accuracy: 0.584641
+ -- 050 / 075 --
+mean loss: 3.188947
+accuracy: 0.549097
+ -- 060 / 075 --
+mean loss: 2.746606
+accuracy: 0.577985
+ -- 070 / 075 --
+mean loss: 3.013444
+accuracy: 0.550018
+2019-07-10 23:40:51.542350
+---- EPOCH 074 EVALUATION ----
+eval mean loss: 0.842072
+eval point accuracy vox: 0.766282
+eval point avg class acc vox: 0.606358
+eval point accuracy: 0.767833
+eval point avg class acc: 0.607275
+eval point calibrated average acc: 0.809887
+vox based --------class 1 weight: 0.411196, acc: 0.825856; class 2 weight: 0.233610, acc: 0.969329; class 3 weight: 0.065240, acc: 0.699220; class 4 weight: 0.029214, acc: 0.585867; class 5 weight: 0.018333, acc: 0.429694; class 6 weight: 0.028472, acc: 0.742971; class 7 weight: 0.025408, acc: 0.681874; class 8 weight: 0.023255, acc: 0.738792; class 9 weight: 0.006805, acc: 0.719027; class 10 weight: 0.004097, acc: 0.911127; class 11 weight: 0.006282, acc: 0.896701; class 12 weight: 0.017081, acc: 0.772290; class 13 weight: 0.012849, acc: 0.330315; class 14 weight: 0.034656, acc: 0.312834; class 15 weight: 0.008751, acc: 0.264300; class 16 weight: 0.001700, acc: 0.724113; class 17 weight: 0.001349, acc: 0.714844; class 18 weight: 0.001466, acc: 0.000000; class 19 weight: 0.031376, acc: 0.585743; class 20 weight: 0.038861, acc: 0.240610; 
+2019-07-10 23:41:04.097208
+---- EPOCH 075 EVALUATION WHOLE SCENE----
+eval whole scene mean loss: 0.729592
+eval whole scene point accuracy vox: 0.805417
+eval whole scene point avg class acc vox: 0.574803
+eval whole scene point accuracy: 0.806180
+eval whole scene point avg class acc: 0.562449
+eval whole scene point calibrated average acc vox: 0.823246
+vox based --------class 1 weight: 0.393364, acc: 0.852310; class 2 weight: 0.306304, acc: 0.980362; class 3 weight: 0.057659, acc: 0.754746; class 4 weight: 0.035779, acc: 0.556437; class 5 weight: 0.017054, acc: 0.484912; class 6 weight: 0.022543, acc: 0.749279; class 7 weight: 0.018380, acc: 0.634095; class 8 weight: 0.028978, acc: 0.765417; class 9 weight: 0.003294, acc: 0.589567; class 10 weight: 0.002134, acc: 0.844291; class 11 weight: 0.002466, acc: 0.850444; class 12 weight: 0.008315, acc: 0.652827; class 13 weight: 0.007112, acc: 0.356936; class 14 weight: 0.022392, acc: 0.385781; class 15 weight: 0.005519, acc: 0.228083; class 16 weight: 0.000878, acc: 0.583174; class 17 weight: 0.003689, acc: 0.511183; class 18 weight: 0.001758, acc: 0.000000; class 19 weight: 0.026695, acc: 0.469851; class 20 weight: 0.035686, acc: 0.246361; 
+**** EPOCH 186 ****
+2019-07-10 23:45:36.558144
+ -- 010 / 075 --
+mean loss: 2.968980
+accuracy: 0.545125
+ -- 020 / 075 --
+mean loss: 2.999047
+accuracy: 0.582136
+ -- 030 / 075 --
+mean loss: 3.027415
+accuracy: 0.548071
+ -- 040 / 075 --
+mean loss: 2.952086
+accuracy: 0.557100
+ -- 050 / 075 --
+mean loss: 3.478439
+accuracy: 0.522047
+ -- 060 / 075 --
+mean loss: 2.918297
+accuracy: 0.548557
+ -- 070 / 075 --
+mean loss: 3.034457
+accuracy: 0.598161
+**** EPOCH 187 ****
+2019-07-10 23:46:29.277899
+ -- 010 / 075 --
+mean loss: 3.032406
+accuracy: 0.568015
+ -- 020 / 075 --
+mean loss: 3.152364
+accuracy: 0.616595
+ -- 030 / 075 --
+mean loss: 3.002159
+accuracy: 0.576743
+ -- 040 / 075 --
+mean loss: 2.708621
+accuracy: 0.634446
+ -- 050 / 075 --
+mean loss: 3.025343
+accuracy: 0.583257
+ -- 060 / 075 --
+mean loss: 2.800513
+accuracy: 0.609911
+ -- 070 / 075 --
+mean loss: 3.258993
+accuracy: 0.575901
+**** EPOCH 188 ****
+2019-07-10 23:47:21.911238
+ -- 010 / 075 --
+mean loss: 2.915639
+accuracy: 0.595500
+ -- 020 / 075 --
+mean loss: 2.787941
+accuracy: 0.619215
+ -- 030 / 075 --
+mean loss: 3.390207
+accuracy: 0.587663
+ -- 040 / 075 --
+mean loss: 3.062718
+accuracy: 0.554074
+ -- 050 / 075 --
+mean loss: 3.171190
+accuracy: 0.587125
+ -- 060 / 075 --
+mean loss: 2.676586
+accuracy: 0.619961
+ -- 070 / 075 --
+mean loss: 3.128856
+accuracy: 0.608177
+**** EPOCH 189 ****
+2019-07-10 23:48:14.929353
+ -- 010 / 075 --
+mean loss: 2.787506
+accuracy: 0.621608
+ -- 020 / 075 --
+mean loss: 3.231938
+accuracy: 0.559480
+ -- 030 / 075 --
+mean loss: 2.952387
+accuracy: 0.564472
+ -- 040 / 075 --
+mean loss: 2.468478
+accuracy: 0.602695
+ -- 050 / 075 --
+mean loss: 2.856100
+accuracy: 0.592097
+ -- 060 / 075 --
+mean loss: 3.200917
+accuracy: 0.581166
+ -- 070 / 075 --
+mean loss: 2.952088
+accuracy: 0.548241
+**** EPOCH 190 ****
+2019-07-10 23:49:07.758463
+ -- 010 / 075 --
+mean loss: 2.910745
+accuracy: 0.590532
+ -- 020 / 075 --
+mean loss: 2.997358
+accuracy: 0.577290
+ -- 030 / 075 --
+mean loss: 3.213361
+accuracy: 0.589240
+ -- 040 / 075 --
+mean loss: 2.982503
+accuracy: 0.564840
+ -- 050 / 075 --
+mean loss: 3.164994
+accuracy: 0.565414
+ -- 060 / 075 --
+mean loss: 3.184485
+accuracy: 0.593317
+ -- 070 / 075 --
+mean loss: 2.877651
+accuracy: 0.591637
+2019-07-10 23:50:00.305019
+---- EPOCH 076 EVALUATION ----
+eval mean loss: 0.784023
+eval point accuracy vox: 0.805353
+eval point avg class acc vox: 0.594163
+eval point accuracy: 0.806487
+eval point avg class acc: 0.596372
+eval point calibrated average acc: 0.838022
+vox based --------class 1 weight: 0.413818, acc: 0.878945; class 2 weight: 0.237930, acc: 0.981335; class 3 weight: 0.059605, acc: 0.774230; class 4 weight: 0.029892, acc: 0.720011; class 5 weight: 0.014160, acc: 0.376394; class 6 weight: 0.023722, acc: 0.674865; class 7 weight: 0.027565, acc: 0.959102; class 8 weight: 0.037653, acc: 0.796963; class 9 weight: 0.007277, acc: 0.739935; class 10 weight: 0.005427, acc: 0.824875; class 11 weight: 0.005705, acc: 0.536123; class 12 weight: 0.005573, acc: 0.821713; class 13 weight: 0.010029, acc: 0.413280; class 14 weight: 0.018290, acc: 0.189643; class 15 weight: 0.008645, acc: 0.541483; class 16 weight: 0.001562, acc: 0.557821; class 17 weight: 0.011840, acc: 0.523179; class 18 weight: 0.002387, acc: 0.000000; class 19 weight: 0.043007, acc: 0.468847; class 20 weight: 0.035912, acc: 0.148693; 
+2019-07-10 23:50:12.702474
+---- EPOCH 077 EVALUATION WHOLE SCENE----
+eval whole scene mean loss: 0.715740
+eval whole scene point accuracy vox: 0.820015
+eval whole scene point avg class acc vox: 0.552427
+eval whole scene point accuracy: 0.819765
+eval whole scene point avg class acc: 0.539530
+eval whole scene point calibrated average acc vox: 0.837237
+vox based --------class 1 weight: 0.393026, acc: 0.896073; class 2 weight: 0.306568, acc: 0.979356; class 3 weight: 0.057659, acc: 0.793166; class 4 weight: 0.035861, acc: 0.708522; class 5 weight: 0.017077, acc: 0.365169; class 6 weight: 0.022567, acc: 0.721535; class 7 weight: 0.018398, acc: 0.867581; class 8 weight: 0.028935, acc: 0.792598; class 9 weight: 0.003317, acc: 0.555621; class 10 weight: 0.002151, acc: 0.807575; class 11 weight: 0.002475, acc: 0.720187; class 12 weight: 0.008286, acc: 0.346504; class 13 weight: 0.007117, acc: 0.391964; class 14 weight: 0.022379, acc: 0.216740; class 15 weight: 0.005528, acc: 0.284438; class 16 weight: 0.000887, acc: 0.585368; class 17 weight: 0.003693, acc: 0.486445; class 18 weight: 0.001755, acc: 0.000000; class 19 weight: 0.026661, acc: 0.401405; class 20 weight: 0.035658, acc: 0.128299; 
+Model saved in file: log/best_model_epoch_190.ckpt
+Model saved in file: log/model.ckpt
+**** EPOCH 191 ****
+2019-07-10 23:54:45.932445
+ -- 010 / 075 --
+mean loss: 2.849358
+accuracy: 0.585860
+ -- 020 / 075 --
+mean loss: 3.037690
+accuracy: 0.601470
+ -- 030 / 075 --
+mean loss: 3.148743
+accuracy: 0.583268
+ -- 040 / 075 --
+mean loss: 3.185257
+accuracy: 0.599042
+ -- 050 / 075 --
+mean loss: 3.151353
+accuracy: 0.597604
+ -- 060 / 075 --
+mean loss: 2.979454
+accuracy: 0.571590
+ -- 070 / 075 --
+mean loss: 2.866620
+accuracy: 0.563577
+**** EPOCH 192 ****
+2019-07-10 23:55:38.679570
+ -- 010 / 075 --
+mean loss: 3.142074
+accuracy: 0.561197
+ -- 020 / 075 --
+mean loss: 3.121037
+accuracy: 0.557513
+ -- 030 / 075 --
+mean loss: 2.868063
+accuracy: 0.579596
+ -- 040 / 075 --
+mean loss: 3.073929
+accuracy: 0.606599
+ -- 050 / 075 --
+mean loss: 2.650008
+accuracy: 0.592945
+ -- 060 / 075 --
+mean loss: 2.886742
+accuracy: 0.562804
+ -- 070 / 075 --
+mean loss: 2.600123
+accuracy: 0.570891
+**** EPOCH 193 ****
+2019-07-10 23:56:31.005042
+ -- 010 / 075 --
+mean loss: 2.617856
+accuracy: 0.588567
+ -- 020 / 075 --
+mean loss: 3.005633
+accuracy: 0.569654
+ -- 030 / 075 --
+mean loss: 3.057216
+accuracy: 0.570720
+ -- 040 / 075 --
+mean loss: 2.966298
+accuracy: 0.576185
+ -- 050 / 075 --
+mean loss: 2.961084
+accuracy: 0.567742
+ -- 060 / 075 --
+mean loss: 3.095196
+accuracy: 0.573901
+ -- 070 / 075 --
+mean loss: 2.848700
+accuracy: 0.585278
+**** EPOCH 194 ****
+2019-07-10 23:57:23.669417
+ -- 010 / 075 --
+mean loss: 2.864539
+accuracy: 0.588782
+ -- 020 / 075 --
+mean loss: 3.301581
+accuracy: 0.552080
+ -- 030 / 075 --
+mean loss: 2.753120
+accuracy: 0.551856
+ -- 040 / 075 --
+mean loss: 2.991575
+accuracy: 0.593181
+ -- 050 / 075 --
+mean loss: 2.603346
+accuracy: 0.618487
+ -- 060 / 075 --
+mean loss: 2.698707
+accuracy: 0.599055
+ -- 070 / 075 --
+mean loss: 2.820004
+accuracy: 0.585387
+**** EPOCH 195 ****
+2019-07-10 23:58:16.086865
+ -- 010 / 075 --
+mean loss: 3.284165
+accuracy: 0.559258
+ -- 020 / 075 --
+mean loss: 2.960651
+accuracy: 0.598025
+ -- 030 / 075 --
+mean loss: 3.286073
+accuracy: 0.582552
+ -- 040 / 075 --
+mean loss: 3.064753
+accuracy: 0.599570
+ -- 050 / 075 --
+mean loss: 3.052545
+accuracy: 0.593597
+ -- 060 / 075 --
+mean loss: 2.564922
+accuracy: 0.591852
+ -- 070 / 075 --
+mean loss: 2.769406
+accuracy: 0.603570
+2019-07-10 23:59:09.231120
+---- EPOCH 078 EVALUATION ----
+eval mean loss: 0.822919
+eval point accuracy vox: 0.780640
+eval point avg class acc vox: 0.574004
+eval point accuracy: 0.781621
+eval point avg class acc: 0.571077
+eval point calibrated average acc: 0.818306
+vox based --------class 1 weight: 0.438650, acc: 0.856118; class 2 weight: 0.230487, acc: 0.977955; class 3 weight: 0.045789, acc: 0.798921; class 4 weight: 0.031985, acc: 0.572620; class 5 weight: 0.014379, acc: 0.328951; class 6 weight: 0.018784, acc: 0.638916; class 7 weight: 0.031998, acc: 0.852738; class 8 weight: 0.023575, acc: 0.696469; class 9 weight: 0.005678, acc: 0.725677; class 10 weight: 0.004540, acc: 0.893370; class 11 weight: 0.006455, acc: 0.793582; class 12 weight: 0.011897, acc: 0.346575; class 13 weight: 0.010051, acc: 0.401211; class 14 weight: 0.031489, acc: 0.303146; class 15 weight: 0.010561, acc: 0.303605; class 16 weight: 0.003575, acc: 0.773022; class 17 weight: 0.004174, acc: 0.497896; class 18 weight: 0.002862, acc: 0.000000; class 19 weight: 0.040986, acc: 0.462846; class 20 weight: 0.032083, acc: 0.197915; 
+2019-07-10 23:59:21.573345
+---- EPOCH 079 EVALUATION WHOLE SCENE----
+eval whole scene mean loss: 0.722836
+eval whole scene point accuracy vox: 0.809598
+eval whole scene point avg class acc vox: 0.580532
+eval whole scene point accuracy: 0.810443
+eval whole scene point avg class acc: 0.568693
+eval whole scene point calibrated average acc vox: 0.827024
+vox based --------class 1 weight: 0.393132, acc: 0.871003; class 2 weight: 0.306468, acc: 0.977359; class 3 weight: 0.057767, acc: 0.764173; class 4 weight: 0.035865, acc: 0.589386; class 5 weight: 0.017099, acc: 0.430379; class 6 weight: 0.022541, acc: 0.742503; class 7 weight: 0.018251, acc: 0.882223; class 8 weight: 0.028943, acc: 0.785452; class 9 weight: 0.003289, acc: 0.646630; class 10 weight: 0.002139, acc: 0.796132; class 11 weight: 0.002479, acc: 0.859894; class 12 weight: 0.008259, acc: 0.419170; class 13 weight: 0.007117, acc: 0.302735; class 14 weight: 0.022422, acc: 0.286755; class 15 weight: 0.005506, acc: 0.227489; class 16 weight: 0.000883, acc: 0.867401; class 17 weight: 0.003682, acc: 0.578917; class 18 weight: 0.001755, acc: 0.000000; class 19 weight: 0.026711, acc: 0.393061; class 20 weight: 0.035694, acc: 0.189979; 
+**** EPOCH 196 ****
+2019-07-11 00:03:52.783614
+ -- 010 / 075 --
+mean loss: 2.856986
+accuracy: 0.596979
+ -- 020 / 075 --
+mean loss: 3.246801
+accuracy: 0.563639
+ -- 030 / 075 --
+mean loss: 2.624703
+accuracy: 0.601694
+ -- 040 / 075 --
+mean loss: 2.913371
+accuracy: 0.564686
+ -- 050 / 075 --
+mean loss: 2.988548
+accuracy: 0.537678
+ -- 060 / 075 --
+mean loss: 2.541603
+accuracy: 0.578185
+ -- 070 / 075 --
+mean loss: 3.224453
+accuracy: 0.558997
+**** EPOCH 197 ****
+2019-07-11 00:04:45.280662
+ -- 010 / 075 --
+mean loss: 3.052031
+accuracy: 0.572696
+ -- 020 / 075 --
+mean loss: 3.353117
+accuracy: 0.553359
+ -- 030 / 075 --
+mean loss: 2.833419
+accuracy: 0.571097
+ -- 040 / 075 --
+mean loss: 3.173038
+accuracy: 0.560642
+ -- 050 / 075 --
+mean loss: 3.331598
+accuracy: 0.560520
+ -- 060 / 075 --
+mean loss: 2.852274
+accuracy: 0.563317
+ -- 070 / 075 --
+mean loss: 2.790997
+accuracy: 0.557959
+**** EPOCH 198 ****
+2019-07-11 00:05:38.135963
+ -- 010 / 075 --
+mean loss: 2.958471
+accuracy: 0.567481
+ -- 020 / 075 --
+mean loss: 3.054209
+accuracy: 0.543963
+ -- 030 / 075 --
+mean loss: 2.879704
+accuracy: 0.578772
+ -- 040 / 075 --
+mean loss: 2.224422
+accuracy: 0.550934
+ -- 050 / 075 --
+mean loss: 2.945885
+accuracy: 0.569064
+ -- 060 / 075 --
+mean loss: 2.572838
+accuracy: 0.567262
+ -- 070 / 075 --
+mean loss: 2.750467
+accuracy: 0.580927
+**** EPOCH 199 ****
+2019-07-11 00:06:30.561967
+ -- 010 / 075 --
+mean loss: 2.687223
+accuracy: 0.543478
+ -- 020 / 075 --
+mean loss: 3.331524
+accuracy: 0.582461
+ -- 030 / 075 --
+mean loss: 3.113649
+accuracy: 0.612677
+ -- 040 / 075 --
+mean loss: 2.869766
+accuracy: 0.613392
+ -- 050 / 075 --
+mean loss: 3.015152
+accuracy: 0.603340
+ -- 060 / 075 --
+mean loss: 2.769881
+accuracy: 0.601588
+ -- 070 / 075 --
+mean loss: 3.181393
+accuracy: 0.591056
+**** EPOCH 200 ****
+2019-07-11 00:07:23.124793
+ -- 010 / 075 --
+mean loss: 3.069923
+accuracy: 0.604759
+ -- 020 / 075 --
+mean loss: 2.545494
+accuracy: 0.589745
+ -- 030 / 075 --
+mean loss: 2.641819
+accuracy: 0.620780
+ -- 040 / 075 --
+mean loss: 2.680728
+accuracy: 0.612210
+ -- 050 / 075 --
+mean loss: 2.895875
+accuracy: 0.635776
+ -- 060 / 075 --
+mean loss: 2.700823
+accuracy: 0.568518
+ -- 070 / 075 --
+mean loss: 2.705602
+accuracy: 0.589507
+2019-07-11 00:08:15.845593
+---- EPOCH 080 EVALUATION ----
+eval mean loss: 0.792686
+eval point accuracy vox: 0.792639
+eval point avg class acc vox: 0.592862
+eval point accuracy: 0.794165
+eval point avg class acc: 0.588144
+eval point calibrated average acc: 0.823809
+vox based --------class 1 weight: 0.439282, acc: 0.847053; class 2 weight: 0.237679, acc: 0.975855; class 3 weight: 0.057856, acc: 0.735376; class 4 weight: 0.025196, acc: 0.641395; class 5 weight: 0.015493, acc: 0.509104; class 6 weight: 0.019342, acc: 0.581436; class 7 weight: 0.014361, acc: 0.818003; class 8 weight: 0.031184, acc: 0.825085; class 9 weight: 0.006857, acc: 0.602037; class 10 weight: 0.007436, acc: 0.776581; class 11 weight: 0.009606, acc: 0.953313; class 12 weight: 0.009290, acc: 0.475138; class 13 weight: 0.010494, acc: 0.471051; class 14 weight: 0.027059, acc: 0.519974; class 15 weight: 0.009610, acc: 0.016041; class 16 weight: 0.004363, acc: 0.855638; class 17 weight: 0.005756, acc: 0.472042; class 18 weight: 0.001809, acc: 0.000000; class 19 weight: 0.033603, acc: 0.500407; class 20 weight: 0.033725, acc: 0.187346; 
+2019-07-11 00:08:28.204204
+---- EPOCH 081 EVALUATION WHOLE SCENE----
+eval whole scene mean loss: 0.743272
+eval whole scene point accuracy vox: 0.812047
+eval whole scene point avg class acc vox: 0.594111
+eval whole scene point accuracy: 0.814054
+eval whole scene point avg class acc: 0.581244
+eval whole scene point calibrated average acc vox: 0.829533
+vox based --------class 1 weight: 0.393130, acc: 0.850798; class 2 weight: 0.306360, acc: 0.981660; class 3 weight: 0.057650, acc: 0.749908; class 4 weight: 0.035825, acc: 0.633232; class 5 weight: 0.017059, acc: 0.469349; class 6 weight: 0.022546, acc: 0.733298; class 7 weight: 0.018425, acc: 0.868849; class 8 weight: 0.029004, acc: 0.821284; class 9 weight: 0.003293, acc: 0.570650; class 10 weight: 0.002144, acc: 0.836247; class 11 weight: 0.002475, acc: 0.841100; class 12 weight: 0.008306, acc: 0.553375; class 13 weight: 0.007107, acc: 0.414787; class 14 weight: 0.022469, acc: 0.467289; class 15 weight: 0.005502, acc: 0.105212; class 16 weight: 0.000886, acc: 0.665669; class 17 weight: 0.003678, acc: 0.678697; class 18 weight: 0.001762, acc: 0.000000; class 19 weight: 0.026682, acc: 0.420584; class 20 weight: 0.035698, acc: 0.220228; 
+Model saved in file: log/model.ckpt

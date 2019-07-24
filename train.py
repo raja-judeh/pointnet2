@@ -70,13 +70,13 @@ NUM_CLASSES = 40
 # Shapenet official train/test split
 if FLAGS.normal:
     assert(NUM_POINT<=10000)
-    DATA_PATH = os.path.join(ROOT_DIR, 'data/modelnet40_normal_resampled')
+    DATA_PATH = os.path.join('/volume/USERSTORE/jude_ra/master_thesis/pointnet2/', 'data/modelnet40_normal_resampled')
     TRAIN_DATASET = modelnet_dataset.ModelNetDataset(root=DATA_PATH, npoints=NUM_POINT, split='train', normal_channel=FLAGS.normal, batch_size=BATCH_SIZE)
     TEST_DATASET = modelnet_dataset.ModelNetDataset(root=DATA_PATH, npoints=NUM_POINT, split='test', normal_channel=FLAGS.normal, batch_size=BATCH_SIZE)
 else:
     assert(NUM_POINT<=2048)
-    TRAIN_DATASET = modelnet_h5_dataset.ModelNetH5Dataset(os.path.join(BASE_DIR, 'data/modelnet40_ply_hdf5_2048/train_files.txt'), batch_size=BATCH_SIZE, npoints=NUM_POINT, shuffle=True)
-    TEST_DATASET = modelnet_h5_dataset.ModelNetH5Dataset(os.path.join(BASE_DIR, 'data/modelnet40_ply_hdf5_2048/test_files.txt'), batch_size=BATCH_SIZE, npoints=NUM_POINT, shuffle=False)
+    TRAIN_DATASET = modelnet_h5_dataset.ModelNetH5Dataset(os.path.join('/volume/USERSTORE/jude_ra/master_thesis/pointnet2', 'data/modelnet40_ply_hdf5_2048/train_files.txt'), batch_size=BATCH_SIZE, npoints=NUM_POINT, shuffle=True)
+    TEST_DATASET = modelnet_h5_dataset.ModelNetH5Dataset(os.path.join('/volume/USERSTORE/jude_ra/master_thesis/pointnet2', 'data/modelnet40_ply_hdf5_2048/test_files.txt'), batch_size=BATCH_SIZE, npoints=NUM_POINT, shuffle=False)
 
 def log_string(out_str):
     LOG_FOUT.write(out_str+'\n')
@@ -130,7 +130,7 @@ def train():
             accuracy = tf.reduce_sum(tf.cast(correct, tf.float32)) / float(BATCH_SIZE)
             tf.summary.scalar('accuracy', accuracy)
 
-            print "--- Get training operator"
+            print("--- Get training operator")
             # Get training operator
             learning_rate = get_learning_rate(batch)
             tf.summary.scalar('learning_rate', learning_rate)

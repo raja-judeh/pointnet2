@@ -10,6 +10,7 @@ import os
 import sys
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 ROOT_DIR = os.path.dirname(BASE_DIR)
+DATA_DIR = '/volume/USERSTORE/jude_ra/master_thesis/pointnet2/data/'
 sys.path.append(BASE_DIR)
 sys.path.append(os.path.join(ROOT_DIR, 'models'))
 sys.path.append(os.path.join(ROOT_DIR, 'utils'))
@@ -62,7 +63,7 @@ HOSTNAME = socket.gethostname()
 NUM_CLASSES = 50
 
 # Shapenet official train/test split
-DATA_PATH = os.path.join(ROOT_DIR, 'data', 'shapenetcore_partanno_segmentation_benchmark_v0_normal')
+DATA_PATH = os.path.join(DATA_DIR, 'shapenetcore_partanno_segmentation_benchmark_v0_normal')
 TRAIN_DATASET = part_dataset_all_normal.PartNormalDataset(root=DATA_PATH, npoints=NUM_POINT, classification=False, split='trainval')
 TEST_DATASET = part_dataset_all_normal.PartNormalDataset(root=DATA_PATH, npoints=NUM_POINT, classification=False, split='test')
 
@@ -103,7 +104,7 @@ def train():
             bn_decay = get_bn_decay(batch)
             tf.summary.scalar('bn_decay', bn_decay)
 
-            print "--- Get model and loss"
+            print("--- Get model and loss")
             # Get model and loss 
             pred, end_points = MODEL.get_model(pointclouds_pl, is_training_pl, bn_decay=bn_decay)
             loss = MODEL.get_loss(pred, labels_pl)
@@ -113,7 +114,7 @@ def train():
             accuracy = tf.reduce_sum(tf.cast(correct, tf.float32)) / float(BATCH_SIZE*NUM_POINT)
             tf.summary.scalar('accuracy', accuracy)
 
-            print "--- Get training operator"
+            print("--- Get training operator")
             # Get training operator
             learning_rate = get_learning_rate(batch)
             tf.summary.scalar('learning_rate', learning_rate)
@@ -183,7 +184,7 @@ def train_one_epoch(sess, ops, train_writer):
     # Shuffle train samples
     train_idxs = np.arange(0, len(TRAIN_DATASET))
     np.random.shuffle(train_idxs)
-    num_batches = len(TRAIN_DATASET)/BATCH_SIZE
+    num_batches = int(len(TRAIN_DATASET)/BATCH_SIZE)
     
     log_string(str(datetime.now()))
 
@@ -226,7 +227,7 @@ def eval_one_epoch(sess, ops, test_writer):
     is_training = False
     test_idxs = np.arange(0, len(TEST_DATASET))
     # Test on all data: last batch might be smaller than BATCH_SIZE
-    num_batches = (len(TEST_DATASET)+BATCH_SIZE-1)/BATCH_SIZE
+    num_batches = int((len(TEST_DATASET)+BATCH_SIZE-1)/BATCH_SIZE)
 
     total_correct = 0
     total_seen = 0
@@ -235,9 +236,9 @@ def eval_one_epoch(sess, ops, test_writer):
     total_correct_class = [0 for _ in range(NUM_CLASSES)]
 
     seg_classes = TEST_DATASET.seg_classes
-    shape_ious = {cat:[] for cat in seg_classes.keys()}
+    shape_ious = {cat:[] for cat in list(seg_classes.keys())}
     seg_label_to_cat = {} # {0:Airplane, 1:Airplane, ...49:Table}
-    for cat in seg_classes.keys():
+    for cat in list(seg_classes.keys()):
         for label in seg_classes[cat]:
             seg_label_to_cat[label] = cat
 
@@ -300,11 +301,11 @@ def eval_one_epoch(sess, ops, test_writer):
             shape_ious[cat].append(np.mean(part_ious))
 
     all_shape_ious = []
-    for cat in shape_ious.keys():
+    for cat in list(shape_ious.keys()):
         for iou in shape_ious[cat]:
             all_shape_ious.append(iou)
         shape_ious[cat] = np.mean(shape_ious[cat])
-    mean_shape_ious = np.mean(shape_ious.values())
+    mean_shape_ious = np.mean(list(shape_ious.values()))
     log_string('eval mean loss: %f' % (loss_sum / float(len(TEST_DATASET)/BATCH_SIZE)))
     log_string('eval accuracy: %f'% (total_correct / float(total_seen)))
     log_string('eval avg class acc: %f' % (np.mean(np.array(total_correct_class)/np.array(total_seen_class,dtype=np.float))))
