@@ -1,3 +1,5 @@
 part_seg/log_folders/*
 part_seg/slurm/*
 part_seg/slurm*
+__pycache__/*
+part_seg/__pycache__/*
