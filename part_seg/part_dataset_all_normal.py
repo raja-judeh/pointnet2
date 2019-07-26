@@ -17,7 +17,7 @@ def pc_normalize(pc):
     return pc
 
 class PartNormalDataset():
-    def __init__(self, root, npoints = 2500, classification = False, split='train', normalize=True, return_cls_label = False):
+    def __init__(self, root, input_cat=None, npoints = 2500, classification = False, split='train', normalize=True, return_cls_label = False):
         self.npoints = npoints
         self.root = root
         self.catfile = os.path.join(self.root, 'synsetoffset2category.txt')
@@ -33,6 +33,10 @@ class PartNormalDataset():
                 self.cat[ls[0]] = ls[1]
         self.cat = {k:v for k,v in list(self.cat.items())}
         #print(self.cat)
+
+        if input_cat is not None:
+            # Choose only one category
+            self.cat = {input_cat: self.cat[input_cat]}
             
         self.meta = {}
         with open(os.path.join(self.root, 'train_test_split', 'shuffled_train_file_list.json'), 'r') as f:
