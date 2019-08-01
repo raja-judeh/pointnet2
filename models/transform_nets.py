@@ -16,12 +16,9 @@ def input_transform_net(point_cloud, is_training, bn_decay=None, K=3):
     num_point = point_cloud.get_shape()[1].value
     num_feats = point_cloud.get_shape()[2].value
 
-    if num_feats > 3:
-        point_cloud = point_cloud[:,:,0:3]
-
     input_image = tf.expand_dims(point_cloud, -1)
 
-    net = tf_util.conv2d(input_image, 64, [1,3],
+    net = tf_util.conv2d(input_image, 64, [1,num_feats],
                          padding='VALID', stride=[1,1],
                          bn=True, is_training=is_training,
                          scope='tconv1', bn_decay=bn_decay)

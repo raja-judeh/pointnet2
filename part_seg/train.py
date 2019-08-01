@@ -245,7 +245,7 @@ def eval_one_epoch(sess, ops, test_writer):
     log_string(str(datetime.now()))
     log_string('---- EPOCH %03d EVALUATION ----'%(EPOCH_CNT))
     
-    batch_data = np.zeros((BATCH_SIZE, NUM_POINT, 3))
+    batch_data = np.zeros((BATCH_SIZE, NUM_POINT, 6))
     batch_label = np.zeros((BATCH_SIZE, NUM_POINT)).astype(np.int32)
     for batch_idx in range(num_batches):
         if batch_idx %20==0:

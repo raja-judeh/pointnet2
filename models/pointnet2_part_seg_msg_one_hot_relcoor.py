@@ -50,7 +50,8 @@ def get_model(point_cloud, cls_label, is_training, bn_decay=None):
     l0_virtual_centers = three_interpolate(l1_xyz, idx, weight)
     l0_xyz_rel = l0_xyz - l0_virtual_centers
 
-    l0_points = pointnet_fp_module(l0_xyz, l1_xyz, tf.concat([cls_label_one_hot, l0_xyz_rel, l0_points],axis=-1), l1_points, [128,128], is_training, bn_decay, scope='fp_layer3')
+    #l0_points = pointnet_fp_module(l0_xyz, l1_xyz, tf.concat([cls_label_one_hot, l0_xyz_rel, l0_points],axis=-1), l1_points, [128,128], is_training, bn_decay, scope='fp_layer3')
+    l0_points = pointnet_fp_module(l0_xyz, l1_xyz, tf.concat([cls_label_one_hot, l0_points],axis=-1), l1_points, [128,128], is_training, bn_decay, scope='fp_layer3')
 
     # FC layers
     net = tf_util.conv1d(l0_points, 128, 1, padding='VALID', bn=True, is_training=is_training, scope='fc1', bn_decay=bn_decay)

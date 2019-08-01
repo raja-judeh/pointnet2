@@ -29,6 +29,30 @@ def shuffle_points(batch_data):
     np.random.shuffle(idx)
     return batch_data[:,idx,:]
 
+def get_rotations(rotations_path):
+    '''
+        Read the rotations which to be applied to the data
+    '''  
+    count = 1
+    R = []
+    rotation_mats = []
+    with open(rotations_path, 'r') as f:
+        for line in f:
+            if count % 4 == 0:
+                rotation_mats.append(R)
+                count = 1
+                R = []
+
+            x, y, z = line.strip().split(',')
+            x, y, z = float(x), float(y), float(z)
+
+            R.append(list((x,y,z)))
+            count += 1
+        
+        rotation_mats.append(R)
+
+    return np.array(rotation_mats)
+
 def rotate_point_cloud(batch_data):
     """ Randomly rotate the point clouds to augument the dataset
         rotation is per shape based along up direction
@@ -48,6 +72,11 @@ def rotate_point_cloud(batch_data):
         shape_pc = batch_data[k, ...]
         rotated_data[k, ...] = np.dot(shape_pc.reshape((-1, 3)), rotation_matrix)
     return rotated_data
+
+def rotate_batch_data_rotmats(batch_data, rot_mats):
+    batch_data[:,:,0:3] = np.matmul(batch_data[:,:,0:3], rot_mats)
+    batch_data[:,:,3:6] = np.matmul(batch_data[:,:,3:6], rot_mats)
+    return batch_data
 
 def rotate_point_cloud_z(batch_data):
     """ Randomly rotate the point clouds to augument the dataset

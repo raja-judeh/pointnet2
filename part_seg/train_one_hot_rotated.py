@@ -10,7 +10,7 @@ import os
 import sys
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 ROOT_DIR = os.path.dirname(BASE_DIR)
-DATA_DIR = '/volume/USERSTORE/jude_ra/master_thesis/pointnet2/data/'
+DATA_DIR = '/volume/USERSTORE/jude_ra/master_thesis/pointnet2/'
 sys.path.append(BASE_DIR)
 sys.path.append(os.path.join(ROOT_DIR, 'models'))
 sys.path.append(os.path.join(ROOT_DIR, 'utils'))
@@ -19,7 +19,7 @@ import tf_util
 import part_dataset_all_normal
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--num_gpus', type=int, default=1, help='How many gpus to use [default: 1]')
+parser.add_argument('--gpu', type=int, default=0, help='GPU to use [default: GPU 0]')
 parser.add_argument('--model', default='model', help='Model name [default: model]')
 parser.add_argument('--log_dir', default='log', help='Log dir [default: log]')
 parser.add_argument('--num_point', type=int, default=2048, help='Point Number [default: 2048]')
@@ -28,25 +28,21 @@ parser.add_argument('--batch_size', type=int, default=32, help='Batch Size durin
 parser.add_argument('--learning_rate', type=float, default=0.001, help='Initial learning rate [default: 0.001]')
 parser.add_argument('--momentum', type=float, default=0.9, help='Initial learning rate [default: 0.9]')
 parser.add_argument('--optimizer', default='adam', help='adam or momentum [default: adam]')
-parser.add_argument('--decay_step', type=int, default=200000, help='Decay step for lr decay [default: 200000]')
-parser.add_argument('--decay_rate', type=float, default=0.7, help='Decay rate for lr decay [default: 0.7]')
+parser.add_argument('--decay_step', type=int, default=16881*20, help='Decay step for lr decay [default: 200000]')
+parser.add_argument('--decay_rate', type=float, default=0.5, help='Decay rate for lr decay [default: 0.7]')
 FLAGS = parser.parse_args()
 
 EPOCH_CNT = 0
 
 BATCH_SIZE = FLAGS.batch_size
-NUM_GPUS = FLAGS.num_gpus
-
 NUM_POINT = FLAGS.num_point
 MAX_EPOCH = FLAGS.max_epoch
 BASE_LEARNING_RATE = FLAGS.learning_rate
+GPU_INDEX = FLAGS.gpu
 MOMENTUM = FLAGS.momentum
 OPTIMIZER = FLAGS.optimizer
 DECAY_STEP = FLAGS.decay_step
 DECAY_RATE = FLAGS.decay_rate
-
-assert(BATCH_SIZE % NUM_GPUS == 0)
-DEVICE_BATCH_SIZE = int(BATCH_SIZE / NUM_GPUS)
 
 MODEL = importlib.import_module(FLAGS.model) # import network module
 MODEL_FILE = os.path.join(ROOT_DIR, 'models', FLAGS.model+'.py')
@@ -67,57 +63,17 @@ HOSTNAME = socket.gethostname()
 NUM_CLASSES = 50
 
 # Shapenet official train/test split
-DATA_PATH = os.path.join(DATA_DIR, 'shapenetcore_partanno_segmentation_benchmark_v0_normal')
-TRAIN_DATASET = part_dataset_all_normal.PartNormalDataset(root=DATA_PATH, npoints=NUM_POINT, classification=False, split='trainval')
-TEST_DATASET = part_dataset_all_normal.PartNormalDataset(root=DATA_PATH, npoints=NUM_POINT, classification=False, split='test')
+DATA_PATH = os.path.join(DATA_DIR, 'data', 'shapenetcore_partanno_segmentation_benchmark_v0_normal')
+TRAIN_DATASET = part_dataset_all_normal.PartNormalDataset(root=DATA_PATH, npoints=NUM_POINT, classification=False, split='trainval', return_cls_label=True)
+TEST_DATASET = part_dataset_all_normal.PartNormalDataset(root=DATA_PATH, npoints=NUM_POINT, classification=False, split='test', return_cls_label=True)
+
+ROTATIONS_PATH = os.path.join(DATA_DIR, 'rotations', 'selected_deg10.txt')
+ROT_MATS = provider.get_rotations(ROTATIONS_PATH)
 
 def log_string(out_str):
     LOG_FOUT.write(out_str+'\n')
     LOG_FOUT.flush()
     print(out_str)
-
-def average_gradients(tower_grads):
-    """Calculate the average gradient for each shared variable across all towers.
-       Note that this function provides a synchronization point across all towers.
-       From tensorflow tutorial: cifar10/cifar10_multi_gpu_train.py
-       Args:
-            tower_grads: List of lists of (gradient, variable) tuples. The outer list
-            is over individual gradients. The inner list is over the gradient
-            calculation for each tower.
-       Returns:
-            List of pairs of (gradient, variable) where the gradient has been averaged
-            across all towers.
-    """
-    
-    average_grads = []
-    for grad_and_vars in zip(*tower_grads):
-        # Note that each grad_and_vars looks like the following:
-        #   ((grad0_gpu0, var0_gpu0), ... , (grad0_gpuN, var0_gpuN))
-        grads = []
-        #for g, _ in grad_and_vars:
-        for g, v in grad_and_vars:
-            if g is None:
-                continue
-
-            # Add 0 dimension to the gradients to represent the tower.
-            expanded_g = tf.expand_dims(g, 0)
-
-            # Append on a 'tower' dimension which we will average over below.
-            grads.append(expanded_g)
-
-        if grads:
-            # Average over the 'tower' dimension.
-            grad = tf.concat(grads, 0)
-            grad = tf.reduce_mean(grad, 0)
-
-            # Keep in mind that the Variables are redundant because they are shared
-            # across towers. So .. we will just return the first tower's pointer to
-            # the Variable.
-            v = grad_and_vars[0][1]
-            grad_and_var = (grad, v)
-            average_grads.append(grad_and_var)
-
-    return average_grads
 
 def get_learning_rate(batch):
     learning_rate = tf.train.exponential_decay(
@@ -141,9 +97,10 @@ def get_bn_decay(batch):
 
 def train():
     with tf.Graph().as_default():
-        with tf.device('/cpu:0'):
-            pointclouds_pl, labels_pl = MODEL.placeholder_inputs(BATCH_SIZE, NUM_POINT)
+        with tf.device('/gpu:'+str(GPU_INDEX)):
+            pointclouds_pl, labels_pl, cls_labels_pl = MODEL.placeholder_inputs(BATCH_SIZE, NUM_POINT)
             is_training_pl = tf.placeholder(tf.bool, shape=())
+            print(is_training_pl)
             
             # Note the global_step=batch parameter to minimize. 
             # That tells the optimizer to helpfully increment the 'batch' parameter for you every time it trains.
@@ -151,65 +108,30 @@ def train():
             bn_decay = get_bn_decay(batch)
             tf.summary.scalar('bn_decay', bn_decay)
 
-            # Set learning rate and optimizer
-            learning_rate = get_learning_rate(batch)
-            tf.summary.scalar('learning_rate', learning_rate)
-            if OPTIMIZER == 'momentum':
-                optimizer = tf.train.MomentumOptimizer(learning_rate, momentum=MOMENTUM)
-            elif OPTIMIZER == 'adam':
-                optimizer = tf.train.AdamOptimizer(learning_rate)       
-
-            # -------------------------------------------
-            # Get model and loss on multiple GPU devices
-            # -------------------------------------------
-            # Allocating variables on CPU first will greatly accelerate multi-gpu training.
-            # Ref: https://github.com/kuza55/keras-extras/issues/21
-            MODEL.get_model(pointclouds_pl, is_training_pl, bn_decay=bn_decay)
-
-            tower_grads = []
-            pred_gpu = []
-            total_loss_gpu = []
-
-            for i in range(NUM_GPUS):
-                with tf.variable_scope(tf.get_variable_scope(), reuse=True):
-                    with tf.device('/gpu:%d'%(i)), tf.name_scope('gpu_%d'%(i)) as scope:
-                        # Evenly split input data to each GPU
-                        pc_batch = tf.slice(pointclouds_pl,
-                            [i*DEVICE_BATCH_SIZE,0,0], [DEVICE_BATCH_SIZE,-1,-1])
-                        label_batch = tf.slice(labels_pl,
-                            [i*DEVICE_BATCH_SIZE,0], [DEVICE_BATCH_SIZE,-1])
-
-                        pred, end_points = MODEL.get_model(pc_batch,
-                            is_training=is_training_pl, bn_decay=bn_decay)
-
-                        MODEL.get_loss(pred, label_batch)
-                        losses = tf.get_collection('losses', scope)
-                        total_loss = tf.add_n(losses, name='total_loss')
-                        for l in losses + [total_loss]:
-                            tf.summary.scalar(l.op.name, l)
-
-                        grads = optimizer.compute_gradients(total_loss)
-                        tower_grads.append(grads)
-
-                        pred_gpu.append(pred)
-                        total_loss_gpu.append(total_loss)
-
-
-            # Merge pred and losses from multiple GPUs
-            pred = tf.concat(pred_gpu, 0)
-            total_loss = tf.reduce_mean(total_loss_gpu)
-
-            # Get training operator 
-            grads = average_gradients(tower_grads)
-            train_op = optimizer.apply_gradients(grads, global_step=batch)
+            print("--- Get model and loss")
+            # Get model and loss 
+            pred, end_points = MODEL.get_model(pointclouds_pl, cls_labels_pl, is_training_pl, bn_decay=bn_decay)
+           
+            loss = MODEL.get_loss(pred, labels_pl, end_points) #added end_points to pass the transform matrix to the loss
+            tf.summary.scalar('loss', loss)
 
             correct = tf.equal(tf.argmax(pred, 2), tf.to_int64(labels_pl))
             accuracy = tf.reduce_sum(tf.cast(correct, tf.float32)) / float(BATCH_SIZE*NUM_POINT)
             tf.summary.scalar('accuracy', accuracy)
 
-        # Add ops to save and restore all the variables.
-        saver = tf.train.Saver()
-
+            print("--- Get training operator")
+            # Get training operator
+            learning_rate = get_learning_rate(batch)
+            tf.summary.scalar('learning_rate', learning_rate)
+            if OPTIMIZER == 'momentum':
+                optimizer = tf.train.MomentumOptimizer(learning_rate, momentum=MOMENTUM)
+            elif OPTIMIZER == 'adam':
+                optimizer = tf.train.AdamOptimizer(learning_rate)
+            train_op = optimizer.minimize(loss, global_step=batch)
+            
+            # Add ops to save and restore all the variables.
+            saver = tf.train.Saver()
+        
         # Create a session
         config = tf.ConfigProto()
         config.gpu_options.allow_growth = True
@@ -225,18 +147,21 @@ def train():
         # Init variables
         init = tf.global_variables_initializer()
         sess.run(init)
+        #sess.run(init, {is_training_pl: True})
 
         ops = {'pointclouds_pl': pointclouds_pl,
                'labels_pl': labels_pl,
+               'cls_labels_pl': cls_labels_pl,
                'is_training_pl': is_training_pl,
                'pred': pred,
-               'loss': total_loss,
+               'loss': loss,
                'train_op': train_op,
                'merged': merged,
                'step': batch,
                'end_points': end_points}
 
         best_acc = -1
+
         for epoch in range(MAX_EPOCH):
             log_string('**** EPOCH %03d ****' % (epoch))
             sys.stdout.flush()
@@ -253,13 +178,14 @@ def get_batch(dataset, idxs, start_idx, end_idx):
     bsize = end_idx-start_idx
     batch_data = np.zeros((bsize, NUM_POINT, 6))
     batch_label = np.zeros((bsize, NUM_POINT), dtype=np.int32)
+    batch_cls_label = np.zeros((bsize,), dtype=np.int32)
     for i in range(bsize):
-        ps,normal,seg = dataset[idxs[i+start_idx]]
+        ps,normal,seg,cls = dataset[idxs[i+start_idx]]
         batch_data[i,:,0:3] = ps
         batch_data[i,:,3:6] = normal
         batch_label[i,:] = seg
-    return batch_data, batch_label
-
+        batch_cls_label[i] = cls
+    return batch_data, batch_label, batch_cls_label
 
 def train_one_epoch(sess, ops, train_writer):
     """ ops: dict mapping from string to tf ops """
@@ -275,19 +201,27 @@ def train_one_epoch(sess, ops, train_writer):
     total_correct = 0
     total_seen = 0
     loss_sum = 0
+
+    num_batch_rotations = ROT_MATS.shape[0] // BATCH_SIZE
+    batchR_idx = 0
     for batch_idx in range(num_batches):
         start_idx = batch_idx * BATCH_SIZE
         end_idx = (batch_idx+1) * BATCH_SIZE
-        batch_data, batch_label = get_batch(TRAIN_DATASET, train_idxs, start_idx, end_idx)
+        batch_data, batch_label, batch_cls_label = get_batch(TRAIN_DATASET, train_idxs, start_idx, end_idx)
+
         # Augment batched point clouds by rotation and jittering
-        #aug_data = batch_data
-        #aug_data = provider.random_scale_point_cloud(batch_data)
-        batch_data[:,:,0:3] = provider.jitter_point_cloud(batch_data[:,:,0:3])
-        feed_dict = {ops['pointclouds_pl']: batch_data,
-                     ops['labels_pl']: batch_label,
-                     ops['is_training_pl']: is_training,}
+        rot_mats = ROT_MATS[batchR_idx * BATCH_SIZE : (batchR_idx+1) * BATCH_SIZE,:,:]
+        rotated_batch_data = provider.rotate_batch_data_rotmats(batch_data, rot_mats)
+        rotated_batch_data[:,:,0:3] = provider.jitter_point_cloud(rotated_batch_data[:,:,0:3])
+
+        feed_dict = {ops['pointclouds_pl']: rotated_batch_data,
+                    ops['labels_pl']: batch_label,
+                    ops['cls_labels_pl']: batch_cls_label,
+                    ops['is_training_pl']: is_training,}
+
         summary, step, _, loss_val, pred_val = sess.run([ops['merged'], ops['step'],
             ops['train_op'], ops['loss'], ops['pred']], feed_dict=feed_dict)
+
         train_writer.add_summary(summary, step)
         pred_val = np.argmax(pred_val, 2)
         correct = np.sum(pred_val == batch_label)
@@ -295,14 +229,19 @@ def train_one_epoch(sess, ops, train_writer):
         total_seen += (BATCH_SIZE*NUM_POINT)
         loss_sum += loss_val
 
+        if batchR_idx + 1 == num_batch_rotations:
+            batchR_idx = 0
+        else:
+            batchR_idx += 1
+                
         if (batch_idx+1)%10 == 0:
             log_string(' -- %03d / %03d --' % (batch_idx+1, num_batches))
             log_string('mean loss: %f' % (loss_sum / 10))
             log_string('accuracy: %f' % (total_correct / float(total_seen)))
             total_correct = 0
             total_seen = 0
-            loss_sum = 0
-        
+            loss_sum = 0      
+
         
 def eval_one_epoch(sess, ops, test_writer):
     """ ops: dict mapping from string to tf ops """
@@ -330,23 +269,27 @@ def eval_one_epoch(sess, ops, test_writer):
     
     batch_data = np.zeros((BATCH_SIZE, NUM_POINT, 3))
     batch_label = np.zeros((BATCH_SIZE, NUM_POINT)).astype(np.int32)
+    batch_cls_label = np.zeros((BATCH_SIZE,)).astype(np.int32)
     for batch_idx in range(num_batches):
         if batch_idx %20==0:
             log_string('%03d/%03d'%(batch_idx, num_batches))
         start_idx = batch_idx * BATCH_SIZE
         end_idx = min(len(TEST_DATASET), (batch_idx+1) * BATCH_SIZE)
         cur_batch_size = end_idx-start_idx
-        cur_batch_data, cur_batch_label = get_batch(TEST_DATASET, test_idxs, start_idx, end_idx)
+        cur_batch_data, cur_batch_label, cur_batch_cls_label = get_batch(TEST_DATASET, test_idxs, start_idx, end_idx)
         if cur_batch_size == BATCH_SIZE:
             batch_data = cur_batch_data
             batch_label = cur_batch_label
+            batch_cls_label = cur_batch_cls_label
         else:
             batch_data[0:cur_batch_size] = cur_batch_data
             batch_label[0:cur_batch_size] = cur_batch_label
+            batch_cls_label[0:cur_batch_size] = cur_batch_cls_label
 
         # ---------------------------------------------------------------------
         feed_dict = {ops['pointclouds_pl']: batch_data,
                      ops['labels_pl']: batch_label,
+                     ops['cls_labels_pl']: batch_cls_label,
                      ops['is_training_pl']: is_training}
         summary, step, loss_val, pred_val = sess.run([ops['merged'], ops['step'],
             ops['loss'], ops['pred']], feed_dict=feed_dict)
