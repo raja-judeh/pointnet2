@@ -15,7 +15,7 @@ sys.path.append(BASE_DIR)
 sys.path.append(os.path.join(ROOT_DIR, 'models'))
 sys.path.append(os.path.join(ROOT_DIR, 'utils'))
 import tf_util
-import part_dataset_all_normal_rotated
+import part_dataset_all_normal
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--gpu', type=int, default=0, help='GPU to use [default: GPU 0]')
@@ -27,7 +27,7 @@ parser.add_argument('--batch_size', type=int, default=32, help='Batch Size durin
 FLAGS = parser.parse_args()
 
 
-VOTE_NUM = 12
+VOTE_NUM = 1
 
 
 EPOCH_CNT = 0
@@ -47,9 +47,12 @@ LOG_FOUT = open(os.path.join(LOG_DIR, 'log_train.txt'), 'w')
 LOG_FOUT.write(str(FLAGS)+'\n')
 NUM_CLASSES = 50
 
+print(MODEL)
+print(MODEL_PATH)
+
 # Shapenet official train/test split
-DATA_PATH = os.path.join(DATA_DIR, 'shapenetcore_normal_rotated')
-TEST_DATASET = part_dataset_all_normal_rotated.PartNormalDataset(root=DATA_PATH, npoints=NUM_POINT, classification=False, split='test', return_cls_label=True)
+DATA_PATH = os.path.join(DATA_DIR, 'shapenetcore_partanno_segmentation_benchmark_v0_normal')
+TEST_DATASET = part_dataset_all_normal.PartNormalDataset(root=DATA_PATH, npoints=NUM_POINT, classification=False, split='test', return_cls_label=True)
 
 def log_string(out_str):
     LOG_FOUT.write(out_str+'\n')
@@ -61,11 +64,10 @@ def evaluate():
         with tf.device('/gpu:'+str(GPU_INDEX)):
             pointclouds_pl, labels_pl, cls_labels_pl = MODEL.placeholder_inputs(BATCH_SIZE, NUM_POINT)
             is_training_pl = tf.placeholder(tf.bool, shape=())
-            print(is_training_pl)
             
             print("--- Get model and loss")
             pred, end_points = MODEL.get_model(pointclouds_pl, cls_labels_pl, is_training_pl)
-            loss = MODEL.get_loss(pred, labels_pl)
+            loss = MODEL.get_loss(pred, labels_pl, end_points)
             saver = tf.train.Saver()
         
         # Create a session
@@ -73,8 +75,14 @@ def evaluate():
         config.gpu_options.allow_growth = True
         config.allow_soft_placement = True
         sess = tf.Session(config=config)
+
+        writer = tf.summary.FileWriter(os.path.join(LOG_DIR, 'output'), sess.graph)
+
         # Restore variables from disk.
         saver.restore(sess, MODEL_PATH)
+
+        #print(tf.trainable_variables())
+
         ops = {'pointclouds_pl': pointclouds_pl,
                'labels_pl': labels_pl,
                'cls_labels_pl': cls_labels_pl,
@@ -83,6 +91,7 @@ def evaluate():
                'loss': loss}
 
         eval_one_epoch(sess, ops)
+        writer.close()
 
 def get_batch(dataset, idxs, start_idx, end_idx):
     bsize = end_idx-start_idx
@@ -120,8 +129,9 @@ def eval_one_epoch(sess, ops):
     log_string(str(datetime.now()))
     log_string('---- EPOCH %03d EVALUATION ----'%(EPOCH_CNT))
     
-    batch_data = np.zeros((BATCH_SIZE, NUM_POINT, 6))
+    batch_data = np.zeros((BATCH_SIZE, NUM_POINT, 3))
     batch_label = np.zeros((BATCH_SIZE, NUM_POINT)).astype(np.int32)
+    batch_cls_label = np.zeros((BATCH_SIZE,)).astype(np.int32)
     for batch_idx in range(num_batches):
         if batch_idx %20==0:
             log_string('%03d/%03d'%(batch_idx, num_batches))
@@ -146,8 +156,8 @@ def eval_one_epoch(sess, ops):
                          ops['labels_pl']: batch_label,
                          ops['cls_labels_pl']: batch_cls_label,
                          ops['is_training_pl']: is_training}
+
             temp_loss_val, temp_pred_val = sess.run([ops['loss'], ops['pred']], feed_dict=feed_dict)
-           
             loss_val += temp_loss_val
             pred_val += temp_pred_val
         loss_val /= float(VOTE_NUM)

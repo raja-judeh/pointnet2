@@ -15,7 +15,7 @@ sys.path.append(BASE_DIR)
 sys.path.append(os.path.join(ROOT_DIR, 'models'))
 sys.path.append(os.path.join(ROOT_DIR, 'utils'))
 import tf_util
-import part_dataset_all_normal_rotated
+import part_dataset_all_normal
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--gpu', type=int, default=0, help='GPU to use [default: GPU 0]')
@@ -27,7 +27,7 @@ parser.add_argument('--batch_size', type=int, default=32, help='Batch Size durin
 FLAGS = parser.parse_args()
 
 
-VOTE_NUM = 12
+VOTE_NUM = 1
 
 
 EPOCH_CNT = 0
@@ -48,8 +48,8 @@ LOG_FOUT.write(str(FLAGS)+'\n')
 NUM_CLASSES = 50
 
 # Shapenet official train/test split
-DATA_PATH = os.path.join(DATA_DIR, 'shapenetcore_normal_rotated')
-TEST_DATASET = part_dataset_all_normal_rotated.PartNormalDataset(root=DATA_PATH, npoints=NUM_POINT, classification=False, split='test')
+DATA_PATH = os.path.join(DATA_DIR, 'shapenetcore_partanno_segmentation_benchmark_v0_normal')
+TEST_DATASET = part_dataset_all_normal.PartNormalDataset(root=DATA_PATH, npoints=NUM_POINT, classification=False, split='test')
 
 def log_string(out_str):
     LOG_FOUT.write(out_str+'\n')
@@ -75,6 +75,8 @@ def evaluate():
         sess = tf.Session(config=config)
         # Restore variables from disk.
         saver.restore(sess, MODEL_PATH)
+
+        #print(sess.run(tf.trainable_variables()[0]))
         ops = {'pointclouds_pl': pointclouds_pl,
                'labels_pl': labels_pl,
                'is_training_pl': is_training_pl,

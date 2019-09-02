@@ -171,7 +171,8 @@ def train():
 
             # Save the variables to disk.
             if epoch % 10 == 0:
-                save_path = saver.save(sess, os.path.join(LOG_DIR, "model.ckpt"))
+                save_path = saver.save(sess, os.path.join(LOG_DIR
+, "model.ckpt"))
                 log_string("Model saved in file: %s" % save_path)
 
 def get_batch(dataset, idxs, start_idx, end_idx):
@@ -270,6 +271,10 @@ def eval_one_epoch(sess, ops, test_writer):
     batch_data = np.zeros((BATCH_SIZE, NUM_POINT, 3))
     batch_label = np.zeros((BATCH_SIZE, NUM_POINT)).astype(np.int32)
     batch_cls_label = np.zeros((BATCH_SIZE,)).astype(np.int32)
+    rot_mats = np.zeros((BATCH_SIZE,3,3))
+
+    num_batch_rotations = ROT_MATS.shape[0] // BATCH_SIZE
+    batchR_idx = 0
     for batch_idx in range(num_batches):
         if batch_idx %20==0:
             log_string('%03d/%03d'%(batch_idx, num_batches))
@@ -281,13 +286,21 @@ def eval_one_epoch(sess, ops, test_writer):
             batch_data = cur_batch_data
             batch_label = cur_batch_label
             batch_cls_label = cur_batch_cls_label
+            rot_mats = ROT_MATS[batchR_idx * BATCH_SIZE : (batchR_idx+1) * BATCH_SIZE,:,:]
         else:
             batch_data[0:cur_batch_size] = cur_batch_data
             batch_label[0:cur_batch_size] = cur_batch_label
             batch_cls_label[0:cur_batch_size] = cur_batch_cls_label
+            rot_mats[0:cur_batch_size] = ROT_MATS[batchR_idx * BATCH_SIZE : batchR_idx * BATCH_SIZE + cur_batch_size,:,:]
 
+        if batchR_idx + 1 == num_batch_rotations:
+            batchR_idx = 0
+        else:
+            batchR_idx += 1
+
+        rotated_batch_data = provider.rotate_batch_data_rotmats(batch_data, rot_mats)
         # ---------------------------------------------------------------------
-        feed_dict = {ops['pointclouds_pl']: batch_data,
+        feed_dict = {ops['pointclouds_pl']: rotated_batch_data,
                      ops['labels_pl']: batch_label,
                      ops['cls_labels_pl']: batch_cls_label,
                      ops['is_training_pl']: is_training}
@@ -341,6 +354,8 @@ def eval_one_epoch(sess, ops, test_writer):
     log_string('eval mean mIoU (all shapes): %f' % (np.mean(all_shape_ious)))
          
     EPOCH_CNT += 1
+
+
     return total_correct/float(total_seen)
 
 

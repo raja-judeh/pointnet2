@@ -44,8 +44,10 @@ class PartNormalDataset():
 
             if split=='train':
                 dir_point = os.path.join(self.root, 'train', self.cat[item])
-            elif split=='test':
-                dir_point = os.path.join(self.root, 'test', self.cat[item])
+            elif split=='test_rand':
+                dir_point = os.path.join(self.root, 'test_random', self.cat[item])
+            elif split=='test_sys':
+                dir_point = os.path.join(self.root, 'test_systematic2', self.cat[item])
             else:
                 print(('Unknown split: %s. Exiting..'%(split)))
                 exit(-1)    

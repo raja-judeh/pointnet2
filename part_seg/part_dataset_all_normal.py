@@ -102,7 +102,9 @@ class PartNormalDataset():
                 self.cache[index] = (point_set, normal, seg, cls)
                 
         
+        #choice = np.arange(self.npoints)
         choice = np.random.choice(len(seg), self.npoints, replace=True)
+
         #resample
         point_set = point_set[choice, :]
         seg = seg[choice]

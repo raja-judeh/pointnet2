@@ -108,7 +108,7 @@ def train():
             print("--- Get model and loss")
             # Get model and loss 
             pred, end_points = MODEL.get_model(pointclouds_pl, cls_labels_pl, is_training_pl, bn_decay=bn_decay)
-            loss = MODEL.get_loss(pred, labels_pl)
+            loss = MODEL.get_loss(pred, labels_pl, end_points)
             tf.summary.scalar('loss', loss)
 
             correct = tf.equal(tf.argmax(pred, 2), tf.to_int64(labels_pl))
@@ -226,9 +226,9 @@ def train_one_epoch(sess, ops, train_writer):
             loss_sum = 0
         
 
-        
 def eval_one_epoch(sess, ops, test_writer):
     """ ops: dict mapping from string to tf ops """
+
     global EPOCH_CNT
     is_training = False
     test_idxs = np.arange(0, len(TEST_DATASET))

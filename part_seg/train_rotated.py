@@ -10,7 +10,7 @@ import os
 import sys
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 ROOT_DIR = os.path.dirname(BASE_DIR)
-DATA_DIR = '/volume/USERSTORE/jude_ra/master_thesis/pointnet2/data/'
+DATA_DIR = '/volume/USERSTORE/jude_ra/master_thesis/pointnet2/'
 sys.path.append(BASE_DIR)
 sys.path.append(os.path.join(ROOT_DIR, 'models'))
 sys.path.append(os.path.join(ROOT_DIR, 'utils'))
@@ -63,9 +63,12 @@ HOSTNAME = socket.gethostname()
 NUM_CLASSES = 50
 
 # Shapenet official train/test split
-DATA_PATH = os.path.join(DATA_DIR, 'shapenetcore_partanno_segmentation_benchmark_v0_normal')
+DATA_PATH = os.path.join(DATA_DIR, 'data', 'shapenetcore_partanno_segmentation_benchmark_v0_normal')
 TRAIN_DATASET = part_dataset_all_normal.PartNormalDataset(root=DATA_PATH, npoints=NUM_POINT, classification=False, split='trainval')
 TEST_DATASET = part_dataset_all_normal.PartNormalDataset(root=DATA_PATH, npoints=NUM_POINT, classification=False, split='test')
+
+ROTATIONS_PATH = os.path.join(DATA_DIR, 'rotations', 'selected_deg10.txt')
+ROT_MATS = provider.get_rotations(ROTATIONS_PATH)
 
 def log_string(out_str):
     LOG_FOUT.write(out_str+'\n')
@@ -107,7 +110,7 @@ def train():
             print("--- Get model and loss")
             # Get model and loss 
             pred, end_points = MODEL.get_model(pointclouds_pl, is_training_pl, bn_decay=bn_decay)
-            loss = MODEL.get_loss(pred, labels_pl)
+            loss = MODEL.get_loss(pred, labels_pl, end_points)
             tf.summary.scalar('loss', loss)
 
             correct = tf.equal(tf.argmax(pred, 2), tf.to_int64(labels_pl))
@@ -191,15 +194,20 @@ def train_one_epoch(sess, ops, train_writer):
     total_correct = 0
     total_seen = 0
     loss_sum = 0
+
+    num_batch_rotations = ROT_MATS.shape[0] // BATCH_SIZE
+    batchR_idx = 0
     for batch_idx in range(num_batches):
         start_idx = batch_idx * BATCH_SIZE
         end_idx = (batch_idx+1) * BATCH_SIZE
         batch_data, batch_label = get_batch(TRAIN_DATASET, train_idxs, start_idx, end_idx)
+
         # Augment batched point clouds by rotation and jittering
-        #aug_data = batch_data
-        #aug_data = provider.random_scale_point_cloud(batch_data)
-        batch_data[:,:,0:3] = provider.jitter_point_cloud(batch_data[:,:,0:3])
-        feed_dict = {ops['pointclouds_pl']: batch_data,
+        rot_mats = ROT_MATS[batchR_idx * BATCH_SIZE : (batchR_idx+1) * BATCH_SIZE,:,:]
+        rotated_batch_data = provider.rotate_batch_data_rotmats(batch_data, rot_mats)
+        rotated_batch_data[:,:,0:3] = provider.jitter_point_cloud(rotated_batch_data[:,:,0:3])
+
+        feed_dict = {ops['pointclouds_pl']: rotated_batch_data,
                      ops['labels_pl']: batch_label,
                      ops['is_training_pl']: is_training,}
         summary, step, _, loss_val, pred_val = sess.run([ops['merged'], ops['step'],

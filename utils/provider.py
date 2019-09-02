@@ -30,7 +30,14 @@ def shuffle_points(batch_data):
     return batch_data[:,idx,:]
 
 def get_rotations(rotations_path):
+    rotation_mats = np.loadtxt(rotations_path, delimiter=',')
+    rotation_mats = rotation_mats.reshape((-1,3,3))
+
+    return rotation_mats
+
+def _get_rotations(rotations_path):
     '''
+        UNUSED
         Read the rotations which to be applied to the data
     '''  
     count = 1
@@ -74,6 +81,7 @@ def rotate_point_cloud(batch_data):
     return rotated_data
 
 def rotate_batch_data_rotmats(batch_data, rot_mats):
+    rot_mats = np.transpose(rot_mats, (0,2,1))
     batch_data[:,:,0:3] = np.matmul(batch_data[:,:,0:3], rot_mats)
     batch_data[:,:,3:6] = np.matmul(batch_data[:,:,3:6], rot_mats)
     return batch_data
