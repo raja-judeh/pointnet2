@@ -8,10 +8,14 @@ sys.path.append(BASE_DIR)
 sys.path.append(os.path.join(BASE_DIR, '../utils'))
 import tf_util
 
-def input_transform_net(point_cloud, is_training, bn_decay=None, K=3):
-    """ Input (XYZ) Transform Net, input is BxNx3 gray image
+def input_transform_net(point_cloud, is_training, bn_decay=None, K=3, normals=False):
+    """ Input (XYZ) Transform Net, input is BxNx6 gray image
         Return:
             Transformation matrix of size 3xK """
+
+    if not normals:
+        point_cloud = point_cloud[:,:,:3]
+
     batch_size = point_cloud.get_shape()[0].value
     num_point = point_cloud.get_shape()[1].value
     num_feats = point_cloud.get_shape()[2].value

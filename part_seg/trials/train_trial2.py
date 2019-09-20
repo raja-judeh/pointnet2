@@ -95,7 +95,7 @@ def get_bn_decay(batch):
 def train():
     with tf.Graph().as_default():
         with tf.device('/gpu:'+str(GPU_INDEX)):
-            pointclouds_pl, labels_pl, cls_labels_pl = MODEL.placeholder_inputs(BATCH_SIZE, NUM_POINT)
+            pointclouds_pl, labels_pl = MODEL.placeholder_inputs(BATCH_SIZE, NUM_POINT)
             is_training_pl = tf.placeholder(tf.bool, shape=())
             print(is_training_pl)
             
@@ -107,8 +107,8 @@ def train():
 
             print("--- Get model and loss")
             # Get model and loss 
-            pred, end_points = MODEL.get_model(pointclouds_pl, cls_labels_pl, is_training_pl, bn_decay=bn_decay)
-            loss = MODEL.get_loss(pred, labels_pl, end_points)
+            pred, end_points = MODEL.get_model(pointclouds_pl, is_training_pl, bn_decay=bn_decay)
+            loss = MODEL.get_loss(pred, labels_pl)
             tf.summary.scalar('loss', loss)
 
             correct = tf.equal(tf.argmax(pred, 2), tf.to_int64(labels_pl))
@@ -143,11 +143,9 @@ def train():
         # Init variables
         init = tf.global_variables_initializer()
         sess.run(init)
-        #sess.run(init, {is_training_pl: True})
 
         ops = {'pointclouds_pl': pointclouds_pl,
                'labels_pl': labels_pl,
-               'cls_labels_pl': cls_labels_pl,
                'is_training_pl': is_training_pl,
                'pred': pred,
                'loss': loss,
@@ -162,12 +160,14 @@ def train():
             sys.stdout.flush()
              
             train_one_epoch(sess, ops, train_writer)
-            eval_one_epoch(sess, ops, test_writer)
+            #eval_one_epoch(sess, ops, test_writer)
 
             # Save the variables to disk.
-            if epoch % 10 == 0:
-                save_path = saver.save(sess, os.path.join(LOG_DIR, "model.ckpt"))
+            if epoch % 1 == 0:
+                save_path = saver.save(sess, os.path.join(LOG_DIR, "model" + str(epoch) + ".ckpt"))
                 log_string("Model saved in file: %s" % save_path)
+
+            evaluate(sess, epoch, test_writer)
 
 def get_batch(dataset, idxs, start_idx, end_idx):
     bsize = end_idx-start_idx
@@ -206,7 +206,6 @@ def train_one_epoch(sess, ops, train_writer):
         batch_data[:,:,0:3] = provider.jitter_point_cloud(batch_data[:,:,0:3])
         feed_dict = {ops['pointclouds_pl']: batch_data,
                      ops['labels_pl']: batch_label,
-                     ops['cls_labels_pl']: batch_cls_label,
                      ops['is_training_pl']: is_training,}
         summary, step, _, loss_val, pred_val = sess.run([ops['merged'], ops['step'],
             ops['train_op'], ops['loss'], ops['pred']], feed_dict=feed_dict)
@@ -217,7 +216,7 @@ def train_one_epoch(sess, ops, train_writer):
         total_seen += (BATCH_SIZE*NUM_POINT)
         loss_sum += loss_val
 
-        if (batch_idx+1)%10 == 0:
+        if (batch_idx+1)%100 == 0:
             log_string(' -- %03d / %03d --' % (batch_idx+1, num_batches))
             log_string('mean loss: %f' % (loss_sum / 10))
             log_string('accuracy: %f' % (total_correct / float(total_seen)))
@@ -225,6 +224,41 @@ def train_one_epoch(sess, ops, train_writer):
             total_seen = 0
             loss_sum = 0
         
+
+def evaluate(sess, epoch, test_writer):
+    with tf.Graph().as_default():
+        pointclouds_pl, labels_pl = MODEL.placeholder_inputs(BATCH_SIZE, NUM_POINT)
+        is_training_pl = tf.placeholder(tf.bool, shape=())
+
+        pred, end_points = MODEL.get_model(pointclouds_pl, is_training_pl)
+        loss = MODEL.get_loss(pred, labels_pl)
+        saver = tf.train.Saver()
+
+        # Create a session
+        config = tf.ConfigProto()
+        config.gpu_options.allow_growth = True
+        config.allow_soft_placement = True
+        sess2 = tf.Session(config=config)
+
+        saver.restore(sess2, os.path.join(LOG_DIR, "model" + str(epoch) + ".ckpt"))
+        stored_variables = tf.trainable_variables()
+
+        ops = {'pointclouds_pl': pointclouds_pl,
+               'labels_pl': labels_pl,
+               'is_training_pl': is_training_pl,
+               'pred': pred,
+               'loss': loss}
+
+        eval_one_epoch(sess2, ops, test_writer) #evaluate using the restored variables
+
+
+    g = sess.graph
+    with g.as_default():
+        trained_variables = tf.trainable_variables()
+    
+    for i in range(70):
+        diff = sess2.run(stored_variables[i]) - sess.run(trained_variables[i+1])
+        print('Difference:', np.sum(diff))
 
 def eval_one_epoch(sess, ops, test_writer):
     """ ops: dict mapping from string to tf ops """
@@ -273,11 +307,8 @@ def eval_one_epoch(sess, ops, test_writer):
         # ---------------------------------------------------------------------
         feed_dict = {ops['pointclouds_pl']: batch_data,
                      ops['labels_pl']: batch_label,
-                     ops['cls_labels_pl']: batch_cls_label,
                      ops['is_training_pl']: is_training}
-        summary, step, loss_val, pred_val = sess.run([ops['merged'], ops['step'],
-            ops['loss'], ops['pred']], feed_dict=feed_dict)
-        test_writer.add_summary(summary, step)
+        loss_val, pred_val = sess.run([ops['loss'], ops['pred']], feed_dict=feed_dict)
         # ---------------------------------------------------------------------
     
         # Select valid data

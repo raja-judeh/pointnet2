@@ -28,16 +28,24 @@ def get_model(point_cloud, cls_label, is_training, bn_decay=None):
 
     # Apply input-transform network
     with tf.variable_scope('transform_net1') as sc:
-        transform = input_transform_net(point_cloud, is_training, bn_decay, K=3)
+        transform = input_transform_net(point_cloud, is_training, bn_decay, K=3, normals=True)
 
-    transform = tf.transpose(transform, (0,2,1))
     l0_xyz_transformed = tf.matmul(l0_xyz, transform)
     l0_points_transformed = tf.matmul(l0_points, transform)
 
     # Set abstraction layers
     l1_xyz, l1_points = pointnet_sa_module_msg(l0_xyz_transformed, l0_points_transformed, 512, [0.1,0.2,0.4], [32,64,128], [[32,32,64], [64,64,128], [64,96,128]], is_training, bn_decay, scope='layer1')
 
-    l2_xyz, l2_points = pointnet_sa_module_msg(l1_xyz, l1_points, 128, [0.4,0.8], [64,128], [[128,128,256],[128,196,256]], is_training, bn_decay, scope='layer2')
+    # Apply feature-transform network after first SA layer
+    with tf.variable_scope('transform_net2') as sc:
+        K = l1_points.get_shape()[2].value # features were concatenated from multi-scales
+        l1_points_expanded = tf.expand_dims(l1_points, 2)
+        transform = feature_transform_net(l1_points_expanded, is_training, bn_decay, K=K)
+
+    l1_points_transformed = tf.matmul(l1_points, transform)
+    end_points['transform'] = transform
+
+    l2_xyz, l2_points = pointnet_sa_module_msg(l1_xyz, l1_points_transformed, 128, [0.4,0.8], [64,128], [[128,128,256],[128,196,256]], is_training, bn_decay, scope='layer2')
     l3_xyz, l3_points, l3_indices = pointnet_sa_module(l2_xyz, l2_points, npoint=None, radius=None, nsample=None, mlp=[256,512,1024], mlp2=None, group_all=True, is_training=is_training, bn_decay=bn_decay, scope='layer3')
 
     # Feature propagation layers
@@ -64,11 +72,16 @@ def get_loss(pred, label, end_points):
     loss = tf.nn.sparse_softmax_cross_entropy_with_logits(logits=pred, labels=label)
     classify_loss = tf.reduce_mean(loss)
 
-    
-    tf.summary.scalar('classify loss', classify_loss)
-    tf.add_to_collection('losses', classify_loss)
+    transform = end_points['transform'] # BxKxK
+    K = transform.get_shape()[1].value
+    mat_diff = tf.matmul(transform, tf.transpose(transform, perm=[0,2,1])) - tf.constant(np.eye(K), dtype=tf.float32)
+    mat_diff_loss = tf.nn.l2_loss(mat_diff) 
 
-    return classify_loss
+    total_loss = classify_loss + mat_diff_loss * 1e-3
+    
+    tf.summary.scalar('total loss', total_loss)
+    tf.add_to_collection('losses', total_loss)
+    return total_loss
 
 
 

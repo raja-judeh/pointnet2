@@ -5,4 +5,3 @@ __pycache__/*
 part_seg/__pycache__/*
 utils/__pycache__/*
 models/__pycache__/*
-part_seg/trials/*

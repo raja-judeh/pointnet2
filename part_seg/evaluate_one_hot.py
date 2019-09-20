@@ -15,7 +15,7 @@ sys.path.append(BASE_DIR)
 sys.path.append(os.path.join(ROOT_DIR, 'models'))
 sys.path.append(os.path.join(ROOT_DIR, 'utils'))
 import tf_util
-import part_dataset_all_normal
+import part_dataset_all_normal, part_dataset_all_normal_rotated
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--gpu', type=int, default=0, help='GPU to use [default: GPU 0]')
@@ -24,6 +24,7 @@ parser.add_argument('--model_path', default='log_folders/log_msg_one_hot/model.c
 parser.add_argument('--log_dir', default='log_folders/log_eval_msg_one_hot', help='Log dir')
 parser.add_argument('--num_point', type=int, default=2048, help='Point Number [default: 2048]')
 parser.add_argument('--batch_size', type=int, default=32, help='Batch Size during training [default: 32]')
+parser.add_argument('--test_rotated', type=bool, default=False, help='test on rotated data')
 FLAGS = parser.parse_args()
 
 
@@ -39,20 +40,25 @@ GPU_INDEX = FLAGS.gpu
 MODEL_PATH = FLAGS.model_path
 MODEL = importlib.import_module(FLAGS.model) # import network module
 MODEL_FILE = os.path.join(ROOT_DIR, 'models', FLAGS.model+'.py')
+TEST_ROTATED = FLAGS.test_rotated
+
 LOG_DIR = FLAGS.log_dir
 if not os.path.exists(LOG_DIR): os.mkdir(LOG_DIR)
+
+
 os.system('cp %s %s' % (MODEL_FILE, LOG_DIR)) # bkp of model def
 os.system('cp train.py %s' % (LOG_DIR)) # bkp of train procedure
 LOG_FOUT = open(os.path.join(LOG_DIR, 'log_train.txt'), 'w')
 LOG_FOUT.write(str(FLAGS)+'\n')
 NUM_CLASSES = 50
 
-print(MODEL)
-print(MODEL_PATH)
-
-# Shapenet official train/test split
-DATA_PATH = os.path.join(DATA_DIR, 'shapenetcore_partanno_segmentation_benchmark_v0_normal')
-TEST_DATASET = part_dataset_all_normal.PartNormalDataset(root=DATA_PATH, npoints=NUM_POINT, classification=False, split='test', return_cls_label=True)
+if TEST_ROTATED:
+    DATA_PATH = os.path.join(DATA_DIR, 'shapenetcore_normal_rotated')
+    TEST_DATASET = part_dataset_all_normal_rotated.PartNormalDataset(root=DATA_PATH, npoints=NUM_POINT, classification=False, split='test_rand', return_cls_label=True, random_sampling=True)
+else:
+    # Shapenet official train/test split
+    DATA_PATH = os.path.join(DATA_DIR, 'shapenetcore_partanno_segmentation_benchmark_v0_normal')
+    TEST_DATASET = part_dataset_all_normal.PartNormalDataset(root=DATA_PATH, npoints=NUM_POINT, classification=False, split='test', return_cls_label=True, random_sampling=True)
 
 def log_string(out_str):
     LOG_FOUT.write(out_str+'\n')
@@ -129,7 +135,7 @@ def eval_one_epoch(sess, ops):
     log_string(str(datetime.now()))
     log_string('---- EPOCH %03d EVALUATION ----'%(EPOCH_CNT))
     
-    batch_data = np.zeros((BATCH_SIZE, NUM_POINT, 3))
+    batch_data = np.zeros((BATCH_SIZE, NUM_POINT, 6))
     batch_label = np.zeros((BATCH_SIZE, NUM_POINT)).astype(np.int32)
     batch_cls_label = np.zeros((BATCH_SIZE,)).astype(np.int32)
     for batch_idx in range(num_batches):
@@ -158,6 +164,7 @@ def eval_one_epoch(sess, ops):
                          ops['is_training_pl']: is_training}
 
             temp_loss_val, temp_pred_val = sess.run([ops['loss'], ops['pred']], feed_dict=feed_dict)
+            #print(one_hot)
             loss_val += temp_loss_val
             pred_val += temp_pred_val
         loss_val /= float(VOTE_NUM)

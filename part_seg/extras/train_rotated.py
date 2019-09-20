@@ -13,6 +13,7 @@ ROOT_DIR = os.path.dirname(BASE_DIR)
 DATA_DIR = '/volume/USERSTORE/jude_ra/master_thesis/pointnet2/'
 sys.path.append(BASE_DIR)
 sys.path.append(os.path.join(ROOT_DIR, 'models'))
+sys.path.append(os.path.join(ROOT_DIR, 'models', 'one_hot'))
 sys.path.append(os.path.join(ROOT_DIR, 'utils'))
 import provider
 import tf_util
@@ -210,14 +211,21 @@ def train_one_epoch(sess, ops, train_writer):
         feed_dict = {ops['pointclouds_pl']: rotated_batch_data,
                      ops['labels_pl']: batch_label,
                      ops['is_training_pl']: is_training,}
+
         summary, step, _, loss_val, pred_val = sess.run([ops['merged'], ops['step'],
             ops['train_op'], ops['loss'], ops['pred']], feed_dict=feed_dict)
+
         train_writer.add_summary(summary, step)
         pred_val = np.argmax(pred_val, 2)
         correct = np.sum(pred_val == batch_label)
         total_correct += correct
         total_seen += (BATCH_SIZE*NUM_POINT)
         loss_sum += loss_val
+
+        if batchR_idx + 1 == num_batch_rotations:
+            batchR_idx = 0
+        else:
+            batchR_idx += 1
 
         if (batch_idx+1)%10 == 0:
             log_string(' -- %03d / %03d --' % (batch_idx+1, num_batches))

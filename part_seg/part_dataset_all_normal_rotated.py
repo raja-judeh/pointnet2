@@ -17,7 +17,7 @@ def pc_normalize(pc):
     return pc
 
 class PartNormalDataset():
-    def __init__(self, root, input_cat=None, npoints = 2500, classification = False, split='train', normalize=True, return_cls_label = False):
+    def __init__(self, root, input_cat=None, npoints = 2500, classification = False, split='train', normalize=True, return_cls_label = False, random_sampling=True):
         self.npoints = npoints
         self.root = root
         self.catfile = os.path.join(self.root, 'synsetoffset2category.txt')
@@ -26,6 +26,7 @@ class PartNormalDataset():
         self.classification = classification
         self.normalize = normalize
         self.return_cls_label = return_cls_label
+        self.random_sampling = random_sampling
         
         with open(self.catfile, 'r') as f:
             for line in f:
@@ -63,10 +64,9 @@ class PartNormalDataset():
             for fn in self.meta[item]:
                 self.datapath.append((item, fn))
 
-        
-            
-         
-        self.classes = dict(list(zip(self.cat, list(range(len(self.cat))))))  
+        # sorted(self.cat) is needed to assign the same class numbers to caategories each time
+        self.classes = dict(list(zip(sorted(self.cat), list(range(len(self.cat))))))  
+
         # Mapping from category ('Chair') to a list of int [10,11,12,13] as segmentation labels
         self.seg_classes = {'Earphone': [16, 17, 18], 'Motorbike': [30, 31, 32, 33, 34, 35], 'Rocket': [41, 42, 43], 'Car': [8, 9, 10, 11], 'Laptop': [28, 29], 'Cap': [6, 7], 'Skateboard': [44, 45, 46], 'Mug': [36, 37], 'Guitar': [19, 20, 21], 'Bag': [4, 5], 'Lamp': [24, 25, 26, 27], 'Table': [47, 48, 49], 'Airplane': [0, 1, 2, 3], 'Pistol': [38, 39, 40], 'Chair': [12, 13, 14, 15], 'Knife': [22, 23]}
 
@@ -92,9 +92,13 @@ class PartNormalDataset():
             seg = data[:,-1].astype(np.int32)
             if len(self.cache) < self.cache_size:
                 self.cache[index] = (point_set, normal, seg, cls)
-                
-        
-        choice = np.random.choice(len(seg), self.npoints, replace=True)
+                   
+        if self.random_sampling:
+            choice = np.random.choice(len(seg), self.npoints, replace=True)
+        else:
+            choice = np.arange(self.npoints)
+            choice = choice % len(seg)
+
         #resample
         point_set = point_set[choice, :]
         seg = seg[choice]
