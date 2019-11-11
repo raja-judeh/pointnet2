@@ -6,7 +6,7 @@ sys.path.append(os.path.join(BASE_DIR, '../utils'))
 import tensorflow as tf
 import numpy as np
 import tf_util
-from pointnet_util import pointnet_sa_module, pointnet_sa_module_msg, pointnet_fp_module
+from pointnet_util import pointnet_sa_module, pointnet_sa_module_msg, pointnet_lfp_module, pointnet_triple_module
 
 def placeholder_inputs(batch_size, num_point):
     pointclouds_pl = tf.placeholder(tf.float32, shape=(batch_size, num_point, 6))
@@ -30,14 +30,22 @@ def get_model(point_cloud, cls_label, is_training, bn_decay=None):
     cls_label_one_hot = tf.tile(cls_label_one_hot, [1,num_point,1])
 
     # Set abstraction layers
-    l1_xyz, l1_points = pointnet_sa_module_msg(l0_xyz, l0_points, 512, [0.1,0.2,0.4], [32,64,128], [[32,32,64], [64,64,128], [64,96,128]], is_training, bn_decay, scope='layer1')
-    l2_xyz, l2_points = pointnet_sa_module_msg(l1_xyz, l1_points, 128, [0.4,0.8], [64,128], [[128,128,256],[128,196,256]], is_training, bn_decay, scope='layer2')
+    _, tl0_points = pointnet_triple_module(l0_xyz, l0_points, [32,32,64], is_training, bn_decay, scope='tlayer1')
+    l0_points = tf.concat((l0_points,tl0_points), axis=-1)
+    l1_xyz, l1_points = pointnet_sa_module_msg(l0_xyz, l0_points, 512, [0.1,0.2,0.4], [30,60,120], [[32,64,128], [64,64,128], [64,96,128]], is_training, bn_decay, scope='layer1')
+
+    _, tl1_points = pointnet_triple_module(l1_xyz, l1_points, [64,64,128], is_training, bn_decay, scope='tlayer2')
+    l1_points = tf.concat((l1_points,tl1_points), axis=-1)
+    l2_xyz, l2_points = pointnet_sa_module_msg(l1_xyz, l1_points, 128, [0.4,0.8], [60,120], [[128,128,256],[128,196,256]], is_training, bn_decay, scope='layer2')
+
+    _, tl2_points = pointnet_triple_module(l2_xyz, l2_points, [128,128,256], is_training, bn_decay, scope='tlayer3')
+    l2_points = tf.concat((l2_points,tl2_points), axis=-1)
     l3_xyz, l3_points, l3_indices = pointnet_sa_module(l2_xyz, l2_points, npoint=None, radius=None, nsample=None, mlp=[256,512,1024], mlp2=None, group_all=True, is_training=is_training, bn_decay=bn_decay, scope='layer3')
 
     # Feature propagation layers
-    l2_points = pointnet_fp_module(l2_xyz, l3_xyz, l2_points, l3_points, [256,256], is_training, bn_decay, scope='fa_layer1')
-    l1_points = pointnet_fp_module(l1_xyz, l2_xyz, l1_points, l2_points, [256,128], is_training, bn_decay, scope='fa_layer2')
-    l0_points = pointnet_fp_module(l0_xyz, l1_xyz, tf.concat([cls_label_one_hot, l0_xyz, l0_points],axis=-1), l1_points, [128,128], is_training, bn_decay, scope='fp_layer3')
+    l2_points = pointnet_lfp_module(l2_xyz, l3_xyz, l2_points, l3_points, [512,256,256], [512,256], is_training, bn_decay, scope='fp_layer1')
+    l1_points = pointnet_lfp_module(l1_xyz, l2_xyz, l1_points, l2_points, [256,128,128], [256,128], is_training, bn_decay, scope='fp_layer2')
+    l0_points = pointnet_lfp_module(l0_xyz, l1_xyz, tf.concat([cls_label_one_hot, l0_xyz, l0_points],axis=-1), l1_points, [128,64,64], [128,128], is_training, bn_decay, scope='fp_layer3')
 
     # FC layers
     net = tf_util.conv1d(l0_points, 128, 1, padding='VALID', bn=True, is_training=is_training, scope='fc1', bn_decay=bn_decay)

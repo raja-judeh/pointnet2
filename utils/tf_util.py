@@ -115,8 +115,6 @@ def conv1d(inputs,
     return outputs
 
 
-
-
 def conv2d(inputs,
            num_output_channels,
            kernel_size,

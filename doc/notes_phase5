@@ -1,0 +1,17 @@
+Phase5 main goals:
+    - Add an auxiliary function (which contributes to the total loss) hoping for new features to be learned to help in the classification and segmentation tasks.
+        
+        1. Contrastive loss: minimize the distance between similar objects, maximize the distance between dissimilar ones --> see Triplet Loss 
+        2. Binary cross-entropy loss to classify multi-points as similar or dissimilar
+
+        --> In both cases, multi-points groundtruth labels must be generated 
+
+    - In the case where a center point is present, order the points wither clockwise or counter-clockwise. In this case only combinations of multi-points are needed (no need for permutations, no need for shuffling the order of the points).
+
+    - Evaluate the effect of emphasizing the center point by having a dedicated MLP for that. 
+
+    - Maintain translation invariance by cincatenating relative cooridinates of each point and the center point in processing each multi-point
+
+    - Try processing with only 2-NN such that no max-pooling is required (start from meta-points to reduce the number of required layers) --> no need to reach ONE meta-point
+
+

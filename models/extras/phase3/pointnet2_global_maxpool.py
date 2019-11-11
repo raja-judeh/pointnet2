@@ -32,12 +32,14 @@ def get_model(point_cloud, cls_label, is_training, bn_decay=None):
     # Set abstraction layers
     l1_xyz, l1_points = pointnet_sa_module_msg(l0_xyz, l0_points, 512, [0.1,0.2,0.4], [32,64,128], [[32,32,64], [64,64,128], [64,96,128]], is_training, bn_decay, scope='layer1')
     l2_xyz, l2_points = pointnet_sa_module_msg(l1_xyz, l1_points, 128, [0.4,0.8], [64,128], [[128,128,256],[128,196,256]], is_training, bn_decay, scope='layer2')
-    l3_xyz, l3_points, l3_indices = pointnet_sa_module(l2_xyz, l2_points, npoint=None, radius=None, nsample=None, mlp=[256,512,1024], mlp2=None, group_all=True, is_training=is_training, bn_decay=bn_decay, scope='layer3')
+    global_xyz, global_points, global_indices = pointnet_sa_module(l2_xyz, l2_points, npoint=None, radius=None, nsample=None, mlp=[256,512,1024], mlp2=None, group_all=True, is_training=is_training, bn_decay=bn_decay, scope='layer3')
+
+    l1_global_points = tf.tile(global_points, [1,l1_points.get_shape()[1].value,1])
+    l0_global_points = tf.tile(global_points, [1,l0_points.get_shape()[1].value,1])
 
     # Feature propagation layers
-    l2_points = pointnet_fp_module(l2_xyz, l3_xyz, l2_points, l3_points, [256,256], is_training, bn_decay, scope='fa_layer1')
-    l1_points = pointnet_fp_module(l1_xyz, l2_xyz, l1_points, l2_points, [256,128], is_training, bn_decay, scope='fa_layer2')
-    l0_points = pointnet_fp_module(l0_xyz, l1_xyz, tf.concat([cls_label_one_hot, l0_xyz, l0_points],axis=-1), l1_points, [128,128], is_training, bn_decay, scope='fp_layer3')
+    l1_points = pointnet_fp_module(l1_xyz, l2_xyz, tf.concat([l1_global_points,l1_points],axis=-1), l2_points, [256,128], is_training, bn_decay, scope='fa_layer2')
+    l0_points = pointnet_fp_module(l0_xyz, l1_xyz, tf.concat([l0_global_points,cls_label_one_hot,l0_xyz, l0_points],axis=-1), l1_points, [128,128], is_training, bn_decay, scope='fp_layer3')
 
     # FC layers
     net = tf_util.conv1d(l0_points, 128, 1, padding='VALID', bn=True, is_training=is_training, scope='fc1', bn_decay=bn_decay)

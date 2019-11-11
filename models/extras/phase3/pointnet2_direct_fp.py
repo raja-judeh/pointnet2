@@ -16,6 +16,7 @@ def placeholder_inputs(batch_size, num_point):
 
 NUM_CATEGORIES = 16
 
+
 def get_model(point_cloud, cls_label, is_training, bn_decay=None):
     """ Classification PointNet, input is BxNx6, output Bx40 """
     batch_size = point_cloud.get_shape()[0].value
@@ -34,13 +35,15 @@ def get_model(point_cloud, cls_label, is_training, bn_decay=None):
     l2_xyz, l2_points = pointnet_sa_module_msg(l1_xyz, l1_points, 128, [0.4,0.8], [64,128], [[128,128,256],[128,196,256]], is_training, bn_decay, scope='layer2')
     l3_xyz, l3_points, l3_indices = pointnet_sa_module(l2_xyz, l2_points, npoint=None, radius=None, nsample=None, mlp=[256,512,1024], mlp2=None, group_all=True, is_training=is_training, bn_decay=bn_decay, scope='layer3')
 
-    # Feature propagation layers
-    l2_points = pointnet_fp_module(l2_xyz, l3_xyz, l2_points, l3_points, [256,256], is_training, bn_decay, scope='fa_layer1')
-    l1_points = pointnet_fp_module(l1_xyz, l2_xyz, l1_points, l2_points, [256,128], is_training, bn_decay, scope='fa_layer2')
-    l0_points = pointnet_fp_module(l0_xyz, l1_xyz, tf.concat([cls_label_one_hot, l0_xyz, l0_points],axis=-1), l1_points, [128,128], is_training, bn_decay, scope='fp_layer3')
+    # Feature propagation layers (feature propagation from each )
+    fp2_points = pointnet_fp_module(l0_xyz, l3_xyz, tf.concat([cls_label_one_hot, l0_xyz, l0_points],axis=-1), l3_points, [256,256], is_training, bn_decay, scope='fa_layer1')
+    fp1_points = pointnet_fp_module(l0_xyz, l2_xyz, tf.concat([cls_label_one_hot, l0_xyz, l0_points],axis=-1), l2_points, [256,128], is_training, bn_decay, scope='fa_layer2')
+    fp0_points = pointnet_fp_module(l0_xyz, l1_xyz, tf.concat([cls_label_one_hot, l0_xyz, l0_points],axis=-1), l1_points, [128,128], is_training, bn_decay, scope='fp_layer3')
+
+    new_points = tf.concat([fp2_points, fp1_points, fp0_points], axis=-1)
 
     # FC layers
-    net = tf_util.conv1d(l0_points, 128, 1, padding='VALID', bn=True, is_training=is_training, scope='fc1', bn_decay=bn_decay)
+    net = tf_util.conv1d(new_points, 128, 1, padding='VALID', bn=True, is_training=is_training, scope='fc1', bn_decay=bn_decay)
     end_points['feats'] = net 
     net = tf_util.dropout(net, keep_prob=0.5, is_training=is_training, scope='dp1')
     net = tf_util.conv1d(net, 50, 1, padding='VALID', activation_fn=None, scope='fc2')

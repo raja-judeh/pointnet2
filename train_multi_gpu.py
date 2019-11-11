@@ -44,7 +44,7 @@ EPOCH_CNT = 0
 NUM_GPUS = FLAGS.num_gpus
 BATCH_SIZE = FLAGS.batch_size
 assert(BATCH_SIZE % NUM_GPUS == 0)
-DEVICE_BATCH_SIZE = BATCH_SIZE / NUM_GPUS
+DEVICE_BATCH_SIZE = int(BATCH_SIZE / NUM_GPUS)
 
 NUM_POINT = FLAGS.num_point
 MAX_EPOCH = FLAGS.max_epoch
@@ -75,13 +75,13 @@ NUM_CLASSES = 40
 # Shapenet official train/test split
 if FLAGS.normal:
     assert(NUM_POINT<=10000)
-    DATA_PATH = os.path.join(ROOT_DIR, 'data/modelnet40_normal_resampled')
+    DATA_PATH = os.path.join('/volume/USERSTORE/jude_ra/master_thesis/pointnet2/', 'data/modelnet40_normal_resampled')
     TRAIN_DATASET = modelnet_dataset.ModelNetDataset(root=DATA_PATH, npoints=NUM_POINT, split='train', normal_channel=FLAGS.normal, batch_size=BATCH_SIZE)
     TEST_DATASET = modelnet_dataset.ModelNetDataset(root=DATA_PATH, npoints=NUM_POINT, split='test', normal_channel=FLAGS.normal, batch_size=BATCH_SIZE)
 else:
     assert(NUM_POINT<=2048)
-    TRAIN_DATASET = modelnet_h5_dataset.ModelNetH5Dataset(os.path.join(BASE_DIR, 'data/modelnet40_ply_hdf5_2048/train_files.txt'), batch_size=BATCH_SIZE, npoints=NUM_POINT, shuffle=True)
-    TEST_DATASET = modelnet_h5_dataset.ModelNetH5Dataset(os.path.join(BASE_DIR, 'data/modelnet40_ply_hdf5_2048/test_files.txt'), batch_size=BATCH_SIZE, npoints=NUM_POINT, shuffle=False)
+    TRAIN_DATASET = modelnet_h5_dataset.ModelNetH5Dataset(os.path.join('/volume/USERSTORE/jude_ra/master_thesis/pointnet2', 'data/modelnet40_ply_hdf5_2048/train_files.txt'), batch_size=BATCH_SIZE, npoints=NUM_POINT, shuffle=True)
+    TEST_DATASET = modelnet_h5_dataset.ModelNetH5Dataset(os.path.join('/volume/USERSTORE/jude_ra/master_thesis/pointnet2', 'data/modelnet40_ply_hdf5_2048/test_files.txt'), batch_size=BATCH_SIZE, npoints=NUM_POINT, shuffle=False)
 
 def log_string(out_str):
     LOG_FOUT.write(out_str+'\n')

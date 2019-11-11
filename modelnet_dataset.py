@@ -29,7 +29,7 @@ class ModelNetDataset():
         if modelnet10:
             self.catfile = os.path.join(self.root, 'modelnet10_shape_names.txt')
         else:
-            self.catfile = os.path.join(self.root, 'shape_names.txt')
+            self.catfile = os.path.join(self.root, 'modelnet40_shape_names.txt')
         self.cat = [line.rstrip() for line in open(self.catfile)]
         self.classes = dict(list(zip(self.cat, list(range(len(self.cat))))))  
         self.normal_channel = normal_channel
