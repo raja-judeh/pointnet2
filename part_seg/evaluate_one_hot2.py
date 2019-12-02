@@ -58,7 +58,7 @@ if TEST_ROTATED:
 else:
     # Shapenet official train/test split
     DATA_PATH = os.path.join(DATA_DIR, 'shapenetcore_partanno_segmentation_benchmark_v0_normal')
-    TEST_DATASET = part_dataset_all_normal.PartNormalDataset(root=DATA_PATH, npoints=NUM_POINT, classification=False, split='test', return_cls_label=True, random_sampling=False)
+    TEST_DATASET = part_dataset_all_normal.PartNormalDataset(root=DATA_PATH, npoints=NUM_POINT, classification=False, split='test', return_cls_label=True, random_sampling=True)
 
 def log_string(out_str):
     LOG_FOUT.write(out_str+'\n')
@@ -99,6 +99,7 @@ def evaluate():
         eval_one_epoch(sess, ops)
         writer.close()
 
+
 def get_batch(dataset, idxs, start_idx, end_idx):
     bsize = end_idx-start_idx
     batch_data = np.zeros((bsize, NUM_POINT, 6))
@@ -111,6 +112,7 @@ def get_batch(dataset, idxs, start_idx, end_idx):
         batch_label[i,:] = seg
         batch_cls_label[i] = cls
     return batch_data, batch_label, batch_cls_label
+
 
 def eval_one_epoch(sess, ops):
     """ ops: dict mapping from string to tf ops """
@@ -164,7 +166,7 @@ def eval_one_epoch(sess, ops):
                          ops['is_training_pl']: is_training}
 
             temp_loss_val, temp_pred_val = sess.run([ops['loss'], ops['pred']], feed_dict=feed_dict)
-
+            #print(one_hot)
             loss_val += temp_loss_val
             pred_val += temp_pred_val
         loss_val /= float(VOTE_NUM)
@@ -189,16 +191,30 @@ def eval_one_epoch(sess, ops):
             total_correct_class[l] += (np.sum((cur_pred_val==l) & (cur_batch_label==l)))
 
         for i in range(cur_batch_size):
-            segp = cur_pred_val[i,:]
             segl = cur_batch_label[i,:] 
             cat = seg_label_to_cat[segl[0]]
+            segp = cur_pred_val[i,:]
+         
             part_ious = [0.0 for _ in range(len(seg_classes[cat]))]
+            count = 0
             for l in seg_classes[cat]:
                 if (np.sum(segl==l) == 0) and (np.sum(segp==l) == 0): # part is not present, no prediction as well
                     part_ious[l-seg_classes[cat][0]] = 1.0
                 else:
                     part_ious[l-seg_classes[cat][0]] = np.sum((segl==l) & (segp==l)) / float(np.sum((segl==l) | (segp==l)))
+                    count += 1
             shape_ious[cat].append(np.mean(part_ious))
+            
+            if cat == 'Mug' and count==2:
+                print(cat, np.mean(part_ious))
+                cloud_object = np.concatenate([batch_data[i,:,0:3], segp[:,np.newaxis]], axis=-1)
+                np.savetxt(os.path.join(LOG_DIR, 'Mug.txt'), cloud_object, fmt=['%.5f', '%.5f', '%.5f', '%d'])
+
+                break
+        else:
+            continue
+        break
+        
 
     all_shape_ious = []
     for cat in list(shape_ious.keys()):

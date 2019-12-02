@@ -2,6 +2,8 @@
     Dataset for ShapeNetPart segmentation
 '''
 
+import numpy as np
+import itertools
 import os
 import os.path
 import json
@@ -17,16 +19,14 @@ def pc_normalize(pc):
     return pc
 
 class PartNormalDataset():
-    def __init__(self, root, input_cat=None, npoints = 2500, classification = False, split='train', normalize=True, return_cls_label = False, random_sampling = True):
+    def __init__(self, root, npoints=2500, npoint_pairs=100 ,split='train', normalize=True):
         self.npoints = npoints
+        self.npoint_pairs = npoint_pairs
         self.root = root
         self.catfile = os.path.join(self.root, 'synsetoffset2category.txt')
         self.cat = {}
         
-        self.classification = classification
         self.normalize = normalize
-        self.return_cls_label = return_cls_label
-        self.random_sampling = random_sampling
         
         with open(self.catfile, 'r') as f:
             for line in f:
@@ -34,10 +34,6 @@ class PartNormalDataset():
                 self.cat[ls[0]] = ls[1]
         self.cat = {k:v for k,v in list(self.cat.items())}
         self.all_cat = self.cat
-
-        if input_cat is not None:
-            # Choose only one category
-            self.cat = {input_cat: self.cat[input_cat]}
             
         self.meta = {}
         # Note: JSON object is unordered collection
@@ -86,7 +82,69 @@ class PartNormalDataset():
         
         self.cache = {} # from index to (point_set, cls, seg) tuple
         self.cache_size = 20000
+
+    def _get_rand_pp(self, seg, mapping_idx):
+        parts, counts = np.unique(seg, return_counts=True) # get only the parts that are present in the given object
+        parts = parts[counts>10] # don't consider the noisy labels
+        nparts = len(parts)
+        n = self.npoint_pairs # number of point-pairs per part
+
+        if nparts == 1:    
+            # only similar points exist
+            idxs = np.squeeze(np.argwhere(seg==parts))
+            pp_idx = np.random.choice(idxs, (n,2), replace=True) 
+            pp_label = np.array([1]*n)
+        else:
+            similar_points = np.zeros((n,nparts,2))
+            dissimilar_points = np.zeros((n,nparts))
+
+            for part_idx, part in enumerate(parts):
+                idxs = np.squeeze(np.argwhere(seg==part))
+                similar_points[:,part_idx] = np.random.choice(idxs, (n,2), replace=True)
+                dissimilar_points[:,part_idx] = np.random.choice(idxs, (n,), replace=True)
+
+            # similar pairs
+            similar_pairs = np.reshape(similar_points, (-1,2)) # (n*nparts,2)
+            similar_labels = np.array([1]*(n*nparts))
+
+            # dissimilar pairs
+            part_combinations = list(itertools.combinations(np.arange(nparts),2))
+            ncombs = len(part_combinations)
+
+            dissimilar_pairs = dissimilar_points[:,part_combinations]
+            dissimilar_pairs = np.reshape(dissimilar_pairs, (-1,2)) # (n*ncombs,2)
+            dissimilar_labels = np.array([0]*(n*ncombs))
+
+            # concatenate similar and dissimilar pairs
+            pp_idx = np.concatenate([similar_pairs, dissimilar_pairs], axis=0) # (n*ncombs + n*nparts,2)
+            pp_label = np.concatenate([similar_labels, dissimilar_labels]) #(n*ncombs + n*nparts)
         
+        # map indices from original point cloud to the resampled point cloud
+        sort_idx = mapping_idx.argsort()
+
+        pp_idx_mapped1 = np.searchsorted(mapping_idx, pp_idx[:,0], sorter=sort_idx)
+        pp_idx_mapped1 = np.take(sort_idx, pp_idx_mapped1, mode='clip')
+        mask1 = mapping_idx[pp_idx_mapped1] == pp_idx[:,0]
+
+        pp_idx_mapped2 = np.searchsorted(mapping_idx,pp_idx[:,1], sorter=sort_idx)
+        pp_idx_mapped2 = np.take(sort_idx, pp_idx_mapped2, mode='clip')
+        mask2 = mapping_idx[pp_idx_mapped2] == pp_idx[:,1]
+
+        pp_idx_mapped = np.stack([pp_idx_mapped1,pp_idx_mapped2], axis=1)
+
+        mask = mask1 & mask2
+        pp_idx = pp_idx_mapped[mask]
+        pp_label = pp_label[mask]
+
+      # resample and shuffle
+        choice = np.resize(np.arange(len(pp_idx)), n*15 + n*6) # all resampled to the same number of point-pairs that will be retrieved from the Motorbike
+        _ = np.random.shuffle(choice)
+        pp_idx = pp_idx[choice]
+        pp_label = pp_label[choice]
+
+        return pp_idx, pp_label
+    
+ 
     def __getitem__(self, index):
         if index in self.cache:
             point_set, normal, seg, cls = self.cache[index]
@@ -97,53 +155,41 @@ class PartNormalDataset():
             cls = np.array([cls]).astype(np.int32)
             data = np.loadtxt(fn[1]).astype(np.float32)
             point_set = data[:,0:3]
+
             if self.normalize:
                 point_set = pc_normalize(point_set)
+
             normal = data[:,3:6]
             seg = data[:,-1].astype(np.int32)
+
             if len(self.cache) < self.cache_size:
                 self.cache[index] = (point_set, normal, seg, cls)
-                
-        if self.random_sampling:
-            choice = np.random.choice(len(seg), self.npoints, replace=True)
-        else:
-            np.random.seed(42)
-            choice = np.random.choice(len(seg), self.npoints, replace=True)
+       
+        orig_seg = seg # store the labels of the original point cloud before resampling
 
-        #resample
-        point_set = point_set[choice, :]
-        seg = seg[choice]
-        normal = normal[choice,:]
-        if self.classification:
-            return point_set, normal, cls
-        else:
-            if self.return_cls_label:
-                return point_set, normal, seg, cls
-            else:
-                return point_set, normal, seg
-        
+        # resample the point cloud to the desired number of points
+        mapping_idx = np.random.choice(len(orig_seg), self.npoints) # indices to retireive the final resample point cloud
+        point_set = point_set[mapping_idx,:]
+        normal = normal[mapping_idx,:]
+        seg = orig_seg[mapping_idx]
+
+        # generate random point pairs
+        pp_idx, pp_label = self._get_rand_pp(orig_seg, mapping_idx) #indices are mapped to the final retrieved point cloud
+
+        return point_set, normal, seg, cls, pp_idx, pp_label
+
+    
     def __len__(self):
         return len(self.datapath)
 
 
 if __name__ == '__main__':
-    d = PartNormalDataset(root = '../data/shapenetcore_partanno_segmentation_benchmark_v0_normal', split='trainval', npoints=3000)
+    d = PartNormalDataset(root = '/volume/USERSTORE/jude_ra/master_thesis/pointnet2/data/shapenetcore_partanno_segmentation_benchmark_v0_normal', split='trainval', npoints=3000, npoint_pairs=2000)
     print((len(d)))
 
     i = 500
-    ps, normal, seg = d[i]
-    print(d.datapath[i])
-    print(np.max(seg), np.min(seg))
-    print((ps.shape, seg.shape, normal.shape))
-    print(ps)
-    print(normal)
+    ps, normal, seg, cls, pp_idx, pp_label = d[i]
+    print(seg.shape,pp_idx.shape,pp_label.shape)
     
-    sys.path.append('../utils')
-    import show3d_balls
-    show3d_balls.showpoints(ps, normal+1, ballradius=8)
-
-    d = PartNormalDataset(root = '../data/shapenetcore_partanno_segmentation_benchmark_v0_normal', classification = True)
-    print((len(d)))
-    ps, normal, cls = d[0]
-    print((ps.shape, type(ps), cls.shape,type(cls)))
+  
 

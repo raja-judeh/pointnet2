@@ -10,7 +10,8 @@ import os
 import sys
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 ROOT_DIR = os.path.dirname(BASE_DIR)
-DATA_DIR = '/volume/USERSTORE/jude_ra/master_thesis/pointnet2/data/'
+#DATA_DIR = '/volume/USERSTORE/jude_ra/master_thesis/pointnet2/data/'
+DATA_DIR = '/net/rmc-gpu03/home_local/jude_ra/data/'
 sys.path.append(BASE_DIR)
 sys.path.append(os.path.join(ROOT_DIR, 'models'))
 sys.path.append(os.path.join(ROOT_DIR, 'utils'))
@@ -29,7 +30,6 @@ FLAGS = parser.parse_args()
 
 
 VOTE_NUM = 1
-
 
 EPOCH_CNT = 0
 
@@ -57,7 +57,7 @@ if TEST_ROTATED:
     TEST_DATASET = part_dataset_all_normal_rotated.PartNormalDataset(root=DATA_PATH, npoints=NUM_POINT, classification=False, split='test_rand', return_cls_label=True, random_sampling=True)
 else:
     # Shapenet official train/test split
-    DATA_PATH = os.path.join(DATA_DIR, 'shapenetcore_partanno_segmentation_benchmark_v0_normal')
+    DATA_PATH = os.path.join(DATA_DIR, 'shapenetcore_v0_normal')
     TEST_DATASET = part_dataset_all_normal.PartNormalDataset(root=DATA_PATH, npoints=NUM_POINT, classification=False, split='test', return_cls_label=True, random_sampling=False)
 
 def log_string(out_str):
@@ -68,12 +68,12 @@ def log_string(out_str):
 def evaluate():
     with tf.Graph().as_default():
         with tf.device('/gpu:'+str(GPU_INDEX)):
-            pointclouds_pl, labels_pl, cls_labels_pl = MODEL.placeholder_inputs(BATCH_SIZE, NUM_POINT)
+            pointclouds_pl, labels_pl, cls_labels_pl = MODEL.eval_placeholder_inputs(BATCH_SIZE, NUM_POINT)
             is_training_pl = tf.placeholder(tf.bool, shape=())
             
             print("--- Get model and loss")
-            pred, end_points = MODEL.get_model(pointclouds_pl, cls_labels_pl, is_training_pl)
-            loss = MODEL.get_loss(pred, labels_pl, end_points)
+            pred, _, end_points = MODEL.get_model(pointclouds_pl, cls_labels_pl, None, is_training_pl)
+            loss = MODEL.get_eval_loss(pred, labels_pl, end_points)
             saver = tf.train.Saver()
         
         # Create a session
@@ -164,7 +164,7 @@ def eval_one_epoch(sess, ops):
                          ops['is_training_pl']: is_training}
 
             temp_loss_val, temp_pred_val = sess.run([ops['loss'], ops['pred']], feed_dict=feed_dict)
-
+            #print(one_hot)
             loss_val += temp_loss_val
             pred_val += temp_pred_val
         loss_val /= float(VOTE_NUM)

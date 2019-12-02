@@ -1,17 +1,44 @@
 Phase5 main goals:
+
     - Add an auxiliary function (which contributes to the total loss) hoping for new features to be learned to help in the classification and segmentation tasks.
         
-        1. Contrastive loss: minimize the distance between similar objects, maximize the distance between dissimilar ones --> see Triplet Loss 
-        2. Binary cross-entropy loss to classify multi-points as similar or dissimilar
-
-        --> In both cases, multi-points groundtruth labels must be generated 
+        --> contrastive loss: minimize the distance between similar objects, maximize the distance between dissimilar ones --> see Triplet Loss 
+        --> binary cross-entropy loss to classify multi-points as similar or dissimilar
+        --> in both cases, multi-points groundtruth binary labels must be generated 
 
     - In the case where a center point is present, order the points wither clockwise or counter-clockwise. In this case only combinations of multi-points are needed (no need for permutations, no need for shuffling the order of the points).
 
     - Evaluate the effect of emphasizing the center point by having a dedicated MLP for that. 
 
-    - Maintain translation invariance by cincatenating relative cooridinates of each point and the center point in processing each multi-point
+    - Maintain translation invariance by concatenating relative cooridinates of each point and the center point in processing each multi-point
+    
+    - Re-implement intelligent upsampling by concatenating relative coordinates between the interpolated points and their 3-NN --> also consider processing the triples that are formed across layers
 
     - Try processing with only 2-NN such that no max-pooling is required (start from meta-points to reduce the number of required layers) --> no need to reach ONE meta-point
 
+    - Evaluate all the old and new variations on rotated and occluded data
 
+
+-----------------------------------------------------------------------------------------------------------------------------------------------
+
+Auxiliary function:
+
+    - Along with reading one batch in each forward-pass, generate a random sample of equal numbers of similar and dissimilar points for each possible part in an object (return two variables: the indices & the binary labels)
+        --> it might be needed that the dissimilar points to be collected from all possible part combinations 
+        --> we don't need it to be present in the computation graph (only for training, not needed for testing)
+    
+    - The function should generate a fixed number of random point-pairs; there is no need to order the point-pairs
+        --> generating dissimilar points needs to follow a fixed (arbitrary) order; points are concatenated according to their part number
+        --> all combinations should be generated; NO need for all permutations
+    
+    - Multi-points should be collected from the last layer before predicting the scores (this way the backpropagation will affect the whole network)
+        --> use tf.gather_nd to gather the chosen points from the last layer
+
+    - Generate a different random sample in each forward pass
+
+    
+-----------------------------------------------------------------------------------------------------------------------------------------------
+
+General remarks:
+
+    - 

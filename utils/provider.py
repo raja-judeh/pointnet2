@@ -29,11 +29,13 @@ def shuffle_points(batch_data):
     np.random.shuffle(idx)
     return batch_data[:,idx,:]
 
+
 def get_rotations(rotations_path):
     rotation_mats = np.loadtxt(rotations_path, delimiter=',')
     rotation_mats = rotation_mats.reshape((-1,3,3))
 
     return rotation_mats
+
 
 def _get_rotations(rotations_path):
     '''
